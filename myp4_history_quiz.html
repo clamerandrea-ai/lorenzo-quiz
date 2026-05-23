@@ -1,0 +1,3773 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MYP4 Integrated Humanities — History Exam Prep</title>
+<style>
+/* ============================================
+   STILI GENERALI
+   ============================================ */
+:root {
+  --primary: #4361ee;
+  --primary-light: #e8ecff;
+  --success: #06d6a0;
+  --success-light: #e6faf4;
+  --danger: #ef476f;
+  --danger-light: #fde8ed;
+  --warning: #ffd166;
+  --dark: #1d3557;
+  --gray: #6c757d;
+  --light: #f8f9fa;
+  --white: #ffffff;
+  --shadow: 0 6px 24px rgba(0,0,0,0.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+  --radius: 14px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  min-height: 100vh;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* ============================================
+   PROF. PALUDETTO — PERSONAGGIO CARTOON
+   ============================================ */
+.prof-container {
+  display: none;
+  position: relative;
+  margin: 20px auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.prof-container.show {
+  display: flex;
+  animation: profAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes profAppear {
+  0% { opacity: 0; transform: translateY(60px) scale(0.5); }
+  60% { transform: translateY(-10px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes profBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes profShake {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(-5deg); }
+  30% { transform: rotate(5deg); }
+  45% { transform: rotate(-4deg); }
+  60% { transform: rotate(4deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+.prof-svg-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+}
+
+.prof-container.correct .prof-svg-container {
+  animation: profBounce 0.8s ease 0.3s;
+  filter: drop-shadow(0 8px 30px rgba(6, 214, 160, 0.35));
+}
+
+.prof-container.wrong .prof-svg-container {
+  animation: profShake 0.6s ease;
+  filter: drop-shadow(0 8px 30px rgba(239, 71, 111, 0.35));
+}
+
+/* Fumetto / Bubble */
+.prof-bubble {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 18px 24px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  font-size: 1.1em;
+  font-weight: 600;
+  line-height: 1.5;
+  max-width: 480px;
+  margin-top: -10px;
+}
+
+.prof-bubble::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-bottom-color: var(--white);
+}
+
+.prof-container.correct .prof-bubble {
+  border: 3px solid var(--success);
+  background: linear-gradient(135deg, #f0fff8, var(--white));
+}
+
+.prof-container.wrong .prof-bubble {
+  border: 3px solid var(--danger);
+  background: linear-gradient(135deg, #fff5f7, var(--white));
+}
+
+.prof-container.correct .prof-bubble::before { border-bottom-color: var(--success); }
+.prof-container.wrong .prof-bubble::before { border-bottom-color: var(--danger); }
+
+.prof-name {
+  font-size: 0.7em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+
+.prof-container.correct .prof-name { color: var(--success); }
+.prof-container.wrong .prof-name { color: var(--danger); }
+
+/* SVG nascosti/mostrati */
+.prof-svg-correct, .prof-svg-wrong { display: none; }
+.prof-container.correct .prof-svg-correct { display: block; }
+.prof-container.wrong .prof-svg-wrong { display: block; }
+
+/* Header start screen - versione piccola */
+.prof-header-container {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 10px;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Sfondo decorativo sottile */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 20%, rgba(67, 97, 238, 0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ============================================
+   SCHERMATA INIZIALE
+   ============================================ */
+#start-screen {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  margin-top: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+#start-screen h1 {
+  font-size: 2.1em;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+#start-screen h1 span {
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#start-screen .subtitle {
+  color: var(--gray);
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.prof-welcome {
+  font-size: 0.9em;
+  color: var(--dark);
+  background: var(--light);
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.topic-item {
+  background: var(--primary-light);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topic-item input[type="checkbox"] { accent-color: var(--primary); }
+
+.mode-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.btn:active { transform: translateY(0) scale(0.97); }
+
+.btn-primary { background: var(--primary); color: var(--white); }
+.btn-success { background: var(--success); color: var(--white); }
+.btn-warning { background: var(--warning); color: var(--dark); }
+.btn-danger { background: var(--danger); color: var(--white); }
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-ultra {
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.btn-ultra::after {
+  content: '🔥';
+  margin-left: 6px;
+}
+
+.btn-exam {
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.btn-demo {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* Sezioni menu principale */
+.menu-section {
+  background: var(--light);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.menu-section-title {
+  font-size: 0.85em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gray);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.menu-section-title .section-icon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.section-icon.test { background: var(--primary); }
+.section-icon.study { background: var(--success); }
+
+/* ============================================
+   SEZIONE ESAME
+   ============================================ */
+#exam-screen .exam-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 30px 34px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+
+.exam-header {
+  text-align: center;
+  border-bottom: 2px solid var(--dark);
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+}
+
+.exam-header h2 { font-size: 1.4em; margin-bottom: 4px; letter-spacing: 1px; }
+.exam-header .exam-info {
+  display: flex; justify-content: space-between; font-size: 0.9em; color: var(--gray);
+  margin-top: 8px;
+}
+
+.exam-question {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.exam-question:last-child { border-bottom: none; }
+
+.exam-question .eq-number {
+  font-weight: 700;
+  color: var(--primary);
+  margin-right: 6px;
+}
+
+.exam-question .eq-text {
+  font-size: 1.02em;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+.exam-options { padding-left: 10px; }
+
+.exam-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 10px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.exam-option:hover { background: var(--light); }
+.exam-option input[type="radio"] { margin-top: 4px; accent-color: var(--primary); }
+.exam-option label { cursor: pointer; line-height: 1.5; }
+
+.exam-option.correct-highlight { background: var(--success-light); }
+.exam-option.wrong-highlight { background: var(--danger-light); }
+
+.exam-open-area {
+  margin-top: 10px;
+}
+
+.exam-open-area textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95em;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.exam-open-area textarea:focus { border-color: var(--primary); }
+
+.exam-section-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 24px 0 14px;
+  padding: 8px 12px;
+  background: var(--light);
+  border-radius: 6px;
+}
+
+.exam-correction {
+  display: none;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.93em;
+  line-height: 1.6;
+}
+
+.exam-correction.show { display: block; }
+.exam-correction.correct-box { background: var(--success-light); border-left: 4px solid var(--success); }
+.exam-correction.wrong-box { background: var(--danger-light); border-left: 4px solid var(--danger); }
+
+.exam-result-bar {
+  text-align: center;
+  padding: 20px;
+  background: var(--light);
+  border-radius: var(--radius);
+  margin-top: 20px;
+}
+
+.exam-result-bar .exam-grade {
+  font-size: 2.5em;
+  font-weight: 800;
+}
+
+.exam-timer {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--danger);
+}
+
+.prev-stats {
+  margin-top: 25px;
+  padding: 15px;
+  background: var(--light);
+  border-radius: 8px;
+  font-size: 0.9em;
+}
+
+/* ============================================
+   SCHERMATA QUIZ
+   ============================================ */
+#quiz-screen {
+  display: none;
+  margin-top: 20px;
+}
+
+.quiz-header {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.progress-info { font-weight: 600; color: var(--dark); }
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #7c3aed, #a855f7);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.3);
+}
+
+.score-display {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9em;
+}
+
+.score-correct { color: var(--success); font-weight: 600; }
+.score-wrong { color: var(--danger); font-weight: 600; }
+
+.question-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 16px;
+  border: 1px solid rgba(0,0,0,0.04);
+  animation: cardAppear 0.4s ease;
+}
+
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.question-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.badge-topic { background: var(--primary-light); color: var(--primary); }
+.badge-diff-1 { background: #d4edda; color: #155724; }
+.badge-diff-2 { background: #fff3cd; color: #856404; }
+.badge-diff-3 { background: #f8d7da; color: #721c24; }
+.badge-type { background: #e2e3e5; color: #383d41; }
+
+.question-text {
+  font-size: 1.15em;
+  font-weight: 500;
+  margin-bottom: 20px;
+  line-height: 1.7;
+}
+
+/* Opzioni scelta multipla */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: var(--white);
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.option-btn:hover:not(.disabled) {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateX(6px);
+  box-shadow: 0 3px 12px rgba(67, 97, 238, 0.15);
+}
+
+.option-btn.selected { border-color: var(--primary); background: var(--primary-light); }
+.option-btn.correct {
+  border-color: var(--success);
+  background: var(--success-light);
+  animation: correctPulse 0.4s ease;
+}
+.option-btn.wrong {
+  border-color: var(--danger);
+  background: var(--danger-light);
+  animation: wrongShake 0.4s ease;
+}
+.option-btn.disabled { cursor: default; opacity: 0.85; }
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* Input per risposte aperte/numeriche */
+.answer-input-container { margin-top: 10px; }
+
+.answer-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.answer-input:focus { border-color: var(--primary); }
+
+.submit-answer-btn {
+  margin-top: 12px;
+}
+
+/* Feedback */
+.feedback-box {
+  display: none;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feedback-correct {
+  background: var(--success-light);
+  border-left: 5px solid var(--success);
+}
+
+.feedback-wrong {
+  background: var(--danger-light);
+  border-left: 5px solid var(--danger);
+}
+
+.feedback-title {
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+
+.feedback-correct .feedback-title { color: var(--success); }
+.feedback-wrong .feedback-title { color: var(--danger); }
+
+.feedback-text { margin-bottom: 10px; line-height: 1.7; }
+
+/* Approfondimento */
+.deepdive-box {
+  display: none;
+  background: #fff8e1;
+  border-left: 5px solid var(--warning);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  animation: slideIn 0.4s ease;
+}
+
+.deepdive-title {
+  font-weight: 700;
+  color: #e65100;
+  margin-bottom: 8px;
+}
+
+.deepdive-text { line-height: 1.7; }
+
+.next-btn-container {
+  text-align: center;
+  margin: 16px 0;
+}
+
+/* ============================================
+   SCHERMATA RIEPILOGO
+   ============================================ */
+#summary-screen {
+  display: none;
+  margin-top: 20px;
+}
+
+.summary-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 34px;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 16px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.summary-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+
+.big-score {
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.big-score.good { color: var(--success); }
+.big-score.medium { color: var(--warning); }
+.big-score.bad { color: var(--danger); }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.stat-box {
+  background: var(--light);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-number { font-size: 1.8em; font-weight: 700; }
+.stat-label { font-size: 0.85em; color: var(--gray); }
+
+.topic-results { margin: 20px 0; }
+
+.topic-result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.topic-result-item.weak { background: var(--danger-light); }
+.topic-result-item.strong { background: var(--success-light); }
+.topic-result-item.medium-res { background: #fff3cd; }
+
+.topic-bar {
+  width: 100px;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.topic-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.suggestions {
+  background: var(--primary-light);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 15px;
+}
+
+.suggestions h3 { color: var(--primary); margin-bottom: 8px; }
+.suggestions ul { padding-left: 20px; }
+.suggestions li { margin-bottom: 5px; }
+
+.history-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9em;
+}
+
+.history-item .correct-mark { color: var(--success); font-weight: 700; }
+.history-item .wrong-mark { color: var(--danger); font-weight: 700; }
+
+/* ============================================
+   SEZIONE APPUNTI
+   ============================================ */
+.notes-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.notes-nav button {
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: var(--light);
+  font-size: 0.85em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.notes-nav button:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.note-section {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.note-title {
+  padding: 14px 18px;
+  margin: 0;
+  cursor: pointer;
+  background: var(--light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  user-select: none;
+}
+
+.note-title:hover { background: var(--primary-light); }
+
+.note-toggle { font-size: 0.8em; color: var(--gray); transition: transform 0.3s; }
+
+.note-body {
+  padding: 18px 20px;
+  line-height: 1.8;
+  display: none;
+}
+
+.note-body.open { display: block; }
+
+.note-body h4 {
+  margin: 14px 0 8px;
+  color: var(--primary);
+}
+
+.note-body ul, .note-body ol {
+  padding-left: 22px;
+  margin: 8px 0;
+}
+
+.note-body li { margin-bottom: 4px; }
+
+.formula-box {
+  background: linear-gradient(135deg, #e8ecff, #f0e6ff);
+  border-left: 4px solid var(--primary);
+  padding: 14px 18px;
+  margin: 12px 0;
+  font-size: 1.15em;
+  font-weight: 600;
+  font-family: 'Cambria Math', 'Times New Roman', serif;
+  border-radius: 0 8px 8px 0;
+}
+
+.note-tip {
+  background: #fff8e1;
+  border-left: 4px solid var(--warning);
+  padding: 10px 14px;
+  margin: 12px 0;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95em;
+}
+
+/* Passaggi dimostrazione */
+.demo-step {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 12px 0;
+  border-left: 4px solid var(--primary);
+  position: relative;
+}
+
+.demo-step .step-num {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.8em;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-right: 8px;
+}
+
+.demo-step .step-label {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.demo-step p { margin-top: 8px; }
+.demo-step ul { margin-top: 6px; padding-left: 20px; }
+.demo-step li { margin-bottom: 3px; }
+
+/* Infografiche */
+.infographic {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  border: 2px solid #e0e7ff;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.infographic svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.info-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 10px 0;
+}
+
+.info-block {
+  background: var(--white);
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  padding: 10px 16px;
+  min-width: 110px;
+  text-align: center;
+  position: relative;
+}
+
+.info-block.highlight {
+  background: linear-gradient(135deg, #e8ecff, #f0e6ff);
+  border-color: #7c3aed;
+}
+
+.info-block.result {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  border-color: var(--success);
+}
+
+.info-block .ib-title {
+  font-size: 0.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray);
+  margin-bottom: 4px;
+}
+
+.info-block .ib-formula {
+  font-size: 1.1em;
+  font-weight: 700;
+  font-family: 'Cambria Math', 'Times New Roman', serif;
+  color: var(--dark);
+}
+
+.info-block .ib-note {
+  font-size: 0.78em;
+  color: var(--gray);
+  margin-top: 3px;
+}
+
+.info-arrow {
+  font-size: 1.5em;
+  color: var(--primary);
+  padding: 0 6px;
+  font-weight: 700;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.info-card {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 12px;
+  border-left: 4px solid var(--primary);
+  text-align: left;
+}
+
+.info-card.green { border-left-color: var(--success); }
+.info-card.red { border-left-color: var(--danger); }
+.info-card.purple { border-left-color: #7c3aed; }
+.info-card.orange { border-left-color: #ff6a00; }
+
+.info-card .ic-title {
+  font-size: 0.8em;
+  font-weight: 700;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-card .ic-content {
+  font-size: 0.95em;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.info-card .ic-formula {
+  font-family: 'Cambria Math', 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.info-visual {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.info-visual-item {
+  text-align: center;
+}
+
+.info-visual-item .iv-icon {
+  font-size: 2.5em;
+  line-height: 1.2;
+}
+
+.info-visual-item .iv-label {
+  font-size: 0.82em;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+.info-step-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.info-step-box {
+  background: var(--white);
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  min-width: 100px;
+  max-width: 160px;
+  text-align: center;
+  font-size: 0.88em;
+  line-height: 1.4;
+}
+
+.info-step-box.active {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.info-step-box .isb-num {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 0.8em;
+  font-weight: 700;
+  line-height: 22px;
+  margin-bottom: 4px;
+}
+
+.info-step-box .isb-formula {
+  font-family: 'Cambria Math', 'Times New Roman', serif;
+  font-weight: 700;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 600px) {
+  .container { padding: 10px; }
+  #start-screen { padding: 20px; }
+  .question-card { padding: 20px; }
+  .quiz-header { padding: 12px 16px; }
+  #start-screen h1 { font-size: 1.5em; }
+  .prof-svg-container { width: 160px; height: 160px; }
+  .prof-bubble { font-size: 0.95em; padding: 14px 18px; }
+  .info-step-flow { gap: 4px; }
+  .info-arrow { font-size: 1em; padding: 0 2px; }
+  .info-step-box { min-width: 70px; max-width: 110px; font-size: 0.78em; padding: 6px 8px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============================================
+       SCHERMATA INIZIALE
+       ============================================ -->
+  <div id="start-screen">
+    <div class="prof-header-container" id="prof-header-svg"></div>
+    <h1>MYP4 <span>History Exam Prep</span></h1>
+    <p class="subtitle">History concepts · Sources & OPVL · Revolutions · Industrial Revolution · Mesopotamia · Research Questions</p>
+    <div class="prof-welcome">Prof says: "Let's see if you're ready for the MYP4 exam."</div>
+
+    <!-- SEZIONE 1: TEST E PREPARAZIONE -->
+    <div class="menu-section">
+      <div class="menu-section-title"><span class="section-icon test"></span> Test e Preparazione</div>
+
+      <h3 style="margin-bottom:10px; text-align:left; font-size:0.95em;">Filtra per argomento:</h3>
+      <div class="topic-grid" id="topic-filters"></div>
+
+      <div class="mode-buttons">
+        <button class="btn btn-primary" onclick="startQuiz('all')">Test completo</button>
+        <button class="btn btn-warning" onclick="startQuiz('random')">Modalita casuale</button>
+        <button class="btn btn-danger" onclick="startQuiz('errors')" id="btn-errors" style="display:none;">Ripassa gli errori</button>
+        <button class="btn btn-ultra" onclick="startQuiz('ultra')">Ultra Preparazione</button>
+      </div>
+      <div class="mode-buttons" style="margin-top:10px;">
+        <button class="btn btn-exam" onclick="showExam()">Simulazione Verifica</button>
+        <button class="btn btn-demo" onclick="showDemoExam()">Verifica Dimostrazioni</button>
+      </div>
+    </div>
+
+    <!-- SEZIONE 2: STUDIO -->
+    <div class="menu-section">
+      <div class="menu-section-title"><span class="section-icon study"></span> Studio e Ripasso</div>
+      <div class="mode-buttons">
+        <button class="btn btn-outline" style="border-color:var(--success);color:var(--success);" onclick="showNotes()">Appunti e Teoria</button>
+        <button class="btn btn-outline" style="border-color:#7c3aed;color:#7c3aed;" onclick="showNotes('dim-opvl')">Dimostrazioni</button>
+      </div>
+    </div>
+
+    <div class="prev-stats" id="prev-stats" style="display:none;">
+      <strong>Sessione precedente:</strong>
+      <span id="prev-stats-text"></span>
+      <br><button class="btn btn-outline" style="margin-top:8px; padding:6px 16px; font-size:0.85em;" onclick="clearProgress()">Cancella progressi</button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCHERMATA QUIZ
+       ============================================ -->
+  <div id="quiz-screen">
+    <div class="quiz-header">
+      <div class="progress-info">
+        Domanda <span id="current-q">1</span> di <span id="total-q">0</span>
+      </div>
+      <div class="score-display">
+        <span class="score-correct">Corrette: <span id="score-correct">0</span></span>
+        <span class="score-wrong">Errate: <span id="score-wrong">0</span></span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="question-card">
+      <div class="question-meta" id="question-meta"></div>
+      <div class="question-text" id="question-text"></div>
+      <div id="answer-area"></div>
+      <div class="submit-answer-btn" id="submit-area" style="display:none;">
+        <button class="btn btn-primary" onclick="checkOpenAnswer()">Verifica risposta</button>
+      </div>
+    </div>
+
+    <!-- Prof. Paludetto — Cartoon -->
+    <div class="prof-container" id="prof-container">
+      <div class="prof-svg-container">
+        <div class="prof-svg-correct" id="prof-svg-happy"></div>
+        <div class="prof-svg-wrong" id="prof-svg-angry"></div>
+      </div>
+      <div class="prof-bubble">
+        <div class="prof-name" id="prof-name">Prof. Paludetto</div>
+        <div id="prof-phrase"></div>
+      </div>
+    </div>
+
+    <div class="feedback-box" id="feedback-box">
+      <div class="feedback-title" id="feedback-title"></div>
+      <div class="feedback-text" id="feedback-text"></div>
+    </div>
+
+    <div class="deepdive-box" id="deepdive-box">
+      <div class="deepdive-title">Approfondimento</div>
+      <div class="deepdive-text" id="deepdive-text"></div>
+    </div>
+
+    <div class="next-btn-container" id="next-btn-container" style="display:none;">
+      <button class="btn btn-primary" onclick="nextQuestion()">Prossima domanda</button>
+      <button class="btn btn-outline" style="margin-left:8px;" onclick="endQuiz()">Termina</button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCHERMATA RIEPILOGO
+       ============================================ -->
+  <div id="summary-screen">
+    <div class="summary-card">
+      <h2>Riepilogo della Sessione</h2>
+
+      <!-- Prof nel riepilogo -->
+      <div class="prof-container show" id="prof-summary" style="margin-bottom:16px;">
+        <div class="prof-svg-container" id="prof-summary-svg"></div>
+        <div class="prof-bubble">
+          <div class="prof-name" id="prof-summary-name">Prof. Paludetto</div>
+          <div id="prof-summary-phrase"></div>
+        </div>
+      </div>
+
+      <div class="big-score" id="final-score"></div>
+      <p style="text-align:center;color:var(--gray);" id="final-score-label"></p>
+
+      <div class="stats-grid" id="stats-grid"></div>
+
+      <h3 style="margin:20px 0 10px;">Risultati per argomento</h3>
+      <div class="topic-results" id="topic-results"></div>
+
+      <div class="suggestions" id="suggestions"></div>
+
+      <h3 style="margin:20px 0 10px;">Cronologia risposte</h3>
+      <div class="history-list" id="history-list"></div>
+    </div>
+
+    <div style="text-align:center; margin:20px 0 40px;">
+      <button class="btn btn-primary" onclick="location.reload()">Ricomincia</button>
+      <button class="btn btn-danger" style="margin-left:10px;" onclick="startQuiz('errors')">Ripassa gli errori</button>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCHERMATA SIMULAZIONE VERIFICA
+       ============================================ -->
+  <div id="exam-screen" style="display:none; margin-top:20px;">
+
+    <div class="exam-card">
+      <div class="exam-header">
+        <h2>MYP4 INTEGRATED HUMANITIES — HISTORY PRACTICE TEST</h2>
+        <div class="exam-info">
+          <span>Nome: _______________&nbsp;&nbsp; Cognome: _______________</span>
+          <span>Classe: 4°&nbsp;&nbsp; Data: ___/___/______</span>
+        </div>
+        <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+          <span class="exam-timer" id="exam-timer">Tempo: 50:00</span>
+          <button class="btn btn-outline" style="padding:6px 14px; font-size:0.85em;" onclick="hideExam()">Torna al menu</button>
+        </div>
+      </div>
+
+      <!-- PARTE 1: Scelta multipla (10 domande, 5 opzioni A-E) -->
+      <div class="exam-section-title">PARTE 1 — Domande a risposta multipla (10 domande)</div>
+      <div id="exam-mc-questions"></div>
+
+      <!-- PARTE 2: Domande aperte / dimostrative (3 domande) -->
+      <div class="exam-section-title">PARTE 2 — Domande aperte e dimostrazioni (3 domande)</div>
+      <div id="exam-open-questions"></div>
+
+      <div style="text-align:center; margin-top:24px;">
+        <button class="btn btn-primary" onclick="submitExam()" id="exam-submit-btn" style="padding:14px 40px; font-size:1.05em;">Consegna Verifica</button>
+      </div>
+
+      <div class="exam-result-bar" id="exam-result" style="display:none;">
+        <p style="font-size:1.1em; margin-bottom:8px;">Risultato della verifica:</p>
+        <div class="exam-grade" id="exam-grade"></div>
+        <p id="exam-grade-detail" style="color:var(--gray);margin-top:6px;"></p>
+        <div style="margin-top:16px;">
+          <button class="btn btn-primary" onclick="resetExam()">Ripeti la verifica</button>
+          <button class="btn btn-outline" style="margin-left:8px;" onclick="hideExam()">Torna al menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCHERMATA VERIFICA DIMOSTRAZIONI
+       ============================================ -->
+  <div id="demo-exam-screen" style="display:none; margin-top:20px;">
+    <div class="exam-card">
+      <div class="exam-header" style="border-bottom-color:#7c3aed;">
+        <h2 style="color:#7c3aed;">ESSAY &amp; SOURCE ANALYSIS PRACTICE — MYP4 HISTORY</h2>
+        <p style="font-size:0.9em; color:var(--gray); margin-top:4px;">Riproduci ogni dimostrazione passo per passo, come se fosse un compito in classe.</p>
+        <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
+          <span class="exam-timer" id="demo-exam-timer">Tempo: 40:00</span>
+          <button class="btn btn-outline" style="padding:6px 14px; font-size:0.85em;" onclick="hideDemoExam()">Torna al menu</button>
+        </div>
+      </div>
+
+      <div id="demo-exam-questions"></div>
+
+      <div style="text-align:center; margin-top:24px;">
+        <button class="btn btn-demo" onclick="submitDemoExam()" id="demo-exam-submit-btn" style="padding:14px 40px; font-size:1.05em;">Consegna Verifica</button>
+      </div>
+
+      <div class="exam-result-bar" id="demo-exam-result" style="display:none;">
+        <p style="font-size:1.1em; margin-bottom:8px;">Verifica consegnata!</p>
+        <p id="demo-exam-grade-detail" style="color:var(--gray);"></p>
+        <div style="margin-top:16px;">
+          <button class="btn btn-demo" onclick="resetDemoExam()">Ripeti la verifica</button>
+          <button class="btn btn-outline" style="margin-left:8px;" onclick="hideDemoExam()">Torna al menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SCHERMATA APPUNTI
+       ============================================ -->
+  <div id="notes-screen" style="display:none; margin-top:20px;">
+    <div class="summary-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:20px;">
+        <h2 style="margin:0;">MYP4 History Notes</h2>
+        <button class="btn btn-outline" onclick="hideNotes()" style="padding:8px 18px; font-size:0.9em;">Torna al menu</button>
+      </div>
+
+      <!-- Navigazione argomenti -->
+      <div class="notes-nav" id="notes-nav"></div>
+
+      <!-- Contenuto argomenti -->
+      <div id="notes-content">
+
+        <div class="note-section" id="note-what-is-history">
+          <h3 class="note-title" onclick="toggleNote('what-is-history')">1. What is History? <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-what-is-history">
+            <div class="formula-box">History = the study, reconstruction and interpretation of the past through primary sources</div>
+            <ul>
+              <li>Historians must be as <strong>objective</strong> as possible (no personal bias)</li>
+              <li>They analyse, evaluate and interpret <strong>primary sources</strong> for reliability</li>
+              <li>They also use <strong>secondary sources</strong> to understand other interpretations</li>
+            </ul>
+            <p style="margin-top:8px;"><strong>Can history change?</strong> Yes — new sources emerge, existing sources are reinterpreted, leading to new conclusions.</p>
+            <div class="note-tip">Key perspectives: historic events, culture, politics, economy, technology, outstanding figures.</div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-primary-secondary">
+          <h3 class="note-title" onclick="toggleNote('primary-secondary')">2. Primary &amp; Secondary Sources <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-primary-secondary">
+            <div class="info-grid">
+              <div class="info-card green"><div class="ic-title">Primary Sources</div><div class="ic-content">Created AT THE TIME of the event. Letters, diaries, newspapers, speeches, photographs, artifacts, firsthand accounts.</div></div>
+              <div class="info-card orange"><div class="ic-title">Secondary Sources</div><div class="ic-content">Created LATER, based on primary sources. History books, academic articles, documentaries, encyclopedias, biographies.</div></div>
+            </div>
+            <p style="margin-top:10px;"><strong>Key difference:</strong> Primary = firsthand, no interpretation. Secondary = analysed/interpreted by others.</p>
+            <div class="note-tip">A newspaper from 1850 = primary source. A history book about 1850 = secondary source.</div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-opvl">
+          <h3 class="note-title" onclick="toggleNote('opvl')">3. OPVL — Source Analysis Framework <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-opvl">
+            <div class="info-grid">
+              <div class="info-card"><div class="ic-title">O — Origin</div><div class="ic-content">WHO created the source? WHEN was it created? (e.g. Delacroix, 1830)</div></div>
+              <div class="info-card green"><div class="ic-title">P — Purpose</div><div class="ic-content">WHY was it created? To inform? To persuade? To celebrate? To record?</div></div>
+              <div class="info-card orange"><div class="ic-title">V — Value</div><div class="ic-content">What makes it USEFUL for a historian? First-hand experience? Created close to event? Shows a perspective?</div></div>
+              <div class="info-card red"><div class="ic-title">L — Limitations</div><div class="ic-content">What makes it LESS reliable? Bias? Subjectivity? Limited perspective? Created too close (emotions)?</div></div>
+            </div>
+            <p style="margin-top:10px;"><strong>Key source: "Liberty Leading the People"</strong> by Eug&egrave;ne Delacroix (1830) &mdash; a painting celebrating the French revolutionary spirit. Valuable as a contemporary artistic source; limited because it is politically motivated, not an objective record.</p>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-revolutions-intro">
+          <h3 class="note-title" onclick="toggleNote('revolutions-intro')">4. Types of Revolutions <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-revolutions-intro">
+            <div class="formula-box">Revolution = widespread, radical, far-reaching change that impacts society in many ways</div>
+            <div class="info-grid">
+              <div class="info-card"><div class="ic-title">1. Political</div><div class="ic-content">Change of political system (e.g. French, Russian, American Revolutions)</div></div>
+              <div class="info-card green"><div class="ic-title">2. Social</div><div class="ic-content">Radical change in social structure, class relations, equality</div></div>
+              <div class="info-card orange"><div class="ic-title">3. Economic / Technological</div><div class="ic-content">Application of new knowledge transforming economy (e.g. Industrial Revolution)</div></div>
+              <div class="info-card purple"><div class="ic-title">4. Cultural / Intellectual</div><div class="ic-content">New ideas in art, literature, thinking (e.g. Renaissance, Enlightenment, Cubism)</div></div>
+            </div>
+            <div class="note-tip">Most revolutions involve confrontation, radical change, and a desire to make people's lives better.</div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-political-revolutions">
+          <h3 class="note-title" onclick="toggleNote('political-revolutions')">5. Political Revolutions <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-political-revolutions">
+            <div class="info-grid">
+              <div class="info-card"><div class="ic-title">French Revolution (1789)</div><div class="ic-content">Ended absolutism &amp; Louis XVI. New democratic republic. Ended nobility privileges. Birth of French nationalism.</div></div>
+              <div class="info-card green"><div class="ic-title">Russian Revolution (1917)</div><div class="ic-content">Led by Lenin &amp; Trotsky. Ended Tsarism (Nicholas II). Soviet Union founded (1922). First communist state.</div></div>
+              <div class="info-card orange"><div class="ic-title">American Revolution (1775-1783)</div><div class="ic-content">Independence from Britain. USA founded 1783. New democratic nation born.</div></div>
+            </div>
+            <div class="note-tip"><strong>Key names to memorise:</strong> Louis XVI, Lenin, Nicholas II, Trotsky. All three revolutions used force/violence.</div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-cultural-revolutions">
+          <h3 class="note-title" onclick="toggleNote('cultural-revolutions')">6. Cultural &amp; Intellectual Revolutions <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-cultural-revolutions">
+            <div class="info-grid">
+              <div class="info-card"><div class="ic-title">Renaissance (14th-16th c.)</div><div class="ic-content">Italy. Artists: Leonardo da Vinci, Michelangelo. Realism, perspective, human emotions in art. Dante wrote in Italian (not Latin) = HUMANISM = literature for ordinary people.</div></div>
+              <div class="info-card green"><div class="ic-title">Cubism (early 20th c.)</div><div class="ic-content">Pablo Picasso. Objects broken into geometric shapes. Revolutionary break from artistic tradition.</div></div>
+              <div class="info-card orange"><div class="ic-title">Enlightenment (17th-18th c.)</div><div class="ic-content">Locke, Montesquieu, Rousseau. Natural rights (liberty, property, equality). Reason over religion. Challenged absolute monarchy. Power from the people, not God.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-industrial-causes">
+          <h3 class="note-title" onclick="toggleNote('industrial-causes')">7. Industrial Revolution: Causes <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-industrial-causes">
+            <p><strong>First Industrial Revolution: Britain, 1750-1850</strong></p>
+            <div class="info-grid" style="margin-top:10px;">
+              <div class="info-card"><div class="ic-title">Natural Resources</div><div class="ic-content">Britain had abundant coal and iron — essential for steam engines and steel production</div></div>
+              <div class="info-card green"><div class="ic-title">Agricultural Revolution</div><div class="ic-content">Increased food production; freed rural workers who moved to cities to work in factories</div></div>
+              <div class="info-card orange"><div class="ic-title">Geography</div><div class="ic-content">Rivers and ports facilitated trade; island nation with strong navy and merchant fleet</div></div>
+              <div class="info-card purple"><div class="ic-title">Colonial Empire</div><div class="ic-content">Provided raw materials AND markets for manufactured goods</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-industrial-consequences">
+          <h3 class="note-title" onclick="toggleNote('industrial-consequences')">8. Industrial Revolution: Consequences <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-industrial-consequences">
+            <div class="info-grid">
+              <div class="info-card green"><div class="ic-title">Positive</div><div class="ic-content">Railways = faster &amp; cheaper transport. Mass production. Economic growth. New cities. More goods available.</div></div>
+              <div class="info-card red"><div class="ic-title">Negative (social)</div><div class="ic-content">Poor working conditions. Child labour. Long hours. Poverty for workers. Urban overcrowding. Pollution.</div></div>
+            </div>
+            <p style="margin-top:10px;"><strong>New social classes:</strong> Industrial working class (proletariat) + Industrial middle class (bourgeoisie).</p>
+            <p><strong>Urbanisation</strong>: mass movement from rural areas to industrial cities.</p>
+            <div class="note-tip">Essay Option 1 = Causes | Essay Option 2 = Consequences. Know BOTH in depth.</div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-mesopotamia">
+          <h3 class="note-title" onclick="toggleNote('mesopotamia')">9. Mesopotamia &amp; Sumer Innovations <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-mesopotamia">
+            <div class="info-grid">
+              <div class="info-card"><div class="ic-title">1. Cuneiform Writing</div><div class="ic-content">First writing system. Used for trade records, contracts, scientific knowledge.</div></div>
+              <div class="info-card green"><div class="ic-title">2. Farming Innovations</div><div class="ic-content">Irrigation systems, dams, dikes. The plow. Surplus crops → cities grew.</div></div>
+              <div class="info-card orange"><div class="ic-title">3. The Wheel</div><div class="ic-content">First used for pottery, then transport. Improved trade over land.</div></div>
+              <div class="info-card purple"><div class="ic-title">4. Sail &amp; Sailboats</div><div class="ic-content">Wind-powered travel. Faster trade along rivers/seas. Boosted economy and cultural exchange.</div></div>
+            </div>
+            <p style="margin-top:8px;"><strong>5. Metallurgy &amp; Brickmaking</strong>: Copper and bronze tools, weapons, jewellery. Mud bricks for stronger buildings, temples, city walls.</p>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-research-questions">
+          <h3 class="note-title" onclick="toggleNote('research-questions')">10. Research Questions (MYP Format) <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-research-questions">
+            <div class="formula-box">Perfect MYP RQ: CLEAR · FOCUSED/NARROW · RESEARCHABLE · OPEN-ENDED · FEASIBLE</div>
+            <p><strong>Example:</strong> "How did industrialization impact negatively the daily lives of workers during the First Industrial Revolution (1750-1850) in Britain?"</p>
+            <ul>
+              <li><strong>Geographic focus</strong>: Britain (specific)</li>
+              <li><strong>Time focus</strong>: 1750-1850 (specific)</li>
+              <li><strong>Open-ended</strong>: starts with "How" (encourages analysis)</li>
+              <li><strong>Narrow</strong>: focuses on workers + negative impacts only</li>
+              <li>Connected to <strong>1 MYP Global Context + 1 Key Concept</strong></li>
+            </ul>
+            <div class="note-tip">Too broad: "How did industrialisation affect people's life?" — no place, no time, too general.</div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-migration">
+          <h3 class="note-title" onclick="toggleNote('migration')">11. Migration <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-migration">
+            <div class="info-grid">
+              <div class="info-card red"><div class="ic-title">Push Factors (leaving)</div><div class="ic-content">Poverty, famine, political repression, lack of jobs, violence, discrimination</div></div>
+              <div class="info-card green"><div class="ic-title">Pull Factors (attracting)</div><div class="ic-content">High living standards, job opportunities, democracy, better education, safety</div></div>
+            </div>
+            <p style="margin-top:10px;"><strong>Positive impacts of migrants on host country:</strong> fill labour shortages, pay taxes, bring skills, start businesses, boost demand, send remittances.</p>
+            <p><strong>Diaspora</strong>: a group of people from the same country living outside their homeland while keeping connections to it.</p>
+            <p><strong>Remittance</strong>: money sent by migrants back to their home country.</p>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-essay-structure">
+          <h3 class="note-title" onclick="toggleNote('essay-structure')">12. Essay Writing Structure (PEEL) <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-essay-structure">
+            <div class="demo-step"><span class="step-num">1</span><span class="step-label">Introduction</span><p>General opening sentence → Background → Thesis statement (main argument) → Essay plan (what each paragraph will cover)</p></div>
+            <div class="demo-step"><span class="step-num">2</span><span class="step-label">Body Paragraphs (PEEL)</span><p><strong>P</strong>oint (topic sentence) → <strong>E</strong>vidence (facts, examples, quotes) → <strong>E</strong>xplanation (how evidence supports the point) → <strong>L</strong>ink (to thesis/next paragraph)</p></div>
+            <div class="demo-step"><span class="step-num">3</span><span class="step-label">Conclusion</span><p>Restate thesis (in different words) → Summarise main points from each paragraph</p></div>
+            <div class="note-tip">Essay topics: (1) CAUSES of Industrial Revolution in Britain OR (2) CONSEQUENCES of Industrial Revolution in Britain. You will get ONE of the two.</div>
+          </div>
+        </div>
+
+        <div class="note-section" id="note-dim-opvl">
+          <h3 class="note-title" onclick="toggleNote('dim-opvl')">DEMO: OPVL Analysis — Liberty Leading the People <span class="note-toggle">▼</span></h3>
+          <div class="note-body" id="body-dim-opvl">
+            <div class="demo-step"><span class="step-num">O</span><span class="step-label">Origin</span><p>Painted by <strong>Eug&egrave;ne Delacroix</strong>, a French Romantic painter, in <strong>1830</strong>. The painting commemorates the July Revolution of 1830 in France.</p></div>
+            <div class="demo-step"><span class="step-num">P</span><span class="step-label">Purpose</span><p>To <strong>celebrate the revolutionary spirit</strong> and the July Revolution of 1830. It is a political and artistic statement glorifying the fight for freedom and the overthrow of repressive rule.</p></div>
+            <div class="demo-step"><span class="step-num">V</span><span class="step-label">Value</span><p>It is a <strong>contemporary source</strong> (painted 1830, close to the 1789 French Revolutionary tradition). It vividly depicts the <strong>symbols and emotions</strong> of the revolutionary period. Shows that the ideals of 1789 (liberty, nationalism) were still alive in 1830. Useful for understanding revolutionary ideology and public sentiment.</p></div>
+            <div class="demo-step"><span class="step-num">L</span><span class="step-label">Limitations</span><p>It is a <strong>politically motivated</strong> painting — not an objective historical record. Only presents <strong>one (positive) perspective</strong> of the revolution. Delacroix may have been influenced by his own political views and the desire to glorify the revolution. Does not show the suffering or negative consequences of revolution.</p></div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============================================
+   BANCA DATI DOMANDE
+   Ogni domanda ha: text, type, options (se multipla),
+   answer, explanation, commonError, deepdive,
+   difficulty (1-3), topic
+   ============================================ */
+
+const QUESTIONS = [
+
+  // ── WHAT IS HISTORY (6) ───────────────────────────────────────────────────
+  {
+    text: "Which of the following best defines history?",
+    type: "multiple",
+    options: [
+      "The study and interpretation of the past through primary sources from different perspectives",
+      "A collection of facts about famous people recorded by governments",
+      "A fixed, unchanging record of past events agreed upon by all scholars",
+      "The study of future events based on patterns from the past"
+    ],
+    answer: 0,
+    explanation: "History is the study, reconstruction and interpretation of the past from different perspectives (wars, culture, politics, economy) through the analysis of primary sources.",
+    commonError: "History is NOT fixed — it can change as new sources emerge or are reinterpreted.",
+    deepdive: "Historians aim to be objective but every historian comes with their own perspective and potential biases.",
+    difficulty: 1, topic: "What is History?"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "A historian must aim to be as objective as possible, avoiding personal bias when reconstructing the past.",
+    answer: true,
+    explanation: "Correct. Objectivity is a core requirement for historians. Personal subjectivity or bias can distort the reconstruction of the past.",
+    commonError: "Being objective does not mean it is easy — it is actually one of the main challenges historians face.",
+    deepdive: "Every historian has a personal background that can influence their interpretation. Being aware of this is key.",
+    difficulty: 1, topic: "What is History?"
+  },
+  {
+    text: "Can history change over time?",
+    type: "multiple",
+    options: [
+      "No — once written, history is a permanent and fixed record",
+      "Yes — new sources can emerge and existing sources can be reinterpreted, leading to new conclusions",
+      "Only if governments decide to change the official historical record",
+      "Yes, but only for events older than 500 years"
+    ],
+    answer: 1,
+    explanation: "History can change because new sources may emerge offering fresh evidence, and the same sources can be reanalysed, leading to revised conclusions.",
+    commonError: "History is NOT fixed. It is a continuous process of interpretation.",
+    deepdive: "Example: new archaeological discoveries about ancient civilisations often revise previously accepted historical accounts.",
+    difficulty: 1, topic: "What is History?"
+  },
+  {
+    text: "Which of the following is a key challenge historians face?",
+    type: "multiple",
+    options: [
+      "Too many primary sources making research impossible",
+      "Governments forcing historians to write only positive history",
+      "Remaining objective when their own perspective and biases can influence their interpretation",
+      "The inability to access any historical documents"
+    ],
+    answer: 2,
+    explanation: "Remaining objective is the main challenge. Every historian comes with their own perspective, which can influence how they interpret sources.",
+    commonError: "Access to sources is also a challenge, but objectivity is the primary challenge emphasised in the MYP course.",
+    deepdive: "Historians must look at many different sources revealing different perspectives to build an accurate, balanced picture.",
+    difficulty: 2, topic: "What is History?"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "Historians only study wars and political events — they do not study culture, economy, or social changes.",
+    answer: false,
+    explanation: "False. Historians study many different perspectives of the past: wars, governance, culture, women's roles, economy, technology, and outstanding historic figures.",
+    commonError: "History covers ALL aspects of human society, not just political and military events.",
+    deepdive: "This is why Integrated Humanities covers topics like migration, industrial change, and cultural revolutions alongside political events.",
+    difficulty: 1, topic: "What is History?"
+  },
+  {
+    text: "What does it mean for history to be written 'from different perspectives'?",
+    type: "multiple",
+    options: [
+      "Different historians write in different languages",
+      "Different textbooks have different number of pages",
+      "The same past events can be analysed through different lenses such as politics, economy, culture, or social change",
+      "Historians change their opinions based on what politicians want"
+    ],
+    answer: 2,
+    explanation: "History can be studied from many perspectives: political, economic, cultural, social, technological. The same event can look very different depending on which perspective is adopted.",
+    commonError: "Perspective refers to the analytical angle, not the language or length of the account.",
+    deepdive: "The Industrial Revolution looks different from the perspective of factory owners (economic growth) vs workers (exploitation and poverty).",
+    difficulty: 2, topic: "What is History?"
+  },
+
+  // ── PRIMARY & SECONDARY SOURCES (6) ──────────────────────────────────────
+  {
+    text: "Which of the following is a PRIMARY source?",
+    type: "multiple",
+    options: [
+      "A history textbook written in 2010 about World War I",
+      "A documentary film made in 1990 about the French Revolution",
+      "A diary written by a factory worker in Birmingham in 1840",
+      "An encyclopedia article about the Roman Empire"
+    ],
+    answer: 2,
+    explanation: "A diary written by a factory worker in 1840 is a primary source — it was created at the time of the event by someone who directly experienced it.",
+    commonError: "Textbooks, documentaries, and encyclopedias are secondary sources — they were created much later based on primary sources.",
+    deepdive: "Key rule: if it was created AT THE TIME of the event by a direct participant or witness, it is primary.",
+    difficulty: 1, topic: "Primary & Secondary Sources"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "A newspaper published during the French Revolution in 1789 is a primary source.",
+    answer: true,
+    explanation: "Correct. A newspaper published at the time of the event is a primary source — it was created close to the event and reflects the perspectives of people living at that time.",
+    commonError: "Even if a newspaper is biased or subjective, it is still a primary source — it was created at the time.",
+    deepdive: "The bias of a primary source is assessed in the OPVL framework (Limitations), but does not change its classification as primary.",
+    difficulty: 1, topic: "Primary & Secondary Sources"
+  },
+  {
+    text: "What is the main difference between primary and secondary sources?",
+    type: "multiple",
+    options: [
+      "Primary sources are more reliable; secondary sources are always less reliable",
+      "Primary sources are created at the time of the event by those involved; secondary sources are created later and interpret primary sources",
+      "Primary sources are written documents; secondary sources are images or videos only",
+      "Primary sources are only used by professional historians; secondary sources are for students"
+    ],
+    answer: 1,
+    explanation: "Primary sources were created at the time of the event. Secondary sources were created later (often much later) and involve the interpretation and analysis of primary sources.",
+    commonError: "Primary sources are NOT always more reliable than secondary ones — they can be biased or limited.",
+    deepdive: "Both types of sources are valuable and historians use both together to build a complete picture of the past.",
+    difficulty: 2, topic: "Primary & Secondary Sources"
+  },
+  {
+    text: "Which of the following is a SECONDARY source?",
+    type: "multiple",
+    options: [
+      "A speech made by Lenin during the 1917 Russian Revolution",
+      "A photograph taken during the First World War",
+      "A letter written by Louis XVI before the French Revolution",
+      "A scholarly history book analysing the causes of the Industrial Revolution"
+    ],
+    answer: 3,
+    explanation: "A scholarly history book analysing the Industrial Revolution is a secondary source — it was written much later by a historian who analysed primary sources.",
+    commonError: "Speeches, photographs, and letters from the time of the event are all primary sources.",
+    deepdive: "Secondary sources include: history books, academic articles, documentaries, encyclopedias, and biographies written after the events.",
+    difficulty: 1, topic: "Primary & Secondary Sources"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "Primary sources always present events objectively, without any bias or subjectivity.",
+    answer: false,
+    explanation: "False. Primary sources can be highly biased. The creator of a source may have personal, political, or emotional reasons that affect how they recorded events.",
+    commonError: "Being primary (created at the time) does NOT mean being objective or unbiased.",
+    deepdive: "This is exactly why OPVL analysis is important: to assess the value AND limitations of primary sources, including their possible bias.",
+    difficulty: 2, topic: "Primary & Secondary Sources"
+  },
+  {
+    text: "Which of the following is an example of a primary source?",
+    type: "multiple",
+    options: [
+      "A documentary about Mesopotamia made in 2015",
+      "An academic journal article analysing the causes of World War I",
+      "An artifact (clay tablet with cuneiform writing) from ancient Sumer",
+      "A biography of Napoleon written by a 21st-century historian"
+    ],
+    answer: 2,
+    explanation: "A clay tablet with cuneiform writing from ancient Sumer is a primary source — it is a physical artifact created at the time by the people who lived then.",
+    commonError: "Documentaries, journal articles, and biographies written long after the events are secondary sources.",
+    deepdive: "Artifacts, photographs, paintings, diaries, and official documents from the time are all primary sources.",
+    difficulty: 2, topic: "Primary & Secondary Sources"
+  },
+
+  // ── OPVL SOURCE ANALYSIS (6) ──────────────────────────────────────────────
+  {
+    text: "What does 'OPVL' stand for in MYP Humanities?",
+    type: "multiple",
+    options: [
+      "Objective, Primary, Valid, Limited",
+      "Origin, Purpose, Value, Limitations",
+      "Origin, Perspective, Value, Language",
+      "Objectivity, Purpose, Validity, Logic"
+    ],
+    answer: 1,
+    explanation: "OPVL stands for Origin, Purpose, Value, and Limitations. It is the framework used to evaluate the usefulness of historical sources.",
+    commonError: "The L stands for Limitations, not Language or Logic.",
+    deepdive: "OPVL is used to judge how valuable a source is for a historian and what its limitations are in helping to reconstruct the past objectively.",
+    difficulty: 1, topic: "OPVL Source Analysis"
+  },
+  {
+    text: "The 'Origin' of a historical source refers to:",
+    type: "multiple",
+    options: [
+      "The country where the event described took place",
+      "Who created the source and when it was created",
+      "The language in which the source was written",
+      "The library or archive where the source is stored"
+    ],
+    answer: 1,
+    explanation: "Origin refers to WHO created the source and WHEN it was created. These two elements help us understand the context and possible bias of the source.",
+    commonError: "Origin is about the CREATOR and DATE, not the location of the event or the archive.",
+    deepdive: "When stating the origin you should say: 'This source was created by [X], who was [role] in [year].'",
+    difficulty: 1, topic: "OPVL Source Analysis"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "A source created very close to the event is always more valuable and reliable for a historian than one created later.",
+    answer: false,
+    explanation: "False. A source created very close to the event can be LESS reliable if the creator was under strong emotional stress or had a clear political agenda. Being close to the event can limit objectivity.",
+    commonError: "Closeness to the event is a potential VALUE (fresh memory) but also a potential LIMITATION (emotional bias, lack of perspective).",
+    deepdive: "This is why OPVL looks at BOTH value AND limitations of the same aspect (origin) of a source.",
+    difficulty: 2, topic: "OPVL Source Analysis"
+  },
+  {
+    text: "'Liberty Leading the People' (Delacroix, 1830) was painted to celebrate the French Revolutionary spirit. Based on its PURPOSE, what is a key LIMITATION of this source for historians?",
+    type: "multiple",
+    options: [
+      "It was painted before the French Revolution happened",
+      "It was painted by a non-French artist with no connection to France",
+      "Being created to glorify the revolution, it presents only one (positive, heroic) perspective and is not an objective historical record",
+      "It contains too much detail about the causes of the revolution"
+    ],
+    answer: 2,
+    explanation: "Because the purpose was to CELEBRATE the revolutionary spirit, the painting is politically motivated and presents only one heroic perspective. It does not show the suffering, casualties, or negative consequences of revolution.",
+    commonError: "Purpose can be BOTH a value (it shows revolutionary ideology clearly) AND a limitation (it is not objective).",
+    deepdive: "Delacroix painted it for political and artistic purposes, not as an accurate historical document.",
+    difficulty: 2, topic: "OPVL Source Analysis"
+  },
+  {
+    text: "What makes a historical source valuable based on its ORIGIN?",
+    type: "multiple",
+    options: [
+      "The source was printed in a large quantity and widely distributed",
+      "The creator had first-hand experience of the event OR the source was created close to the event when memories were fresh",
+      "The source was found in a prestigious museum",
+      "The source mentions the names of famous historical figures"
+    ],
+    answer: 1,
+    explanation: "A source is valuable based on its origin when the creator had first-hand experience (direct witness) OR when it was created close to the event (memories fresh, events recent).",
+    commonError: "Prestige, distribution, or mention of famous people do NOT make a source more valuable in the OPVL sense.",
+    deepdive: "Example: A letter written by a worker in 1800 is valuable because it is a direct firsthand account from someone who experienced the Industrial Revolution.",
+    difficulty: 2, topic: "OPVL Source Analysis"
+  },
+  {
+    text: "A historian is analysing a speech made by Lenin in 1917. Which of the following is a LIMITATION of this source based on its origin?",
+    type: "multiple",
+    options: [
+      "The speech is too long to read in detail",
+      "Lenin was a communist leader with a strong political agenda, making his account potentially biased and subjective",
+      "The speech was made in Russian, a language not everyone understands",
+      "The speech was not recorded on video, only in text"
+    ],
+    answer: 1,
+    explanation: "Because Lenin was the revolutionary leader with a clear political agenda, his speech may present a biased, one-sided view of events. This is a limitation based on origin (who created the source).",
+    commonError: "Language and format are not OPVL limitations — OPVL focuses on origin (creator's reliability), purpose (creator's goals), and content (what is covered).",
+    deepdive: "Lenin's speech is still a valuable primary source (firsthand, contemporary) but its limitations must be acknowledged.",
+    difficulty: 3, topic: "OPVL Source Analysis"
+  },
+
+  // ── TYPES OF REVOLUTIONS (5) ──────────────────────────────────────────────
+  {
+    text: "What makes a historical change qualify as a 'revolution'?",
+    type: "multiple",
+    options: [
+      "It must involve armed conflict and military forces",
+      "It must happen within a single day",
+      "It must be a widespread, radical, far-reaching change that impacts society in many ways",
+      "It must be approved by a parliament or government body"
+    ],
+    answer: 2,
+    explanation: "A revolution is a widespread, far-reaching, radical change that significantly impacts society — politically, economically, culturally, or socially.",
+    commonError: "Not all revolutions involve violence (e.g. the Enlightenment was an intellectual revolution without direct armed conflict).",
+    deepdive: "Revolutions can be political, social, economic/technological, cultural/intellectual, or scientific.",
+    difficulty: 1, topic: "Types of Revolutions"
+  },
+  {
+    text: "The Renaissance is an example of which TYPE of revolution?",
+    type: "multiple",
+    options: [
+      "A political revolution — it changed the system of government in Italy",
+      "An economic revolution — it transformed trade and commerce",
+      "A social revolution — it completely changed the class structure",
+      "A cultural and intellectual revolution — it transformed art, literature, and ideas"
+    ],
+    answer: 3,
+    explanation: "The Renaissance was primarily a cultural and intellectual revolution. It transformed art (realism, perspective), literature (Dante writing in Italian), and ideas (humanism), breaking away from medieval traditions.",
+    commonError: "The Renaissance did not change governments or economic systems — it revolutionised culture and thought.",
+    deepdive: "Artists like Leonardo da Vinci and Michelangelo broke from medieval traditions. Dante's choice to write in Italian rather than Latin democratised literature.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "The Industrial Revolution was only an economic revolution — it had no social consequences.",
+    answer: false,
+    explanation: "False. The Industrial Revolution was BOTH an economic/technological AND a social revolution. It created new social classes, caused urbanisation, changed working conditions, and transformed family life.",
+    commonError: "Revolutions rarely fit neatly into one category — they usually create changes across multiple areas of society.",
+    deepdive: "The social consequences of the Industrial Revolution (poverty, child labour, urbanisation) were as significant as the economic changes.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+  {
+    text: "Which of the following pairs correctly matches a revolution with its type?",
+    type: "multiple",
+    options: [
+      "French Revolution = economic revolution; Cubism = political revolution",
+      "Industrial Revolution = cultural revolution; Renaissance = political revolution",
+      "Russian Revolution = political revolution; Enlightenment = intellectual/cultural revolution",
+      "American Revolution = social revolution; Industrial Revolution = political revolution"
+    ],
+    answer: 2,
+    explanation: "The Russian Revolution (1917) changed the political system (Tsarism → communism) = political revolution. The Enlightenment challenged traditional ideas and values = intellectual/cultural revolution.",
+    commonError: "Match each revolution carefully: political = change of government system; cultural/intellectual = new ideas and art.",
+    deepdive: "Many revolutions overlap categories — the French Revolution was both political AND social.",
+    difficulty: 3, topic: "Types of Revolutions"
+  },
+  {
+    text: "What do most political revolutions have in common?",
+    type: "multiple",
+    options: [
+      "They are always peaceful and avoid the use of force",
+      "They only happen in democratic countries",
+      "They involve confrontation with an existing ruling class and aim to establish a new political system",
+      "They are always supported by the majority of the population"
+    ],
+    answer: 2,
+    explanation: "Most political revolutions involve confrontation with an old ruling elite, the use of force, and the aim to establish a new political system (e.g. democracy replacing absolute monarchy).",
+    commonError: "Many revolutions are not supported by all citizens — they are often led by a motivated minority.",
+    deepdive: "Common features: confrontation, use of force/violence, radical change of political system, desire to improve lives.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+
+  // ── POLITICAL REVOLUTIONS (7) ─────────────────────────────────────────────
+  {
+    text: "When did the French Revolution begin?",
+    type: "multiple",
+    options: ["1776","1789","1815","1830"],
+    answer: 1,
+    explanation: "The French Revolution began in 1789. It ended the rule of the absolute monarch Louis XVI and established a new democratic republic.",
+    commonError: "1776 is the American Declaration of Independence; 1815 is the Congress of Vienna; 1830 is a later French revolution.",
+    deepdive: "The French Revolution had major consequences: end of absolutism, end of nobility privileges, birth of French nationalism.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+  {
+    text: "Who was the absolute ruler of France BEFORE the French Revolution of 1789?",
+    type: "multiple",
+    options: ["Napoleon Bonaparte","Lenin","Louis XVI","Nicholas II"],
+    answer: 2,
+    explanation: "Louis XVI was the absolute ruler (king) of France before the Revolution. He was overthrown and later executed during the Revolution.",
+    commonError: "Napoleon came AFTER the Revolution; Lenin is Russian; Nicholas II is the Russian Tsar.",
+    deepdive: "Louis XVI represented the old system of absolutism where the monarch had unlimited power accountable only to God.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "The French Revolution of 1789 ended the privileges of the French nobility, such as exemption from taxes.",
+    answer: true,
+    explanation: "Correct. The French Revolution ended social inequalities and the special privileges of the French nobility (who did not pay taxes, had exclusive rights, etc.).",
+    commonError: "Ending nobility privileges was one of the key SOCIAL consequences of the French Revolution.",
+    deepdive: "The Declaration of the Rights of Man (1789) proclaimed that all men are equal before the law.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+  {
+    text: "Who led the Russian Revolution of 1917?",
+    type: "multiple",
+    options: ["Napoleon III and Bismarck","Louis XVI and Marie Antoinette","George Washington and Thomas Jefferson","Lenin and Trotsky"],
+    answer: 3,
+    explanation: "The Russian Revolution of 1917 was led by Lenin and Trotsky, who were communist leaders who overthrew the Tsar Nicholas II.",
+    commonError: "Washington/Jefferson are American; Louis XVI is French; Napoleon III is 19th century French.",
+    deepdive: "The Russian Revolution led to the founding of the Soviet Union (1922-1991), the first communist state in history.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+  {
+    text: "What political system was established in Russia after the 1917 Revolution?",
+    type: "multiple",
+    options: [
+      "Democracy — universal elections were introduced immediately",
+      "A constitutional monarchy — the Tsar kept limited power",
+      "Communism — the Communist Party (Bolsheviks) took power under Lenin",
+      "A federal republic — each region governed itself independently"
+    ],
+    answer: 2,
+    explanation: "After the 1917 Russian Revolution, the Bolsheviks under Lenin established a communist state. The Soviet Union was founded in 1922.",
+    commonError: "The Russian Revolution did NOT create a democracy — it replaced one form of dictatorship (Tsarism) with another (communist party rule).",
+    deepdive: "This makes the Russian Revolution different from the French and American: it created a communist dictatorship, not a democracy.",
+    difficulty: 2, topic: "Political Revolutions"
+  },
+  {
+    text: "The American War of Independence (1775-1783) resulted in:",
+    type: "multiple",
+    options: [
+      "Britain expanding its control over all of North America",
+      "The founding of the United States of America as an independent democratic nation",
+      "The establishment of a monarchy with a king chosen by the American people",
+      "France taking control of the former British colonies in America"
+    ],
+    answer: 1,
+    explanation: "The American Revolution resulted in independence from Britain and the founding of the USA (1783) as a new democratic republic.",
+    commonError: "The USA became a republic, NOT a monarchy. George Washington refused to become king.",
+    deepdive: "The USA was founded in 1783 after winning the War of Independence. It was one of the first modern democracies.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "Nicholas II was the Russian Tsar who was forced to resign (abdicate) in 1917 by Lenin and the Bolshevik communists.",
+    answer: true,
+    explanation: "Correct. Tsar Nicholas II was forced to abdicate (give up power) in 1917 during the Russian Revolution. He and his family were later executed.",
+    commonError: "Nicholas II is a key name to memorise for the exam — he was the last Tsar of Russia.",
+    deepdive: "Nicholas II had ruled Russia since 1894 under the system of Tsarism — absolute monarchical rule that had existed since 1547.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+
+  // ── CULTURAL REVOLUTIONS (6) ──────────────────────────────────────────────
+  {
+    text: "Where did the Renaissance originate and in which centuries did it flourish?",
+    type: "multiple",
+    options: [
+      "France — 17th to 18th centuries",
+      "Germany — 15th to 16th centuries",
+      "Italy — 14th to 16th centuries",
+      "Britain — 16th to 17th centuries"
+    ],
+    answer: 2,
+    explanation: "The Renaissance began in Italy in the 14th century and flourished through the 15th and 16th centuries, spreading across Europe.",
+    commonError: "The Renaissance started in ITALY, not France or Germany. It preceded the Enlightenment which was 17th-18th century.",
+    deepdive: "The Renaissance (meaning 'rebirth') broke away from medieval traditions and celebrated humanism, art, and individual achievement.",
+    difficulty: 1, topic: "Cultural Revolutions"
+  },
+  {
+    text: "Why was Dante's decision to write in Italian (rather than Latin) considered revolutionary?",
+    type: "multiple",
+    options: [
+      "Latin was considered an inferior language at the time",
+      "It made literature accessible to ordinary people, not just the educated elite — this is the essence of humanism",
+      "Italian was the official language of the Catholic Church",
+      "Latin was too complex for anyone to understand"
+    ],
+    answer: 1,
+    explanation: "In the early 1300s, literature was written in Latin, only accessible to the educated elite. Dante's choice of Italian made literature available to ordinary people — the core of humanist thinking.",
+    commonError: "Latin was NOT inferior — it was the prestigious language of the Church and scholars. Dante's choice was a radical break.",
+    deepdive: "Humanism = the Renaissance idea that human beings (not just the Church elite) are capable of learning, thinking, and creating.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+  {
+    text: "Cubism, associated with Pablo Picasso, was revolutionary because:",
+    type: "multiple",
+    options: [
+      "It returned to the realistic style of the Renaissance",
+      "It depicted only political events and leaders",
+      "It broke away from traditional art by showing objects as broken geometric shapes",
+      "It was the first art movement to use colour in paintings"
+    ],
+    answer: 2,
+    explanation: "Cubism revolutionised art by breaking objects into simple geometric shapes (squares, triangles, circles), completely departing from the realistic tradition of previous centuries.",
+    commonError: "Cubism is the OPPOSITE of realism — it abstracts and deconstructs objects.",
+    deepdive: "Cubism (early 20th century) showed multiple perspectives of an object simultaneously, challenging how people see reality.",
+    difficulty: 1, topic: "Cultural Revolutions"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "Enlightenment thinkers such as Locke, Montesquieu, and Rousseau argued that power should come from the people, not from God or the divine right of kings.",
+    answer: true,
+    explanation: "Correct. The Enlightenment fundamentally challenged the 'divine right of kings' (the idea that rulers were chosen by God). Enlightenment thinkers argued for democracy, natural rights, and the sovereignty of the people.",
+    commonError: "This was indeed revolutionary: it provided the intellectual basis for the French and American Revolutions.",
+    deepdive: "Locke: natural rights (liberty, property). Montesquieu: separation of powers. Rousseau: social contract and popular sovereignty.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+  {
+    text: "Which Enlightenment idea represented the most radical break from medieval thinking?",
+    type: "multiple",
+    options: [
+      "The idea that the Church should have more power over education",
+      "The belief that humans are naturally sinful and need strict authority",
+      "The concept of natural rights — that liberty, property, and equality before the law are universal and cannot be taken away",
+      "The idea that all nations should be governed by hereditary monarchs"
+    ],
+    answer: 2,
+    explanation: "The concept of natural rights (universal, inalienable rights to liberty, property, and equality) was revolutionary — it directly challenged absolutism and the idea that ordinary people had no rights.",
+    commonError: "Medieval thinking held that humans were sinful and needed Church/monarch authority. Enlightenment said humans were capable of self-improvement and had natural rights.",
+    deepdive: "These ideas directly inspired the French Revolution (Declaration of the Rights of Man) and the American Constitution.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+  {
+    text: "Which of the following is NOT associated with the Renaissance?",
+    type: "multiple",
+    options: [
+      "Leonardo da Vinci painting the Mona Lisa with realism and perspective",
+      "Dante writing 'The Divine Comedy' in Italian",
+      "Karl Marx writing 'The Communist Manifesto' calling for workers' revolution",
+      "Michelangelo painting the Sistine Chapel ceiling"
+    ],
+    answer: 2,
+    explanation: "Karl Marx's Communist Manifesto (1848) has nothing to do with the Renaissance (14th-16th century). Da Vinci, Dante, and Michelangelo are all Renaissance figures.",
+    commonError: "Marx is associated with the Industrial Revolution era and the birth of socialist thought — not the Renaissance.",
+    deepdive: "Key Renaissance names: Leonardo da Vinci, Michelangelo (artists), Dante, Petrarch (literature).",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+
+  // ── INDUSTRIAL REVOLUTION: CAUSES (6) ────────────────────────────────────
+  {
+    text: "Where and when did the First Industrial Revolution begin?",
+    type: "multiple",
+    options: [
+      "France, between 1650 and 1750",
+      "Germany, between 1800 and 1900",
+      "Britain, between 1750 and 1850",
+      "The United States, between 1776 and 1876"
+    ],
+    answer: 2,
+    explanation: "The First Industrial Revolution began in Britain between approximately 1750 and 1850, before spreading to other countries.",
+    commonError: "The Industrial Revolution started in BRITAIN, not France, Germany, or the USA.",
+    deepdive: "Britain had a unique combination of natural resources, political stability, agricultural revolution, and colonial empire that made it the birthplace of industrialisation.",
+    difficulty: 1, topic: "Industrial Revolution: Causes"
+  },
+  {
+    text: "How did the Agricultural Revolution contribute to causing the Industrial Revolution in Britain?",
+    type: "multiple",
+    options: [
+      "It reduced food production, forcing people to find factory jobs to survive",
+      "It increased food production (feeding a growing population) and freed rural workers who could migrate to cities to work in factories",
+      "It destroyed British farming completely, making food imports necessary",
+      "It had no connection to the Industrial Revolution"
+    ],
+    answer: 1,
+    explanation: "The Agricultural Revolution increased food production (supporting a larger population) and released surplus workers from farms who migrated to cities to work in factories — providing the workforce for industrialisation.",
+    commonError: "The Agricultural Revolution INCREASED productivity (not decreased it) through better techniques, machinery, and enclosure of land.",
+    deepdive: "New farming techniques (crop rotation, selective breeding, better tools) allowed fewer workers to produce more food.",
+    difficulty: 2, topic: "Industrial Revolution: Causes"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "Britain's abundant natural resources, particularly coal and iron ore, were a key cause of the First Industrial Revolution.",
+    answer: true,
+    explanation: "Correct. Coal was essential for powering steam engines; iron was needed for building machines, railways, and factories. Britain's abundance of both was a crucial advantage.",
+    commonError: "Some assume Britain industrialised despite having few resources — in fact, it had ABUNDANT resources.",
+    deepdive: "Britain's coal fields (Wales, Yorkshire, Midlands) and iron ore deposits gave it a massive advantage over countries with fewer natural resources.",
+    difficulty: 1, topic: "Industrial Revolution: Causes"
+  },
+  {
+    text: "Which combination of factors best explains WHY the Industrial Revolution started in Britain rather than in other European countries?",
+    type: "multiple",
+    options: [
+      "Britain had the largest army and conquered other nations' factories",
+      "Britain had fewer people, so it needed machines to replace workers",
+      "Britain had abundant natural resources (coal, iron), a prior Agricultural Revolution, political stability, a colonial empire, and excellent geography (rivers, ports)",
+      "Britain received financial support from the United States to build its first factories"
+    ],
+    answer: 2,
+    explanation: "Multiple causes combined: natural resources (coal, iron), Agricultural Revolution (workforce + food), political stability, colonial empire (raw materials + markets), and excellent geography for trade.",
+    commonError: "No single cause explains the Industrial Revolution — it was a combination of factors that came together uniquely in Britain.",
+    deepdive: "This is why the essay on causes must address MULTIPLE factors, not just one.",
+    difficulty: 2, topic: "Industrial Revolution: Causes"
+  },
+  {
+    text: "How did Britain's colonial empire contribute to causing the Industrial Revolution?",
+    type: "multiple",
+    options: [
+      "The colonies sent soldiers who built British factories",
+      "The colonies provided both raw materials for British factories AND markets to sell manufactured goods",
+      "The colonies brought new inventions that Britain copied",
+      "Britain imported all its coal from the colonies"
+    ],
+    answer: 1,
+    explanation: "Britain's colonial empire served a double economic function: providing cheap raw materials (cotton, metals, etc.) for British factories AND providing large markets to sell the finished manufactured products.",
+    commonError: "Britain had its own coal — it did not import it from colonies.",
+    deepdive: "For example, cotton from India and America was processed in British textile factories, then sold back to colonial markets.",
+    difficulty: 2, topic: "Industrial Revolution: Causes"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "The Agricultural Revolution in Britain preceded (came before) the Industrial Revolution and helped create the conditions for it.",
+    answer: true,
+    explanation: "Correct. The Agricultural Revolution happened BEFORE the Industrial Revolution. It freed rural workers and increased food production, both of which were essential preconditions for industrialisation.",
+    commonError: "The sequence matters for the essay: Agricultural Revolution CAUSED/ENABLED the Industrial Revolution, not the other way around.",
+    deepdive: "This is explicitly mentioned in Essay Option 1: 'The Agricultural Revolution before the Industrial Revolution in Britain and its importance as a cause'.",
+    difficulty: 1, topic: "Industrial Revolution: Causes"
+  },
+
+  // ── INDUSTRIAL REVOLUTION: CONSEQUENCES (6) ──────────────────────────────
+  {
+    text: "What is 'urbanisation' as a consequence of the Industrial Revolution?",
+    type: "multiple",
+    options: [
+      "The process of making cities more beautiful and artistic",
+      "The mass movement of people from rural areas to industrial cities to find factory work",
+      "The construction of new government buildings in capital cities",
+      "The spread of urban fashion and culture to rural areas"
+    ],
+    answer: 1,
+    explanation: "Urbanisation = the mass movement of people from the countryside to industrial cities (like Manchester, Birmingham) to work in factories.",
+    commonError: "Urbanisation is about MOVEMENT of people (rural to urban), not about city aesthetics or culture.",
+    deepdive: "The population of Manchester, for example, grew from around 25,000 in 1772 to over 300,000 by 1850 — driven by industrial urbanisation.",
+    difficulty: 1, topic: "Industrial Revolution: Consequences"
+  },
+  {
+    text: "Which TWO new social classes emerged as a direct consequence of the Industrial Revolution?",
+    type: "multiple",
+    options: [
+      "The medieval peasants and the feudal lords",
+      "The industrial working class (proletariat) and the industrial middle class (bourgeoisie)",
+      "The clergy and the military nobility",
+      "The colonial settlers and the imperial governors"
+    ],
+    answer: 1,
+    explanation: "The Industrial Revolution created the industrial working class (factory workers/proletariat) and the industrial middle class (factory owners, merchants/bourgeoisie).",
+    commonError: "The feudal classes (peasants, lords) are pre-industrial; clergy and military are not new classes of the Industrial Revolution.",
+    deepdive: "The emergence of these two classes led to class conflicts that inspired socialist and communist movements in the 19th century.",
+    difficulty: 1, topic: "Industrial Revolution: Consequences"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "The development of railways was a purely positive consequence of the Industrial Revolution, with no negative effects.",
+    answer: false,
+    explanation: "False. While railways made travel faster and cheaper, they also intensified the demands on workers, increased inequality, and destroyed some traditional communities and ways of life.",
+    commonError: "The exam tests students' ability to see BOTH positive AND negative perspectives on industrial change.",
+    deepdive: "Source B in the exam guide (based on E.P. Thompson) describes how railways intensified the negative effects of industrialisation on workers.",
+    difficulty: 2, topic: "Industrial Revolution: Consequences"
+  },
+  {
+    text: "Which of the following is a NEGATIVE social consequence of the First Industrial Revolution in Britain?",
+    type: "multiple",
+    options: [
+      "Railways reduced transport costs, making goods cheaper for consumers",
+      "New steam-powered machines increased production efficiency",
+      "Factory owners became wealthy and created new industries",
+      "Workers, including children, faced long hours, dangerous conditions, very low wages, and urban poverty"
+    ],
+    answer: 3,
+    explanation: "The industrial working class faced terrible conditions: child labour, 12-16 hour working days, dangerous machinery, very low wages, and overcrowded urban slums.",
+    commonError: "The positive consequences (cheaper goods, more production) benefited factory owners and consumers — the working class suffered.",
+    deepdive: "This is a key theme for Essay Option 2: social consequences of the Industrial Revolution, specifically the impact on working-class life.",
+    difficulty: 1, topic: "Industrial Revolution: Consequences"
+  },
+  {
+    text: "What impact did railways have on Britain during the Industrial Revolution?",
+    type: "multiple",
+    options: [
+      "Railways replaced all water-based transport immediately",
+      "Railways only benefited the nobility and had no impact on ordinary people",
+      "Railways made travel faster and cheaper, improved trade and communication, and allowed goods and people to move more efficiently",
+      "Railways reduced economic activity by making road transport unnecessary"
+    ],
+    answer: 2,
+    explanation: "Railways transformed Britain: faster and cheaper travel, improved trade and communication, allowed factories to receive raw materials and send finished goods more efficiently.",
+    commonError: "Railways benefited both the economy AND ordinary people (cheaper transport) — but also had negative effects on workers.",
+    deepdive: "By 1850, Britain had over 10,000 km of railway track, fundamentally transforming the economy and daily life.",
+    difficulty: 2, topic: "Industrial Revolution: Consequences"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "Population growth was one of the major social consequences of the Industrial Revolution in Britain.",
+    answer: true,
+    explanation: "Correct. Better food availability (from the Agricultural Revolution), improved medicines, and economic growth contributed to rapid population growth during and after the Industrial Revolution.",
+    commonError: "Population growth is both a CAUSE (more workers available) and a CONSEQUENCE of industrialisation.",
+    deepdive: "Britain's population grew from around 7 million in 1750 to over 21 million by 1850.",
+    difficulty: 1, topic: "Industrial Revolution: Consequences"
+  },
+
+  // ── MESOPOTAMIA & SUMER (7) ───────────────────────────────────────────────
+  {
+    text: "What was cuneiform, and who developed it?",
+    type: "multiple",
+    options: [
+      "A type of farming tool invented by the Egyptians to grow wheat",
+      "One of the first writing systems, developed by the Sumerians in ancient Mesopotamia",
+      "A system of mathematics invented by the ancient Greeks",
+      "A type of wheel used for pottery in ancient China"
+    ],
+    answer: 1,
+    explanation: "Cuneiform was one of the first writing systems in history, developed by the Sumerians in ancient Mesopotamia. It used wedge-shaped marks pressed into clay tablets.",
+    commonError: "Cuneiform is writing, not a tool, weapon, or mathematical system.",
+    deepdive: "Cuneiform was used to record trade transactions, contracts, scientific knowledge, and administrative information.",
+    difficulty: 1, topic: "Mesopotamia & Sumer"
+  },
+  {
+    text: "What was the FIRST use of the wheel by the Sumerians?",
+    type: "multiple",
+    options: [
+      "For transport of heavy goods by cart",
+      "For grinding grain and making flour",
+      "For pottery-making — spinning clay to produce pots more quickly and efficiently",
+      "For measuring time (as a type of clock)"
+    ],
+    answer: 2,
+    explanation: "The Sumerians first used the wheel for POTTERY MAKING — allowing them to produce clay pots more quickly. Only later was it adapted for transport and trade.",
+    commonError: "Most people assume the wheel was invented for transport — but pottery was its FIRST use.",
+    deepdive: "The wheel was later used on wagons for transporting goods over land, revolutionising trade and communication.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "The Sumerians developed irrigation systems, dams, and dikes to control river water and support farming, allowing them to grow surplus crops.",
+    answer: true,
+    explanation: "Correct. Sumerian farming innovations included irrigation systems (channels to bring water to fields), dams, dikes, and the plow. These innovations enabled surplus food production, which supported larger populations and the growth of cities.",
+    commonError: "Irrigation was crucial for Mesopotamia because the region depended on the Tigris and Euphrates rivers for water.",
+    deepdive: "Surplus crops also allowed some people to specialise in other jobs (craftsmen, traders, administrators), enabling civilisation to develop.",
+    difficulty: 1, topic: "Mesopotamia & Sumer"
+  },
+  {
+    text: "How did the invention of sail and sailboats transform Sumerian civilisation?",
+    type: "multiple",
+    options: [
+      "Sailboats were used for fishing only and had no economic impact",
+      "By enabling faster travel along rivers and seas, sailboats improved trade, allowed transport of larger quantities of goods, and boosted cultural exchange with neighbouring regions",
+      "Sailboats made overland trade routes unnecessary, causing cities to decline",
+      "Sumerians only used sailboats for religious ceremonies"
+    ],
+    answer: 1,
+    explanation: "Sailboats powered by wind allowed the Sumerians to travel faster and further, transporting goods like grain, textiles, and metals in larger quantities. This boosted trade, economic activity, and cultural exchange.",
+    commonError: "Sailboats had huge economic AND cultural significance — not just practical transport.",
+    deepdive: "Trade through sailboats brought new resources and ideas to Sumer, contributing to wealth and the growth of cities.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+  {
+    text: "What metals did the Sumerians primarily work with in metallurgy?",
+    type: "multiple",
+    options: [
+      "Gold and silver — used exclusively for jewellery",
+      "Steel and aluminium — used for building ships",
+      "Copper and bronze — used for tools, weapons, and jewellery",
+      "Iron and tin — used for making farming equipment"
+    ],
+    answer: 2,
+    explanation: "The Sumerians worked primarily with copper and bronze. Bronze (copper + tin) was particularly important for stronger weapons (swords, spears) and provided military advantages.",
+    commonError: "Steel and aluminium are modern materials; the Sumerians did not have them. Iron came later.",
+    deepdive: "The Bronze Age (named after this innovation) refers to the period when bronze tools and weapons transformed ancient civilisations.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "The Sumerians used mud bricks to construct stronger houses, temples, and city walls, providing better protection from floods and invaders.",
+    answer: true,
+    explanation: "Correct. Sumerian brickmaking techniques — using sun-dried mud bricks — transformed construction, allowing them to build more durable structures including temples (ziggurats) and defensive city walls.",
+    commonError: "Mud bricks were a major innovation — the main building material in a region with no stone or wood.",
+    deepdive: "The great ziggurat temples of Mesopotamia, built from mud bricks, demonstrate the architectural achievements enabled by this innovation.",
+    difficulty: 1, topic: "Mesopotamia & Sumer"
+  },
+  {
+    text: "Why was the invention of cuneiform writing so important for the development of Sumerian civilisation?",
+    type: "multiple",
+    options: [
+      "It allowed Sumerians to communicate with gods directly",
+      "It replaced the need for trade entirely, since all business could be done through written contracts",
+      "It enabled systematic recording of trade, laws, scientific knowledge, and administration, supporting the growth and organisation of cities",
+      "It was used only for religious ceremonies and had no practical economic function"
+    ],
+    answer: 2,
+    explanation: "Cuneiform writing enabled the Sumerians to record trade transactions, legal contracts, and knowledge systematically. This was essential for organising complex city-based societies.",
+    commonError: "Writing did NOT replace trade — it SUPPORTED trade by making contracts and records possible.",
+    deepdive: "Writing is considered one of the defining features of a 'civilisation' — it allowed knowledge to be preserved and transmitted across generations.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+
+  // ── RESEARCH QUESTIONS (6) ────────────────────────────────────────────────
+  {
+    text: "Which of the following is a PERFECT MYP research question?",
+    type: "multiple",
+    options: [
+      "What is the history of the world?",
+      "How did the First Industrial Revolution affect everyone?",
+      "How did industrialization impact negatively the daily lives of workers during the First Industrial Revolution (1750-1850) in Britain?",
+      "Was the Industrial Revolution good or bad?"
+    ],
+    answer: 2,
+    explanation: "The third option is perfect: it is clear, focused (workers/negative impacts only), narrow (geographic: Britain; time: 1750-1850), open-ended (starts with 'How'), and researchable.",
+    commonError: "'What is the history of the world?' is far too broad. 'Good or bad?' is not open-ended. 'Affected everyone' has no place or time focus.",
+    deepdive: "A perfect MYP RQ must have: geographic focus + time focus + focused topic + open-ended language (How/To what extent).",
+    difficulty: 1, topic: "Research Questions (MYP)"
+  },
+  {
+    text: "Why is the research question 'How did industrialisation affect people's life?' considered too broad?",
+    type: "multiple",
+    options: [
+      "Because it is too short — a good research question must be at least three sentences",
+      "Because it has no geographic focus, no specific time period, and no specific group of people — making in-depth research impossible",
+      "Because industrialisation is not a valid topic for MYP research",
+      "Because it does not start with 'To what extent'"
+    ],
+    answer: 1,
+    explanation: "The question is too broad because: WHERE? (no country specified) WHEN? (no time period) WHOSE life? (all people?). Without these specifics, the research cannot be focused or deep.",
+    commonError: "A research question does not need to be long — it needs to be NARROW and SPECIFIC.",
+    deepdive: "Every good RQ needs: geographic focus + time period + specific topic/group + open-ended language.",
+    difficulty: 2, topic: "Research Questions (MYP)"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "A perfect MYP research question should be open-ended — it should start with words like 'How...' or 'To what extent...' rather than yes/no questions.",
+    answer: true,
+    explanation: "Correct. Open-ended questions encourage analysis, evaluation, and argumentation. A yes/no question can be answered with a single word and does not allow for deep analysis.",
+    commonError: "'Was X good or bad?' is NOT open-ended — it can be answered with a single word.",
+    deepdive: "Open-ended = requires developed analytical response. 'How' and 'To what extent' force the writer to analyse and argue.",
+    difficulty: 1, topic: "Research Questions (MYP)"
+  },
+  {
+    text: "A perfect MYP research question must be connected to:",
+    type: "multiple",
+    options: [
+      "At least 3 MYP Global Contexts and 5 Key Concepts",
+      "Only one teacher's area of expertise",
+      "One MYP Global Context and one MYP Key Concept (and at least one related concept)",
+      "The United Nations Sustainable Development Goals"
+    ],
+    answer: 2,
+    explanation: "A perfect MYP research question must be connected to ONE MYP Global Context (e.g. Globalisation and Sustainability) and ONE MYP Key Concept (e.g. Change, Systems, Global Interactions).",
+    commonError: "It is connected to ONE Global Context, not multiple ones.",
+    deepdive: "MYP Key Concepts relevant to history: Change, Global Interactions, Systems. Global Contexts include: Identities and Relationships, Orientation in Space and Time, etc.",
+    difficulty: 2, topic: "Research Questions (MYP)"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "A research question is 'researchable' when there are enough credible primary and secondary sources available to answer it in depth.",
+    answer: true,
+    explanation: "Correct. Researchability means you can actually find the sources needed to answer the question thoroughly. A question about an undocumented event with no available sources is NOT researchable.",
+    commonError: "Researchable does NOT mean easy to answer — it means the necessary sources exist and are accessible.",
+    deepdive: "For the Industrial Revolution, excellent sources exist: factory records, workers' diaries, parliamentary reports, newspapers, academic books.",
+    difficulty: 1, topic: "Research Questions (MYP)"
+  },
+  {
+    text: "What are the FIRST TWO steps in a perfect MYP research plan?",
+    type: "multiple",
+    options: [
+      "Collect all sources first, then think of a question",
+      "Write the conclusion first, then gather evidence to support it",
+      "Formulate a clear research question, then justify why it is a perfect MYP research question",
+      "Ask the teacher for the research question, then memorise the answer"
+    ],
+    answer: 2,
+    explanation: "The first steps are: (1) FORMULATE a clear, focused, open-ended, researchable research question; (2) JUSTIFY it — explain why it meets all MYP criteria.",
+    commonError: "Research begins with the QUESTION, not with collecting sources.",
+    deepdive: "The 8 stages of a research plan: formulate RQ → justify → identify sources → collect → evaluate sources → analyse → communicate findings → reflect on process.",
+    difficulty: 2, topic: "Research Questions (MYP)"
+  },
+
+  // ── MIGRATION (6) ─────────────────────────────────────────────────────────
+  {
+    text: "Which of the following is a PUSH factor that causes people to migrate?",
+    type: "multiple",
+    options: [
+      "High living standards in a foreign country",
+      "Excellent job opportunities abroad",
+      "Political repression and lack of freedom in the home country",
+      "Better educational opportunities in the destination country"
+    ],
+    answer: 2,
+    explanation: "Push factors are negative conditions in the HOME country that push people to leave. Political repression, poverty, famine, and violence are push factors.",
+    commonError: "High living standards and better opportunities abroad are PULL factors (attracting people to leave), not push factors.",
+    deepdive: "Push = reasons to LEAVE your country. Pull = reasons to GO to another country. Both explain why people migrate.",
+    difficulty: 1, topic: "Migration"
+  },
+  {
+    text: "What is a DIASPORA?",
+    type: "multiple",
+    options: [
+      "A government policy that forces people to leave their country",
+      "A group of people from the same country or culture who live outside their homeland but maintain connections to it",
+      "A type of visa that allows migrants to work in a foreign country",
+      "A financial support system for refugees in host countries"
+    ],
+    answer: 1,
+    explanation: "A diaspora is a group of people who have spread from their original country to other countries, while maintaining connections to their homeland and culture.",
+    commonError: "A diaspora is NOT a government policy or a legal document — it describes a community of migrants.",
+    deepdive: "Examples: the Italian diaspora (Italians living in the USA, Argentina, etc.), the Indian diaspora, the Jewish diaspora.",
+    difficulty: 1, topic: "Migration"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "Migrants in a host country can contribute positively by filling labour shortages, paying taxes, bringing new skills, and starting businesses.",
+    answer: true,
+    explanation: "Correct. Migrants have many positive economic impacts: they fill job vacancies local workers do not take, pay income taxes, bring expertise, start businesses that create jobs, and boost consumer demand.",
+    commonError: "The narrative that migrants only have negative impacts is incorrect — economists consistently identify multiple positive contributions.",
+    deepdive: "This is the focus of slides 62-82 of the MYP4 exam guide: analysing the positive impacts of migration on host economies.",
+    difficulty: 1, topic: "Migration"
+  },
+  {
+    text: "What is a REMITTANCE?",
+    type: "multiple",
+    options: [
+      "A fine paid by migrants who violate immigration laws",
+      "Money sent by a migrant worker from their host country back to family in their home country",
+      "A tax paid by host countries to accept migrants",
+      "A type of work permit issued to skilled migrants"
+    ],
+    answer: 1,
+    explanation: "A remittance is money sent by a migrant worker from the country where they work back to their family in their home country. Remittances support economic stability in home countries.",
+    commonError: "Remittances flow FROM host countries TO home countries — the opposite of what many people assume.",
+    deepdive: "Example: a Filipino domestic worker in Milan sends €300/month to her family in the Philippines. This is a remittance.",
+    difficulty: 1, topic: "Migration"
+  },
+  {
+    text: "Which of the following is a PULL factor that attracts migrants to a destination country?",
+    type: "multiple",
+    options: [
+      "A major famine affecting food supplies in the destination country",
+      "Political instability and violence in the destination country",
+      "High living standards, economic opportunities, and a democratic political system",
+      "Environmental disasters such as floods in the destination country"
+    ],
+    answer: 2,
+    explanation: "Pull factors attract migrants TO a country: high living standards, job opportunities, democracy, safety, better education. Famine, instability, and disasters are push factors (reasons to LEAVE).",
+    commonError: "Famine, violence, and disasters are PUSH factors from the home country, NOT pull factors of the destination.",
+    deepdive: "Typical pull factors: economic opportunities, political freedom, higher wages, better healthcare/education, family reunification.",
+    difficulty: 2, topic: "Migration"
+  },
+  {
+    text: "How can a diaspora help newly arrived migrants in a host country?",
+    type: "multiple",
+    options: [
+      "By lobbying governments to close borders to all new migrants",
+      "By providing emotional support, helping find jobs and housing, assisting with language adaptation, and creating a sense of community and belonging",
+      "By replacing the local government as the main social service provider",
+      "By persuading migrants to return immediately to their home country"
+    ],
+    answer: 1,
+    explanation: "A diaspora helps new migrants by providing social support, practical assistance (jobs, housing, language), preserving cultural identity, and creating a sense of community.",
+    commonError: "A diaspora supports migrants — it does not discourage them or replace government services.",
+    deepdive: "Diasporas play a crucial role in the integration of migrants into new societies while helping them maintain their cultural identity.",
+    difficulty: 2, topic: "Migration"
+  },
+
+  // ── ESSAY STRUCTURE (5) ───────────────────────────────────────────────────
+  {
+    text: "What is a THESIS STATEMENT in a history essay?",
+    type: "multiple",
+    options: [
+      "The title of the essay, usually written in bold at the top",
+      "A detailed list of all the sources used in the essay",
+      "One clear sentence in the introduction that states the main argument/point of the entire essay",
+      "The last sentence of the conclusion that summarises all facts"
+    ],
+    answer: 2,
+    explanation: "A thesis statement is ONE clear, concise sentence in the introduction that states the main argument. It tells the reader exactly what the essay will argue.",
+    commonError: "The thesis is NOT the title — it is a sentence that makes a specific argument, usually at the end of the introduction.",
+    deepdive: "Good thesis example: 'The First Industrial Revolution transformed Britain primarily due to its abundant natural resources and prior Agricultural Revolution, which together created unique conditions for industrialisation.'",
+    difficulty: 1, topic: "Essay Writing Structure"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "In a body paragraph, the POINT (topic sentence) should directly link to the thesis statement of the essay.",
+    answer: true,
+    explanation: "Correct. Each body paragraph's topic sentence should directly support the thesis — it is like a 'mini-thesis' for that specific paragraph.",
+    commonError: "Body paragraphs that do not link to the thesis lose focus and weaken the essay's overall argument.",
+    deepdive: "PEEL structure: Point (topic sentence) → Evidence → Explanation → Link (back to thesis/to next paragraph).",
+    difficulty: 1, topic: "Essay Writing Structure"
+  },
+  {
+    text: "What is the correct structure for a body paragraph in an MYP history essay?",
+    type: "multiple",
+    options: [
+      "Start with a conclusion, then add evidence, then state the point",
+      "Write one very long sentence covering everything without structure",
+      "Point (topic sentence) → Evidence (facts/examples) → Explanation (how evidence supports the point) → Link (to thesis)",
+      "List all facts first, then decide what argument to make"
+    ],
+    answer: 2,
+    explanation: "The PEEL structure: Point (topic sentence stating the paragraph's argument), Evidence (facts, examples, statistics to support), Explanation (how the evidence proves the point), Link (connection back to thesis or to next paragraph).",
+    commonError: "Do not start with evidence before making a clear point — the reader needs to know what the paragraph argues first.",
+    deepdive: "PEEL = Point → Evidence → Explanation → Link. Sometimes also called PEE or PEEL depending on the school.",
+    difficulty: 1, topic: "Essay Writing Structure"
+  },
+  {
+    text: "Which essay topic will Lorenzo be given in the MYP4 history exam?",
+    type: "multiple",
+    options: [
+      "Both topics at the same time — all students write two essays",
+      "A topic chosen by the student on any historical event they prefer",
+      "ONE of two options: either (1) CAUSES of the Industrial Revolution OR (2) CONSEQUENCES of the Industrial Revolution in Britain",
+      "A topic about Mesopotamian civilisation or the Renaissance"
+    ],
+    answer: 2,
+    explanation: "The exam will give ONE essay topic out of two options: Option 1 (Causes of the Industrial Revolution in Britain) or Option 2 (Consequences of the Industrial Revolution in Britain). The student does NOT choose — the topic is assigned.",
+    commonError: "Students will receive ONE topic, not both. They must prepare for BOTH since they don't know which one they'll get.",
+    deepdive: "Both essay options focus on the First Industrial Revolution in Britain (1750-1850). Know both causes AND consequences in depth.",
+    difficulty: 1, topic: "Essay Writing Structure"
+  },
+  {
+    text: "True or False?",
+    type: "truefalse",
+    statement: "The conclusion of a history essay should introduce new arguments and evidence not mentioned in the body paragraphs.",
+    answer: false,
+    explanation: "False. The conclusion should NOT introduce new evidence or arguments. It should restate the thesis (in different words) and summarise the main points from each body paragraph.",
+    commonError: "Adding new information in the conclusion confuses the reader and suggests the essay was not well planned.",
+    deepdive: "A strong conclusion: 'In conclusion, this essay has argued that... [restate thesis]. The main reasons were... [summarise body paragraphs].'",
+    difficulty: 1, topic: "Essay Writing Structure"
+  }
+];
+/* ============================================
+   ULTRA PREPARAZIONE - 5 domande da 10
+   Esercizi avanzati con ragionamento multi-step
+   ============================================ */
+const ULTRA_QUESTIONS = [
+  {
+    text: "Compare the French Revolution (1789) and the Russian Revolution (1917). Which statement BEST identifies a key DIFFERENCE between the two?",
+    type: "multiple",
+    options: [
+      "Both revolutions established communist states that lasted more than 200 years",
+      "The French Revolution established a democracy; the Russian Revolution established a communist dictatorship — replacing one form of absolutism with another",
+      "Both revolutions were completely peaceful with no violence",
+      "The French Revolution was led by Lenin; the Russian Revolution was led by Louis XVI"
+    ],
+    answer: 1,
+    explanation: "The French Revolution (1789) ultimately led to democratic republican government. The Russian Revolution (1917) replaced the Tsar's autocracy with Lenin's communist dictatorship — a different form of authoritarian rule.",
+    commonError: "Both revolutions involved violence. The leaders are specific to each: Louis XVI (overthrown) in France; Lenin (revolutionary leader) in Russia.",
+    deepdive: "This distinction is important: revolutionary INTENT (freedom, democracy) does not always match revolutionary OUTCOME.",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "A historian is evaluating 'Liberty Leading the People' by Delacroix (1830). Which of the following BEST explains BOTH a value AND a limitation of this source?",
+    type: "multiple",
+    options: [
+      "Value: it shows the painter's skill. Limitation: it is too large to display in a classroom",
+      "Value: as a contemporary painting (1830) it vividly depicts the revolutionary emotions and symbols of the era, showing how the French saw their revolutionary heritage. Limitation: it is politically motivated to CELEBRATE the revolution, presenting only one heroic perspective, not an objective historical record",
+      "Value: it proves the French Revolution was supported by all citizens. Limitation: it was painted in black and white",
+      "Value: it shows exactly what happened on the barricades in 1789. Limitation: the painter was not present at the event"
+    ],
+    answer: 1,
+    explanation: "This is a complete OPVL response: the VALUE is that it is a contemporary source capturing revolutionary ideology and emotion; the LIMITATION is its political purpose, which makes it one-sided and non-objective.",
+    commonError: "OPVL must address ORIGIN and PURPOSE — not just visual or practical aspects of the painting.",
+    deepdive: "Note: Delacroix painted this in 1830 (commemorating the 1830 Revolution), but it references the tradition of 1789 — both value AND complication.",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "A student writes this research question: 'Did the Industrial Revolution have positive or negative effects?' Identify ALL the problems with this research question.",
+    type: "multiple",
+    options: [
+      "The question is too short — it needs to be at least 20 words",
+      "It is not open-ended (yes/no question), has no geographic focus, no time period, and no specific group — making focused in-depth research impossible",
+      "The topic of the Industrial Revolution is too controversial for MYP research",
+      "The question is too narrow — it should cover all of world history"
+    ],
+    answer: 1,
+    explanation: "Multiple problems: (1) NOT open-ended — it invites a yes/no answer; (2) No geographic focus (which country?); (3) No time period; (4) No specific group (effects on whom?). Perfect RQ needs ALL these elements.",
+    commonError: "Length is NOT a criterion for a perfect RQ — specificity and focus are.",
+    deepdive: "Improved version: 'To what extent did industrialisation negatively impact the daily lives of factory workers during the First Industrial Revolution (1750-1850) in Britain?'",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "The Renaissance and the Enlightenment are both classified as cultural/intellectual revolutions. Which statement BEST identifies a key SIMILARITY between them?",
+    type: "multiple",
+    options: [
+      "Both movements began in Germany in the 16th century",
+      "Both were driven by the desire to return to medieval religious traditions",
+      "Both represented a fundamental break from accepted tradition: the Renaissance broke from medieval art/literature; the Enlightenment broke from absolute monarchy and religious authority as sources of knowledge and power",
+      "Both movements were directly caused by the Industrial Revolution"
+    ],
+    answer: 2,
+    explanation: "Both the Renaissance and the Enlightenment represented radical breaks from prevailing traditions. The Renaissance broke from medieval art (introducing realism, humanism). The Enlightenment broke from absolute monarchy and religious authority (introducing natural rights, reason).",
+    commonError: "The Renaissance began in Italy; the Enlightenment was mostly Northern European. The Industrial Revolution came AFTER both.",
+    deepdive: "The Enlightenment was in part INSPIRED by the Renaissance's emphasis on human reason and potential.",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "A historian argues: 'The Agricultural Revolution was the MOST important cause of the First Industrial Revolution in Britain.' Do you agree? Which answer best challenges OR supports this view?",
+    type: "multiple",
+    options: [
+      "Fully agree — without farming improvements, NOTHING else about the Industrial Revolution would have been possible",
+      "Disagree — the Agricultural Revolution was completely unrelated to industrialisation",
+      "The view oversimplifies: while the Agricultural Revolution was crucial (providing workforce and food), it worked together with natural resources, geographic advantages, and the colonial empire — no single cause is 'most important' in isolation",
+      "Disagree — Britain invented the steam engine before any Agricultural Revolution happened"
+    ],
+    answer: 2,
+    explanation: "Historical causation is usually multi-causal. The Agricultural Revolution was essential but functioned alongside other causes. Good history essays acknowledge that causes interact, rather than identifying just one 'most important' cause.",
+    commonError: "Single-cause explanations are a common weakness in history essays. The examiner wants you to discuss MULTIPLE causes.",
+    deepdive: "This type of question (evaluating a historian's argument) is typical of Criterion D (Thinking Critically) in MYP assessments.",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "In an essay comparing TWO sources on the Industrial Revolution, Source A says railways made travel 'faster and cheaper', improving trade. Source B (E.P. Thompson) says railways 'intensified the demands on workers'. What is the ONE key SIMILARITY?",
+    type: "multiple",
+    options: [
+      "Both sources claim railways had only positive effects on British society",
+      "Both sources describe railways as having NO impact on workers",
+      "Both sources agree that railways and industrialisation brought MAJOR CHANGE to Britain — they disagree only on whether this change was positive or negative",
+      "Both sources were written by the same historian from the same political perspective"
+    ],
+    answer: 2,
+    explanation: "The similarity is that BOTH sources acknowledge railways and industrialisation brought major, transformative change to Britain. The DIFFERENCE is their perspective: Source A focuses on positive effects; Source B focuses on negative effects on workers.",
+    commonError: "The similarity is the ACKNOWLEDGEMENT OF CHANGE, not agreement on whether change was positive.",
+    deepdive: "When comparing sources, always identify: (1) what they AGREE on, (2) where they DIFFER, (3) why they might differ (different purposes/perspectives).",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "Why is the concept of 'humanism' particularly associated with the Renaissance?",
+    type: "multiple",
+    options: [
+      "Because Renaissance artists only painted religious themes about God and angels",
+      "Because humanism taught that humans were sinful and needed Church guidance",
+      "Because Renaissance thinkers and artists placed human beings, their abilities, and their experiences at the centre of art, literature, and thought — breaking from the medieval focus on God and the afterlife",
+      "Because humanists believed that only educated elites could appreciate art"
+    ],
+    answer: 2,
+    explanation: "Humanism = placing human experience, capability, and achievement at the centre. Dante writing in Italian (not Latin) made literature human and accessible. Renaissance artists portrayed human emotions and realistic bodies — not just abstract religious symbols.",
+    commonError: "Humanism is about HUMANS being the focus — it is the opposite of saying humans are sinful and need control.",
+    deepdive: "The Renaissance humanist motto: 'Man is the measure of all things.' This is a radical break from medieval theology.",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "Which of the following push AND pull factors would BEST explain why many Irish people migrated to the USA during the 1840s famine?",
+    type: "multiple",
+    options: [
+      "Push: high living standards in Ireland. Pull: famine in the USA",
+      "Push: the potato famine causing mass starvation, political fragility, and lack of economic opportunity in Ireland. Pull: economic opportunities, democratic freedoms, and available land in the USA",
+      "Push: Ireland was too overcrowded with rich people. Pull: the USA had a better climate",
+      "Push: the USA refused to trade with Ireland. Pull: Ireland had no jobs for educated people"
+    ],
+    answer: 1,
+    explanation: "Classic push factors: famine (1845), poverty, British political control, no economic opportunity. Classic pull factors: economic opportunity, available land, democratic government in the USA.",
+    commonError: "Push factors are NEGATIVE conditions in the HOME country; pull factors are POSITIVE conditions in the DESTINATION country.",
+    deepdive: "The Irish diaspora created lasting connections between Ireland and the USA — today over 30 million Americans claim Irish descent.",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "A student plans an essay on the CONSEQUENCES of the Industrial Revolution. Which PEEL paragraph structure is best for discussing child labour as a consequence?",
+    type: "multiple",
+    options: [
+      "Start by listing all causes of the Industrial Revolution, then mention child labour at the end",
+      "Point: child labour was a major negative social consequence. Evidence: children as young as 5 worked 12-16 hours in dangerous factory conditions for very low wages. Explanation: this shows how industrialisation exploited the most vulnerable members of society. Link: this contributed to social inequality and later reform movements.",
+      "Begin the paragraph by explaining who invented the steam engine",
+      "Write one long sentence covering all consequences without separating them into paragraphs"
+    ],
+    answer: 1,
+    explanation: "The second option correctly applies PEEL: clear Point (child labour as consequence), specific Evidence (ages, hours, conditions), Explanation (meaning/significance), Link (broader consequences/reforms).",
+    commonError: "Do not mix causes and consequences in the same essay. Consequences essay = effects only.",
+    deepdive: "Each body paragraph should cover ONE main consequence in depth, not a shallow overview of many consequences.",
+    difficulty: 3, topic: "Ultra Preparation"
+  },
+  {
+    text: "The exam has a 'mind map' question. If asked to create a mind map on 'Types of Revolutions', which of the following would be the MOST COMPLETE response?",
+    type: "multiple",
+    options: [
+      "List only the French and Russian Revolutions as the only two types",
+      "Draw a map with only 'good' and 'bad' revolutions as the two branches",
+      "Create a central node 'Revolutions', with 5 branches: Political (French/Russian/American), Social, Economic/Technological (Industrial), Cultural/Intellectual (Renaissance/Enlightenment/Cubism), and Scientific — each with examples",
+      "List only the Industrial Revolution and Cubism as the two main types"
+    ],
+    answer: 2,
+    explanation: "A complete mind map on 'Types of Revolutions' must include all 5 types with specific examples: Political, Social, Economic/Technological, Cultural/Intellectual, and Scientific revolutions.",
+    commonError: "The exam specifically lists 5 types. Using only 2 would be incomplete and lose significant marks.",
+    deepdive: "Mind map questions test knowledge organisation (Criterion A) and communication (Criterion C). Be comprehensive and use examples.",
+    difficulty: 3, topic: "Ultra Preparation"
+  }
+];
+/* ============================================
+   VARIABILI DI STATO
+   ============================================ */
+let currentQuestions = [];  // domande della sessione corrente
+let currentIndex = 0;       // indice domanda corrente
+let correctCount = 0;       // risposte corrette
+let wrongCount = 0;         // risposte errate
+let history = [];           // cronologia risposte
+let topicStats = {};        // statistiche per argomento
+let errorQuestionIds = [];  // indici domande sbagliate (per ripasso)
+let answered = false;       // se la domanda corrente ha ricevuto risposta
+
+/* ============================================
+   INIZIALIZZAZIONE
+   ============================================ */
+(function init() {
+  // Popola i filtri per argomento
+  const topics = [...new Set(QUESTIONS.map(q => q.topic))];
+  const grid = document.getElementById('topic-filters');
+  topics.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'topic-item';
+    div.innerHTML = `<input type="checkbox" checked value="${t}" class="topic-cb"> ${t}`;
+    grid.appendChild(div);
+  });
+
+  // Mostra statistiche precedenti da localStorage
+  loadPreviousStats();
+})();
+
+/* Carica statistiche salvate */
+function loadPreviousStats() {
+  const saved = localStorage.getItem('myp4_history_stats');
+  if (saved) {
+    const data = JSON.parse(saved);
+    document.getElementById('prev-stats').style.display = 'block';
+    document.getElementById('prev-stats-text').textContent =
+      `${data.correct}/${data.total} corrette (${data.percentage}%) - ${data.date}`;
+    // Mostra pulsante "ripassa errori" se ci sono errori salvati
+    const savedErrors = localStorage.getItem('myp4_history_errors');
+    if (savedErrors && JSON.parse(savedErrors).length > 0) {
+      document.getElementById('btn-errors').style.display = 'inline-block';
+    }
+  }
+}
+
+/* Cancella progressi */
+function clearProgress() {
+  localStorage.removeItem('myp4_history_stats');
+  localStorage.removeItem('myp4_history_errors');
+  document.getElementById('prev-stats').style.display = 'none';
+  document.getElementById('btn-errors').style.display = 'none';
+}
+
+/* ============================================
+   AVVIO QUIZ
+   ============================================ */
+function startQuiz(mode) {
+  // Reset stato
+  currentIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  history = [];
+  topicStats = {};
+  errorQuestionIds = [];
+  answered = false;
+
+  // Seleziona domande in base alla modalita'
+  const selectedTopics = [...document.querySelectorAll('.topic-cb:checked')].map(cb => cb.value);
+
+  if (mode === 'ultra') {
+    currentQuestions = [...ULTRA_QUESTIONS];
+  } else if (mode === 'errors') {
+    const savedErrors = localStorage.getItem('myp4_history_errors');
+    if (savedErrors) {
+      const errorIds = JSON.parse(savedErrors);
+      currentQuestions = errorIds.map(id => QUESTIONS[id]).filter(q => q);
+    }
+    if (currentQuestions.length === 0) {
+      alert('Non ci sono errori salvati da ripassare!');
+      return;
+    }
+  } else {
+    currentQuestions = QUESTIONS.filter(q => selectedTopics.includes(q.topic));
+    if (currentQuestions.length === 0) {
+      alert('Seleziona almeno un argomento!');
+      return;
+    }
+  }
+
+  if (mode === 'random') {
+    shuffleArray(currentQuestions);
+  } else if (mode === 'all') {
+    // Ordina per difficolta' crescente
+    currentQuestions.sort((a, b) => a.difficulty - b.difficulty);
+  }
+
+  // Inizializza statistiche per argomento
+  const topics = [...new Set(currentQuestions.map(q => q.topic))];
+  topics.forEach(t => { topicStats[t] = { correct: 0, wrong: 0, total: 0 }; });
+
+  // Mostra schermata quiz
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'block';
+  document.getElementById('summary-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('demo-exam-screen').style.display = 'none';
+  document.getElementById('notes-screen').style.display = 'none';
+  document.getElementById('total-q').textContent = currentQuestions.length;
+
+  showQuestion();
+}
+
+/* Mescola array (Fisher-Yates) */
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+/* ============================================
+   MOSTRA DOMANDA
+   ============================================ */
+function showQuestion() {
+  answered = false;
+  const q = currentQuestions[currentIndex];
+
+  // Aggiorna header
+  document.getElementById('current-q').textContent = currentIndex + 1;
+  document.getElementById('score-correct').textContent = correctCount;
+  document.getElementById('score-wrong').textContent = wrongCount;
+  const pct = ((currentIndex) / currentQuestions.length) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+
+  // Meta (argomento, difficolta', tipo)
+  const meta = document.getElementById('question-meta');
+  const diffLabels = ['Facile', 'Media', 'Difficile'];
+  const typeLabels = { multiple: 'Scelta multipla', truefalse: 'Vero/Falso', numeric: 'Esercizio numerico', completion: 'Completamento' };
+  meta.innerHTML = `
+    <span class="badge badge-topic">${q.topic}</span>
+    <span class="badge badge-diff-${q.difficulty}">${diffLabels[q.difficulty - 1]}</span>
+    <span class="badge badge-type">${typeLabels[q.type]}</span>
+  `;
+
+  // Testo domanda
+  document.getElementById('question-text').textContent = q.text;
+
+  // Area risposta
+  const area = document.getElementById('answer-area');
+  area.innerHTML = '';
+  document.getElementById('submit-area').style.display = 'none';
+
+  if (q.type === 'multiple') {
+    // Crea array di indici e mescolali per randomizzare l'ordine delle opzioni
+    const indices = q.options.map((_, i) => i);
+    shuffleArray(indices);
+    q._shuffledIndices = indices; // salva la mappatura per la correzione
+
+    const container = document.createElement('div');
+    container.className = 'options-container';
+    indices.forEach((origIdx, displayIdx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.textContent = q.options[origIdx];
+      btn.onclick = () => handleMultipleChoice(displayIdx);
+      btn.id = 'opt-' + displayIdx;
+      btn.dataset.origIdx = origIdx;
+      container.appendChild(btn);
+    });
+    area.appendChild(container);
+  } else if (q.type === 'truefalse') {
+    // Mostra l'affermazione
+    const stmt = document.createElement('p');
+    stmt.style.cssText = 'font-style:italic; margin-bottom:15px; padding:12px; background:#f0f0f0; border-radius:8px;';
+    stmt.textContent = '\"' + q.statement + '\"';
+    area.appendChild(stmt);
+
+    const container = document.createElement('div');
+    container.className = 'options-container';
+    ['Vero', 'Falso'].forEach((label, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.textContent = label;
+      btn.onclick = () => handleTrueFalse(i === 0);
+      btn.id = 'tf-' + i;
+      container.appendChild(btn);
+    });
+    area.appendChild(container);
+  } else if (q.type === 'numeric') {
+    const container = document.createElement('div');
+    container.className = 'answer-input-container';
+    container.innerHTML = `<input type="text" class="answer-input" id="numeric-input" placeholder="Scrivi il valore numerico..." onkeydown="if(event.key==='Enter')checkOpenAnswer()">`;
+    area.appendChild(container);
+    document.getElementById('submit-area').style.display = 'block';
+  } else if (q.type === 'completion') {
+    const container = document.createElement('div');
+    container.className = 'answer-input-container';
+    container.innerHTML = `
+      <input type="text" class="answer-input" id="completion-input-0" placeholder="Prima parola mancante..." style="margin-bottom:8px;" onkeydown="if(event.key==='Enter')document.getElementById('completion-input-1').focus()">
+      <input type="text" class="answer-input" id="completion-input-1" placeholder="Seconda parola mancante..." onkeydown="if(event.key==='Enter')checkOpenAnswer()">
+    `;
+    area.appendChild(container);
+    document.getElementById('submit-area').style.display = 'block';
+  }
+
+  // Nascondi feedback, professore e pulsante next
+  document.getElementById('feedback-box').style.display = 'none';
+  document.getElementById('deepdive-box').style.display = 'none';
+  document.getElementById('next-btn-container').style.display = 'none';
+  document.getElementById('prof-container').className = 'prof-container';
+}
+
+/* ============================================
+   GESTIONE RISPOSTE
+   ============================================ */
+
+/* Scelta multipla */
+function handleMultipleChoice(displayIdx) {
+  if (answered) return;
+  answered = true;
+
+  const q = currentQuestions[currentIndex];
+  // Ricava l'indice originale dalla mappatura mescolata
+  const origSelected = q._shuffledIndices[displayIdx];
+  const isCorrect = origSelected === q.answer;
+
+  // Evidenzia opzioni usando l'indice originale salvato in data-origIdx
+  document.querySelectorAll('.option-btn').forEach((btn, i) => {
+    btn.classList.add('disabled');
+    const origIdx = parseInt(btn.dataset.origIdx);
+    if (origIdx === q.answer) btn.classList.add('correct');
+    if (i === displayIdx && !isCorrect) btn.classList.add('wrong');
+  });
+
+  processAnswer(isCorrect, q);
+}
+
+/* Vero/Falso */
+function handleTrueFalse(selected) {
+  if (answered) return;
+  answered = true;
+
+  const q = currentQuestions[currentIndex];
+  const isCorrect = selected === q.answer;
+
+  const correctIdx = q.answer ? 0 : 1;
+  const selectedIdx = selected ? 0 : 1;
+
+  document.querySelectorAll('.option-btn').forEach((btn, i) => {
+    btn.classList.add('disabled');
+    if (i === correctIdx) btn.classList.add('correct');
+    if (i === selectedIdx && !isCorrect) btn.classList.add('wrong');
+  });
+
+  processAnswer(isCorrect, q);
+}
+
+/* Risposta aperta (numerica o completamento) */
+function checkOpenAnswer() {
+  if (answered) return;
+  answered = true;
+
+  const q = currentQuestions[currentIndex];
+  let isCorrect = false;
+
+  if (q.type === 'numeric') {
+    const input = document.getElementById('numeric-input');
+    const val = parseFloat(input.value.replace(',', '.'));
+    isCorrect = !isNaN(val) && Math.abs(val - q.answer) <= q.tolerance;
+    input.style.borderColor = isCorrect ? 'var(--success)' : 'var(--danger)';
+    input.style.background = isCorrect ? 'var(--success-light)' : 'var(--danger-light)';
+  } else if (q.type === 'completion') {
+    const inputs = [
+      document.getElementById('completion-input-0').value.trim().toLowerCase(),
+      document.getElementById('completion-input-1').value.trim().toLowerCase()
+    ];
+    const answers = q.answer.map(a => a.toLowerCase());
+    isCorrect = inputs[0].includes(answers[0]) && inputs[1].includes(answers[1]);
+
+    [0, 1].forEach(i => {
+      const el = document.getElementById('completion-input-' + i);
+      const ok = inputs[i].includes(answers[i]);
+      el.style.borderColor = ok ? 'var(--success)' : 'var(--danger)';
+      el.style.background = ok ? 'var(--success-light)' : 'var(--danger-light)';
+    });
+  }
+
+  processAnswer(isCorrect, q);
+}
+
+/* Logica comune di elaborazione risposta */
+function processAnswer(isCorrect, q) {
+  // Aggiorna contatori
+  if (isCorrect) {
+    correctCount++;
+    topicStats[q.topic].correct++;
+  } else {
+    wrongCount++;
+    topicStats[q.topic].wrong++;
+    // Salva indice per ripasso
+    const globalIdx = QUESTIONS.indexOf(q);
+    if (globalIdx !== -1) errorQuestionIds.push(globalIdx);
+  }
+  topicStats[q.topic].total++;
+
+  // Cronologia
+  history.push({
+    question: q.text,
+    topic: q.topic,
+    correct: isCorrect,
+    difficulty: q.difficulty
+  });
+
+  // Mostra feedback
+  showFeedback(isCorrect, q);
+
+  // Aggiorna punteggio
+  document.getElementById('score-correct').textContent = correctCount;
+  document.getElementById('score-wrong').textContent = wrongCount;
+}
+
+/* ============================================
+   FEEDBACK E APPROFONDIMENTI
+   ============================================ */
+/* ============================================
+   PROF. PALUDETTO — SVG CARTOON
+   Ispirato alla foto: capelli ricci scuri, barba,
+   occhiali, espressione autorevole
+   ============================================ */
+
+// SVG del prof felice/approvazione
+const PROF_SVG_HAPPY = `
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sfondo glow verde -->
+  <defs>
+    <radialGradient id="glowG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#06d6a0;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#06d6a0;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="110" cy="110" r="108" fill="url(#glowG)"/>
+  <!-- Corpo/giacca -->
+  <path d="M55 195 Q55 165 80 155 L110 148 L140 155 Q165 165 165 195 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+  <path d="M80 155 L100 162 L110 148 L120 162 L140 155" fill="#1e40af" stroke="none"/>
+  <!-- Collo -->
+  <rect x="97" y="138" width="26" height="18" rx="6" fill="#d4a574"/>
+  <!-- Testa -->
+  <ellipse cx="110" cy="105" rx="48" ry="52" fill="#deb887"/>
+  <!-- Capelli ricci scuri -->
+  <path d="M62 95 Q58 55 80 42 Q95 33 110 32 Q125 33 140 42 Q162 55 158 95" fill="#2c1810" stroke="#1a0f0a" stroke-width="1"/>
+  <circle cx="68" cy="82" r="8" fill="#2c1810"/><circle cx="72" cy="72" r="7" fill="#2c1810"/>
+  <circle cx="152" cy="82" r="8" fill="#2c1810"/><circle cx="148" cy="72" r="7" fill="#2c1810"/>
+  <circle cx="78" cy="90" r="6" fill="#2c1810"/><circle cx="142" cy="90" r="6" fill="#2c1810"/>
+  <circle cx="85" cy="65" r="6" fill="#2c1810"/><circle cx="135" cy="65" r="6" fill="#2c1810"/>
+  <circle cx="95" cy="50" r="7" fill="#2c1810"/><circle cx="125" cy="50" r="7" fill="#2c1810"/>
+  <circle cx="110" cy="45" r="8" fill="#2c1810"/>
+  <circle cx="100" cy="55" r="5" fill="#2c1810"/><circle cx="120" cy="55" r="5" fill="#2c1810"/>
+  <!-- Barba -->
+  <path d="M78 118 Q80 145 110 152 Q140 145 142 118 Q142 130 130 140 Q110 150 90 140 Q78 130 78 118Z" fill="#3d2914" stroke="#2c1810" stroke-width="1"/>
+  <path d="M75 108 Q72 125 78 118" fill="#3d2914"/><path d="M145 108 Q148 125 142 118" fill="#3d2914"/>
+  <!-- Occhiali -->
+  <rect x="76" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  <rect x="116" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="104" y1="102" x2="116" y2="102" stroke="#1a1a2e" stroke-width="2.5"/>
+  <line x1="76" y1="100" x2="66" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
+  <line x1="144" y1="100" x2="154" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
+  <!-- Occhi felici (archi sorridenti) -->
+  <path d="M84 102 Q90 96 96 102" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M124 102 Q130 96 136 102" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Sopracciglia alzate (contento) -->
+  <path d="M78 86 Q90 80 100 84" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M120 84 Q130 80 142 86" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Bocca sorridente (nella barba) -->
+  <path d="M96 132 Q110 142 124 132" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Pollice su -->
+  <g transform="translate(165,140) rotate(-15)">
+    <rect x="0" y="12" width="18" height="26" rx="5" fill="#deb887" stroke="#c4956a" stroke-width="1.5"/>
+    <rect x="4" y="-8" width="12" height="24" rx="6" fill="#deb887" stroke="#c4956a" stroke-width="1.5"/>
+  </g>
+  <!-- Badge check -->
+  <circle cx="180" cy="45" r="18" fill="#06d6a0"/>
+  <path d="M171 45 L177 51 L189 39" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
+
+// SVG del prof arrabbiato/disapprovazione
+const PROF_SVG_ANGRY = `
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sfondo glow rosso -->
+  <defs>
+    <radialGradient id="glowR" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ef476f;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#ef476f;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="110" cy="110" r="108" fill="url(#glowR)"/>
+  <!-- Corpo/giacca -->
+  <path d="M55 195 Q55 165 80 155 L110 148 L140 155 Q165 165 165 195 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+  <path d="M80 155 L100 162 L110 148 L120 162 L140 155" fill="#1e40af" stroke="none"/>
+  <!-- Collo -->
+  <rect x="97" y="138" width="26" height="18" rx="6" fill="#d4a574"/>
+  <!-- Testa -->
+  <ellipse cx="110" cy="105" rx="48" ry="52" fill="#deb887"/>
+  <!-- Capelli ricci scuri -->
+  <path d="M62 95 Q58 55 80 42 Q95 33 110 32 Q125 33 140 42 Q162 55 158 95" fill="#2c1810" stroke="#1a0f0a" stroke-width="1"/>
+  <circle cx="68" cy="82" r="8" fill="#2c1810"/><circle cx="72" cy="72" r="7" fill="#2c1810"/>
+  <circle cx="152" cy="82" r="8" fill="#2c1810"/><circle cx="148" cy="72" r="7" fill="#2c1810"/>
+  <circle cx="78" cy="90" r="6" fill="#2c1810"/><circle cx="142" cy="90" r="6" fill="#2c1810"/>
+  <circle cx="85" cy="65" r="6" fill="#2c1810"/><circle cx="135" cy="65" r="6" fill="#2c1810"/>
+  <circle cx="95" cy="50" r="7" fill="#2c1810"/><circle cx="125" cy="50" r="7" fill="#2c1810"/>
+  <circle cx="110" cy="45" r="8" fill="#2c1810"/>
+  <circle cx="100" cy="55" r="5" fill="#2c1810"/><circle cx="120" cy="55" r="5" fill="#2c1810"/>
+  <!-- Barba -->
+  <path d="M78 118 Q80 145 110 152 Q140 145 142 118 Q142 130 130 140 Q110 150 90 140 Q78 130 78 118Z" fill="#3d2914" stroke="#2c1810" stroke-width="1"/>
+  <path d="M75 108 Q72 125 78 118" fill="#3d2914"/><path d="M145 108 Q148 125 142 118" fill="#3d2914"/>
+  <!-- Occhiali -->
+  <rect x="76" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  <rect x="116" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="104" y1="102" x2="116" y2="102" stroke="#1a1a2e" stroke-width="2.5"/>
+  <line x1="76" y1="100" x2="66" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
+  <line x1="144" y1="100" x2="154" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
+  <!-- Occhi arrabbiati (puntini intensi) -->
+  <circle cx="90" cy="101" r="3.5" fill="#1a1a2e"/>
+  <circle cx="130" cy="101" r="3.5" fill="#1a1a2e"/>
+  <!-- Sopracciglia aggrottate -->
+  <path d="M78 88 Q88 82 100 88" fill="none" stroke="#2c1810" stroke-width="3" stroke-linecap="round" transform="rotate(8, 89, 85)"/>
+  <path d="M120 88 Q132 82 142 88" fill="none" stroke="#2c1810" stroke-width="3" stroke-linecap="round" transform="rotate(-8, 131, 85)"/>
+  <!-- Bocca contrariata -->
+  <path d="M96 135 Q110 128 124 135" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Mano facepalm -->
+  <g transform="translate(152,120) rotate(10)">
+    <rect x="0" y="0" width="22" height="14" rx="5" fill="#deb887" stroke="#c4956a" stroke-width="1.5"/>
+    <rect x="3" y="-6" width="5" height="10" rx="2.5" fill="#deb887" stroke="#c4956a" stroke-width="1"/>
+    <rect x="9" y="-8" width="5" height="12" rx="2.5" fill="#deb887" stroke="#c4956a" stroke-width="1"/>
+    <rect x="15" y="-6" width="5" height="10" rx="2.5" fill="#deb887" stroke="#c4956a" stroke-width="1"/>
+  </g>
+  <!-- Badge X -->
+  <circle cx="180" cy="45" r="18" fill="#ef476f"/>
+  <path d="M173 38 L187 52 M187 38 L173 52" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Vena frustrazione -->
+  <g transform="translate(55,55)">
+    <path d="M0 5 L5 0 L10 5 L5 10 Z" fill="none" stroke="#ef476f" stroke-width="2"/>
+  </g>
+</svg>`;
+
+// SVG versione neutra per header
+const PROF_SVG_NEUTRAL = `
+<svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glowN" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#4361ee;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#4361ee;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="110" cy="110" r="108" fill="url(#glowN)"/>
+  <path d="M55 195 Q55 165 80 155 L110 148 L140 155 Q165 165 165 195 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+  <path d="M80 155 L100 162 L110 148 L120 162 L140 155" fill="#1e40af" stroke="none"/>
+  <rect x="97" y="138" width="26" height="18" rx="6" fill="#d4a574"/>
+  <ellipse cx="110" cy="105" rx="48" ry="52" fill="#deb887"/>
+  <path d="M62 95 Q58 55 80 42 Q95 33 110 32 Q125 33 140 42 Q162 55 158 95" fill="#2c1810" stroke="#1a0f0a" stroke-width="1"/>
+  <circle cx="68" cy="82" r="8" fill="#2c1810"/><circle cx="72" cy="72" r="7" fill="#2c1810"/>
+  <circle cx="152" cy="82" r="8" fill="#2c1810"/><circle cx="148" cy="72" r="7" fill="#2c1810"/>
+  <circle cx="78" cy="90" r="6" fill="#2c1810"/><circle cx="142" cy="90" r="6" fill="#2c1810"/>
+  <circle cx="85" cy="65" r="6" fill="#2c1810"/><circle cx="135" cy="65" r="6" fill="#2c1810"/>
+  <circle cx="95" cy="50" r="7" fill="#2c1810"/><circle cx="125" cy="50" r="7" fill="#2c1810"/>
+  <circle cx="110" cy="45" r="8" fill="#2c1810"/>
+  <circle cx="100" cy="55" r="5" fill="#2c1810"/><circle cx="120" cy="55" r="5" fill="#2c1810"/>
+  <path d="M78 118 Q80 145 110 152 Q140 145 142 118 Q142 130 130 140 Q110 150 90 140 Q78 130 78 118Z" fill="#3d2914" stroke="#2c1810" stroke-width="1"/>
+  <path d="M75 108 Q72 125 78 118" fill="#3d2914"/><path d="M145 108 Q148 125 142 118" fill="#3d2914"/>
+  <rect x="76" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  <rect x="116" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
+  <line x1="104" y1="102" x2="116" y2="102" stroke="#1a1a2e" stroke-width="2.5"/>
+  <line x1="76" y1="100" x2="66" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
+  <line x1="144" y1="100" x2="154" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
+  <circle cx="90" cy="101" r="3" fill="#1a1a2e"/>
+  <circle cx="130" cy="101" r="3" fill="#1a1a2e"/>
+  <path d="M80 86 Q90 82 100 85" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M120 85 Q130 82 140 86" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M100 134 L120 134" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+</svg>`;
+
+// Inietta SVG nei container
+(function initProfSVG() {
+  document.getElementById('prof-svg-happy').innerHTML = PROF_SVG_HAPPY;
+  document.getElementById('prof-svg-angry').innerHTML = PROF_SVG_ANGRY;
+  document.getElementById('prof-header-svg').innerHTML = PROF_SVG_NEUTRAL;
+})();
+
+/* Frasi del Prof. Paludetto */
+const PROF_CORRECT_PHRASES = [
+  "Bene. Questa e' fisica fatta con criterio.",
+  "Corretto. Finalmente una risposta degna.",
+  "Ottimo. Qui il campo elettrico non ti spaventa.",
+  "Bravo. Coulomb sarebbe soddisfatto.",
+  "Si', ci siamo. Ragionamento pulito.",
+  "Esatto. Vedo che qualcuno ha studiato.",
+  "Risposta corretta. Continua cosi' e il 10 e' tuo.",
+  "Perfetto. Gauss approva dal paradiso dei fisici.",
+  "Bene bene. Questo lo metto sul registro con il segno piu'.",
+  "Corretto. Non ti servira' neanche il ripasso.",
+  "Giusto. Hai la stoffa del fisico.",
+  "Ok, non male. Forse c'e' speranza per questa classe."
+];
+
+const PROF_WRONG_PHRASES = [
+  "No. Cosi' non va.",
+  "Attenzione: qui hai confuso i concetti.",
+  "Errore. Rivedi bene il ragionamento.",
+  "Questa risposta non regge. Riprova.",
+  "Fermati un attimo: qui c'e' da ripassare.",
+  "No, no, no. Torna sugli appunti.",
+  "Sbagliato. Ma almeno ci hai provato.",
+  "Questo errore lo vedo ogni anno. Leggi la spiegazione.",
+  "Coulomb si sta rivoltando. Concentrati.",
+  "Errore grave. Apri il quaderno e rileggi.",
+  "Non ci siamo. Ma il bello della fisica e' che si puo' rimediare.",
+  "Risposta sbagliata. Ti do un'altra possibilita' dopo."
+];
+
+function showFeedback(isCorrect, q) {
+  const fb = document.getElementById('feedback-box');
+  const dd = document.getElementById('deepdive-box');
+  const prof = document.getElementById('prof-container');
+
+  // --- Prof. Paludetto ---
+  prof.className = 'prof-container show ' + (isCorrect ? 'correct' : 'wrong');
+  const phrases = isCorrect ? PROF_CORRECT_PHRASES : PROF_WRONG_PHRASES;
+  document.getElementById('prof-phrase').textContent = phrases[Math.floor(Math.random() * phrases.length)];
+  document.getElementById('prof-name').textContent = 'Prof. Paludetto';
+
+  // --- Feedback ---
+  fb.style.display = 'block';
+  fb.className = 'feedback-box ' + (isCorrect ? 'feedback-correct' : 'feedback-wrong');
+
+  if (isCorrect) {
+    document.getElementById('feedback-title').textContent = 'Risposta corretta!';
+    document.getElementById('feedback-text').textContent = q.explanation;
+    dd.style.display = 'none';
+  } else {
+    document.getElementById('feedback-title').textContent = 'Risposta sbagliata';
+    document.getElementById('feedback-text').innerHTML =
+      `<strong>Errore comune:</strong> ${q.commonError}<br><br><strong>Spiegazione:</strong> ${q.explanation}`;
+
+    // Mostra approfondimento
+    dd.style.display = 'block';
+    document.getElementById('deepdive-text').textContent = q.deepdive;
+  }
+
+  document.getElementById('next-btn-container').style.display = 'block';
+
+  // Scroll al professore (che e' sopra il feedback)
+  prof.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ============================================
+   NAVIGAZIONE
+   ============================================ */
+function nextQuestion() {
+  currentIndex++;
+  if (currentIndex >= currentQuestions.length) {
+    endQuiz();
+  } else {
+    showQuestion();
+    document.getElementById('question-card').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+/* ============================================
+   FINE QUIZ E RIEPILOGO
+   ============================================ */
+function endQuiz() {
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('summary-screen').style.display = 'block';
+
+  const total = correctCount + wrongCount;
+  const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+
+  // Punteggio grande
+  const scoreEl = document.getElementById('final-score');
+  scoreEl.textContent = pct + '%';
+  scoreEl.className = 'big-score ' + (pct >= 70 ? 'good' : pct >= 50 ? 'medium' : 'bad');
+  document.getElementById('final-score-label').textContent =
+    `${correctCount} corrette su ${total} domande`;
+
+  // Commento del Prof nel riepilogo
+  const profSummary = document.getElementById('prof-summary');
+  let summaryPhrase, summaryClass;
+  if (pct >= 90) {
+    summaryPhrase = "Eccellente. Risultato da primo della classe. Quasi quasi ti metto 10.";
+    summaryClass = 'correct';
+  } else if (pct >= 70) {
+    summaryPhrase = "Bene, risultato solido. Ma non adagiarti: c'e' ancora margine di miglioramento.";
+    summaryClass = 'correct';
+  } else if (pct >= 50) {
+    summaryPhrase = "Sufficiente, ma di poco. Hai le basi, pero' devi ripassare. Sul serio.";
+    summaryClass = 'wrong';
+  } else {
+    summaryPhrase = "Insufficiente. Ci vediamo all'interrogazione di recupero. Studia.";
+    summaryClass = 'wrong';
+  }
+  profSummary.className = 'prof-container show ' + summaryClass;
+  document.getElementById('prof-summary-svg').innerHTML = pct >= 70 ? PROF_SVG_HAPPY : PROF_SVG_ANGRY;
+  document.getElementById('prof-summary-phrase').textContent = summaryPhrase;
+  document.getElementById('prof-summary-name').textContent = 'Prof. Paludetto';
+
+  // Griglia statistiche
+  document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-box"><div class="stat-number">${total}</div><div class="stat-label">Domande totali</div></div>
+    <div class="stat-box"><div class="stat-number" style="color:var(--success)">${correctCount}</div><div class="stat-label">Corrette</div></div>
+    <div class="stat-box"><div class="stat-number" style="color:var(--danger)">${wrongCount}</div><div class="stat-label">Errate</div></div>
+    <div class="stat-box"><div class="stat-number">${pct}%</div><div class="stat-label">Percentuale</div></div>
+  `;
+
+  // Risultati per argomento
+  const topicDiv = document.getElementById('topic-results');
+  topicDiv.innerHTML = '';
+  const weakTopics = [];
+
+  for (const [topic, stats] of Object.entries(topicStats)) {
+    if (stats.total === 0) continue;
+    const topicPct = Math.round((stats.correct / stats.total) * 100);
+    const cls = topicPct >= 70 ? 'strong' : topicPct >= 50 ? 'medium-res' : 'weak';
+    const barColor = topicPct >= 70 ? 'var(--success)' : topicPct >= 50 ? 'var(--warning)' : 'var(--danger)';
+
+    if (topicPct < 70) weakTopics.push(topic);
+
+    topicDiv.innerHTML += `
+      <div class="topic-result-item ${cls}">
+        <span><strong>${topic}</strong> — ${stats.correct}/${stats.total} (${topicPct}%)</span>
+        <div class="topic-bar"><div class="topic-bar-fill" style="width:${topicPct}%;background:${barColor}"></div></div>
+      </div>
+    `;
+  }
+
+  // Suggerimenti
+  const sugDiv = document.getElementById('suggestions');
+  if (weakTopics.length > 0) {
+    sugDiv.innerHTML = `
+      <h3>Suggerimenti per il ripasso</h3>
+      <p>Dovresti concentrarti su questi argomenti:</p>
+      <ul>${weakTopics.map(t => `<li><strong>${t}</strong> — rileggi gli appunti e rifai gli esercizi su questo tema</li>`).join('')}</ul>
+      <p style="margin-top:8px;">Usa il pulsante "Ripassa gli errori" per rifare solo le domande sbagliate.</p>
+    `;
+  } else {
+    sugDiv.innerHTML = `
+      <h3>Ottimo lavoro!</h3>
+      <p>Hai risposto bene su tutti gli argomenti. Continua cosi'! Prova la modalita' casuale per consolidare.</p>
+    `;
+  }
+
+  // Cronologia
+  const histDiv = document.getElementById('history-list');
+  histDiv.innerHTML = '';
+  history.forEach((h, i) => {
+    histDiv.innerHTML += `
+      <div class="history-item">
+        <span>${i + 1}. ${h.question.substring(0, 60)}${h.question.length > 60 ? '...' : ''}</span>
+        <span class="${h.correct ? 'correct-mark' : 'wrong-mark'}">${h.correct ? 'Corretta' : 'Errata'}</span>
+      </div>
+    `;
+  });
+
+  // Salva in localStorage
+  localStorage.setItem('myp4_history_stats', JSON.stringify({
+    total, correct: correctCount, wrong: wrongCount, percentage: pct,
+    date: new Date().toLocaleDateString('it-IT')
+  }));
+  localStorage.setItem('myp4_history_errors', JSON.stringify(errorQuestionIds));
+}
+
+/* ============================================
+   SEZIONE APPUNTI
+   ============================================ */
+const noteIds = ['what-is-history','primary-secondary','opvl','revolutions-intro','political-revolutions','cultural-revolutions','industrial-causes','industrial-consequences','mesopotamia','research-questions','migration','essay-structure','dim-opvl'];
+const noteLabels = ['What is History?','Primary & Secondary','OPVL Analysis','Types of Revolutions','Political Revolutions','Cultural Revolutions','Industrial Rev: Causes','Industrial Rev: Consequences','Mesopotamia & Sumer','Research Questions','Migration','Essay Structure','DEMO: OPVL Delacroix'];
+
+// Popola navigazione rapida appunti
+(function initNotes() {
+  const nav = document.getElementById('notes-nav');
+  if (!nav) return;
+  noteIds.forEach((id, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = noteLabels[i];
+    btn.onclick = () => {
+      // Apri la sezione e scrolla
+      const body = document.getElementById('body-' + id);
+      if (!body.classList.contains('open')) toggleNote(id);
+      document.getElementById('note-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    nav.appendChild(btn);
+  });
+})();
+
+function showNotes(section) {
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('summary-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('demo-exam-screen').style.display = 'none';
+  document.getElementById('notes-screen').style.display = 'block';
+
+  // Se richiesto, scrolla direttamente alle dimostrazioni
+  if (section === 'dimostrazioni') {
+    setTimeout(() => {
+      const el = document.getElementById('note-dim-opvl');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
+function hideNotes() {
+  document.getElementById('notes-screen').style.display = 'none';
+  document.getElementById('start-screen').style.display = 'block';
+}
+
+function toggleNote(id) {
+  const body = document.getElementById('body-' + id);
+  const toggle = body.previousElementSibling.querySelector('.note-toggle');
+  body.classList.toggle('open');
+  toggle.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+/* ============================================
+   SIMULAZIONE VERIFICA
+   Struttura identica alla verifica del prof:
+   - Parte 1: 10 domande scelta multipla (A-E)
+   - Parte 2: 3 domande aperte/dimostrative
+   ============================================ */
+
+const EXAM_MC = [
+  {
+    text: "What does OPVL stand for in MYP Humanities source analysis?",
+    options: ["Objective, Primary, Valid, Limited","Origin, Purpose, Value, Limitations","Origin, Perspective, Validity, Language","Objective, Purposeful, Verified, Logical"],
+    answer: 1,
+    explanation: "OPVL = Origin (who created it/when), Purpose (why), Value (what makes it useful), Limitations (what makes it less reliable)."
+  },
+  {
+    text: "The First Industrial Revolution began in which country and during which period?",
+    options: ["France, 1650-1750","Germany, 1800-1900","Britain, 1750-1850","United States, 1776-1876"],
+    answer: 2,
+    explanation: "The First Industrial Revolution began in Britain between approximately 1750 and 1850."
+  },
+  {
+    text: "Which of the following is a PRIMARY source?",
+    options: ["A history textbook published in 2010","A documentary film made in 1995 about WWII","A diary written by a factory worker in 1840","An encyclopedia article about ancient Rome"],
+    answer: 2,
+    explanation: "A diary written at the time by someone who experienced events is a primary source — created at the time of the event."
+  },
+  {
+    text: "Who led the Russian Revolution of 1917?",
+    options: ["Napoleon Bonaparte and Wellington","Louis XVI and Robespierre","George Washington and Jefferson","Lenin and Trotsky"],
+    answer: 3,
+    explanation: "The Russian Revolution was led by Lenin and Trotsky, who overthrew Tsar Nicholas II and established the Soviet Union."
+  },
+  {
+    text: "The Renaissance (14th-16th century) is best classified as which TYPE of revolution?",
+    options: ["A political revolution — it changed governments across Europe","An economic revolution — it transformed trade and production","A social revolution — it abolished the class system","A cultural and intellectual revolution — it transformed art, literature, and ideas"],
+    answer: 3,
+    explanation: "The Renaissance was a cultural/intellectual revolution: new art styles (realism, perspective), humanist literature (Dante in Italian), and a break from medieval traditions."
+  },
+  {
+    text: "What was the FIRST use of the wheel by the Sumerians?",
+    options: ["For transporting heavy goods in carts","For grinding grain into flour","For pottery-making — spinning clay","For measuring the movement of stars"],
+    answer: 2,
+    explanation: "The wheel was first used for pottery (spinning clay). Only later was it applied to transport and trade."
+  },
+  {
+    text: "A perfect MYP research question must be:",
+    options: ["As broad as possible to cover all aspects of a topic","A yes/no question that can be answered with a single word","Clear, focused/narrow, open-ended (How.../To what extent...), researchable, and feasible","At least 50 words long to demonstrate complexity"],
+    answer: 2,
+    explanation: "A perfect MYP RQ: CLEAR + FOCUSED (specific place & time) + OPEN-ENDED + RESEARCHABLE + FEASIBLE + connected to MYP Global Context and Key Concept."
+  },
+  {
+    text: "Which is a PUSH factor that causes people to migrate?",
+    options: ["High living standards in another country","Better educational opportunities abroad","Political repression and violence in the home country","Higher wages offered by foreign employers"],
+    answer: 2,
+    explanation: "Push factors are negative conditions in the HOME country that cause people to leave. Political repression is a classic push factor."
+  },
+  {
+    text: "What does 'urbanisation' mean in the context of the Industrial Revolution?",
+    options: ["The process of making cities more artistic and beautiful","The mass movement of people from rural areas to industrial cities to find factory work","The construction of new universities in major cities","The spread of city fashions and culture to the countryside"],
+    answer: 1,
+    explanation: "Urbanisation = movement from countryside to cities. The Industrial Revolution drove millions to move from rural areas to work in urban factories."
+  },
+  {
+    text: "The Enlightenment (17th-18th century) challenged which fundamental idea?",
+    options: ["The idea that humans should study art and literature","The view that science and technology are dangerous","The divine right of kings — the idea that monarchs received their power from God and were only accountable to Him","The belief that ancient Greek philosophy was valuable"],
+    answer: 2,
+    explanation: "The Enlightenment's most radical challenge was to the divine right of kings. Locke, Montesquieu, and Rousseau argued power comes from the people, not from God."
+  }
+];
+const EXAM_OPEN = [
+  {
+    title: "OPVL Source Analysis",
+    text: "Analyse the painting 'Liberty Leading the People' by Eugène Delacroix (painted in 1830 to commemorate the French revolutionary spirit). Using the OPVL framework, evaluate: (a) the VALUE of this source for a historian studying the French Revolution; (b) the LIMITATIONS of this source. Base your answer on the source's ORIGIN, PURPOSE, and CONTENT."
+  },
+  {
+    title: "Compare & Contrast Two Sources",
+    text: "Read both sources carefully.\n\nSOURCE A: 'The development of the railway system made travel faster and cheaper, improving communication and trade across Britain, and contributing to economic growth and prosperity.'\n\nSOURCE B (based on historian E.P. Thompson): 'While the railway system brought improvements in communication and transport, it also intensified the demands on workers and deepened inequalities in British society.'\n\nQuestion 1: According to Source A, what were the positive changes brought about by railways?\nQuestion 2: According to Source B, what negative impacts did railways and industrialisation have?\nQuestion 3: Identify ONE SIMILARITY and ONE DIFFERENCE in how the two sources present the impact of industrialisation."
+  },
+  {
+    title: "Research Question Formulation",
+    text: "Formulate a perfect MYP research question on ONE of the following topics: (a) the causes of the First Industrial Revolution in Britain, OR (b) the consequences of the First Industrial Revolution in Britain, OR (c) the innovations of ancient Mesopotamia. Then JUSTIFY your research question by explaining how it meets ALL the criteria for a perfect MYP research question (clear, focused, narrow, open-ended, researchable, feasible, connected to MYP Global Context and Key Concept)."
+  }
+];
+let examTimer = null;
+let examSeconds = 3000; // 50 minuti
+let examSubmitted = false;
+
+function showExam() {
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('summary-screen').style.display = 'none';
+  document.getElementById('notes-screen').style.display = 'none';
+  document.getElementById('demo-exam-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'block';
+
+  examSubmitted = false;
+  document.getElementById('exam-submit-btn').style.display = 'inline-block';
+  document.getElementById('exam-result').style.display = 'none';
+
+  renderExamMC();
+  renderExamOpen();
+  startExamTimer();
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function hideExam() {
+  clearInterval(examTimer);
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('start-screen').style.display = 'block';
+}
+
+function resetExam() {
+  examSeconds = 3000;
+  showExam();
+}
+
+/* Renderizza domande a scelta multipla con opzioni mescolate */
+function renderExamMC() {
+  const container = document.getElementById('exam-mc-questions');
+  container.innerHTML = '';
+
+  EXAM_MC.forEach((q, qi) => {
+    // Mescola opzioni
+    const indices = q.options.map((_, i) => i);
+    shuffleArray(indices);
+    q._shuffled = indices;
+
+    const letters = ['A', 'B', 'C', 'D', 'E'];
+    let html = `<div class="exam-question" id="exam-q-${qi}">
+      <div class="eq-text"><span class="eq-number">${qi + 1}.</span> ${q.text}</div>
+      <div class="exam-options">`;
+
+    indices.forEach((origIdx, dispIdx) => {
+      html += `
+        <div class="exam-option" id="exam-opt-${qi}-${dispIdx}">
+          <input type="radio" name="exam-q-${qi}" id="exam-radio-${qi}-${dispIdx}" value="${origIdx}">
+          <label for="exam-radio-${qi}-${dispIdx}">${letters[dispIdx]}. ${q.options[origIdx]}</label>
+        </div>`;
+    });
+
+    html += `</div>
+      <div class="exam-correction" id="exam-corr-${qi}"></div>
+    </div>`;
+    container.innerHTML += html;
+  });
+}
+
+/* Renderizza domande aperte */
+function renderExamOpen() {
+  const container = document.getElementById('exam-open-questions');
+  container.innerHTML = '';
+
+  EXAM_OPEN.forEach((q, qi) => {
+    const num = EXAM_MC.length + qi + 1;
+    container.innerHTML += `
+      <div class="exam-question" id="exam-open-${qi}">
+        <div class="eq-text"><span class="eq-number">${num}.</span> ${q.text}</div>
+        <div class="exam-open-area">
+          <textarea id="exam-textarea-${qi}" placeholder="Scrivi qui la tua risposta..."></textarea>
+        </div>
+        <div class="exam-correction" id="exam-open-corr-${qi}"></div>
+      </div>`;
+  });
+}
+
+/* Timer */
+function startExamTimer() {
+  examSeconds = 3000;
+  clearInterval(examTimer);
+  updateTimerDisplay();
+  examTimer = setInterval(() => {
+    examSeconds--;
+    updateTimerDisplay();
+    if (examSeconds <= 0) {
+      clearInterval(examTimer);
+      if (!examSubmitted) submitExam();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(examSeconds / 60);
+  const s = examSeconds % 60;
+  const el = document.getElementById('exam-timer');
+  el.textContent = `Tempo: ${m}:${s.toString().padStart(2, '0')}`;
+  el.style.color = examSeconds < 300 ? 'var(--danger)' : 'var(--dark)';
+}
+
+/* Consegna verifica */
+function submitExam() {
+  if (examSubmitted) return;
+  if (!confirm('Sei sicuro di voler consegnare la verifica?')) return;
+
+  examSubmitted = true;
+  clearInterval(examTimer);
+
+  let correctMC = 0;
+
+  // Correggi scelta multipla
+  EXAM_MC.forEach((q, qi) => {
+    const selected = document.querySelector(`input[name="exam-q-${qi}"]:checked`);
+    const corrDiv = document.getElementById('exam-corr-' + qi);
+    const selectedVal = selected ? parseInt(selected.value) : -1;
+    const isCorrect = selectedVal === q.answer;
+
+    if (isCorrect) {
+      correctMC++;
+      corrDiv.className = 'exam-correction show correct-box';
+      corrDiv.innerHTML = `<strong>Corretta!</strong> ${q.explanation}`;
+    } else {
+      corrDiv.className = 'exam-correction show wrong-box';
+      corrDiv.innerHTML = `<strong>Sbagliata.</strong> ${q.explanation}`;
+    }
+
+    // Evidenzia opzioni
+    q._shuffled.forEach((origIdx, dispIdx) => {
+      const optEl = document.getElementById(`exam-opt-${qi}-${dispIdx}`);
+      if (origIdx === q.answer) optEl.classList.add('correct-highlight');
+      if (dispIdx === getDisplayIdx(qi, selectedVal) && !isCorrect) optEl.classList.add('wrong-highlight');
+    });
+
+    // Disabilita radio
+    document.querySelectorAll(`input[name="exam-q-${qi}"]`).forEach(r => r.disabled = true);
+  });
+
+  // Mostra soluzioni aperte
+  EXAM_OPEN.forEach((q, qi) => {
+    const corrDiv = document.getElementById('exam-open-corr-' + qi);
+    corrDiv.className = 'exam-correction show correct-box';
+    corrDiv.innerHTML = `<strong>Soluzione completa:</strong><pre style="white-space:pre-wrap;font-family:inherit;margin-top:8px;">${q.solution}</pre>`;
+  });
+
+  // Calcolo voto: 10 MC (0.6 punti ciascuna = 6 pt) + 3 aperte (valutazione manuale suggerita)
+  const mcPoints = correctMC * 0.6;
+  const grade = Math.min(10, mcPoints + 4); // mc da 0 a 6 + max 4 per aperte (autovalutazione)
+  const mcGrade = (mcPoints / 6 * 10).toFixed(1);
+
+  document.getElementById('exam-submit-btn').style.display = 'none';
+  const resultDiv = document.getElementById('exam-result');
+  resultDiv.style.display = 'block';
+
+  const gradeEl = document.getElementById('exam-grade');
+  gradeEl.textContent = `${correctMC}/10 risposte multiple corrette`;
+  gradeEl.style.color = correctMC >= 7 ? 'var(--success)' : correctMC >= 5 ? 'var(--warning)' : 'var(--danger)';
+
+  document.getElementById('exam-grade-detail').innerHTML =
+    `Parte 1 (scelta multipla): <strong>${correctMC}/10</strong> — Voto stimato parte 1: <strong>${mcGrade}/10</strong><br>
+     Parte 2 (domande aperte): confronta le tue risposte con le soluzioni mostrate sopra.`;
+
+  resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function getDisplayIdx(qi, origVal) {
+  const shuffled = EXAM_MC[qi]._shuffled;
+  return shuffled.indexOf(origVal);
+}
+
+/* ============================================
+   VERIFICA DIMOSTRAZIONI
+   6 domande aperte: riproduci la dimostrazione
+   ============================================ */
+
+const DEMO_EXAM = [
+  {
+    title: "OPVL Analysis: Liberty Leading the People (Delacroix, 1830)",
+    text: "Evaluate the value AND limitations of 'Liberty Leading the People' by Delacroix (1830) for a historian studying revolutionary France. Use the OPVL framework: Origin, Purpose, Value, Limitations.",
+    solution: "ORIGIN:\nThe painting was created by Eugène Delacroix, a prominent French Romantic painter, in 1830. It was painted to commemorate the July Revolution of 1830 in France, which overthrew King Charles X.\n\nPURPOSE:\nThe purpose of the painting was to CELEBRATE the French revolutionary spirit and the fight for liberty. It is a political and artistic statement glorifying the revolutionary cause and French national identity.\n\nVALUE:\n1. It is a CONTEMPORARY source (created in 1830, close to revolutionary events), reflecting how French people of the era understood their revolutionary heritage.\n2. It vividly depicts the SYMBOLS and EMOTIONS of the revolutionary period (the tricolour flag, the figure of Liberty, armed citizens), which helps historians understand the ideology and spirit of the time.\n3. Created by a DIRECT CONTEMPORARY who experienced the political atmosphere of France, making it a valuable artistic primary source.\n4. It shows that the ideals of 1789 (liberty, nationalism) were still powerful in 1830.\n\nLIMITATIONS:\n1. It is POLITICALLY MOTIVATED — created to glorify and celebrate the revolution, not to provide an objective account. It presents only one heroic, positive perspective.\n2. It shows ONLY ONE SIDE — there is no depiction of the suffering, casualties, or negative consequences of revolutionary violence.\n3. As a PAINTING (not a factual document), it idealises events — Delacroix was not present on the barricades and may have used artistic imagination.\n4. Delacroix's own political sympathies may have influenced the imagery, making the source SUBJECTIVE."
+  },
+  {
+    title: "Essay Plan: Causes of the First Industrial Revolution in Britain",
+    text: "Write an essay plan (introduction + 3 body paragraphs + conclusion outline) for the following essay title: 'Analyse the causes of the First Industrial Revolution in Britain (1750-1850).'",
+    solution: "INTRODUCTION:\n- General opening: 'The First Industrial Revolution, which began in Britain around 1750 and transformed the country by 1850, was one of the most significant turning points in human history.'\n- Background: Brief context about pre-industrial Britain (agricultural economy, cottage industry)\n- Thesis: 'The Industrial Revolution in Britain was caused by a combination of interconnected factors, including abundant natural resources, the prior Agricultural Revolution, Britain's geographic advantages, and its colonial empire, all of which created unique conditions for industrialisation.'\n- Essay plan: 'This essay will first examine the role of natural resources, then the contribution of the Agricultural Revolution, and finally the importance of Britain's colonial empire and geography.'\n\nBODY PARAGRAPH 1: Natural Resources\n- POINT: Britain's abundant natural resources (coal and iron) were a fundamental cause of the Industrial Revolution.\n- EVIDENCE: Coal fields in Wales, Yorkshire and the Midlands; iron ore deposits across Britain; coal needed to power steam engines; iron needed for machines and railways.\n- EXPLANATION: Without coal and iron, the steam-powered machines that defined industrialisation could not have been built or operated. Britain's resource advantage over France and Germany was crucial.\n- LINK: However, natural resources alone were insufficient — the workforce to operate factories was equally essential.\n\nBODY PARAGRAPH 2: The Agricultural Revolution\n- POINT: The Agricultural Revolution, which preceded and enabled the Industrial Revolution, was another crucial cause.\n- EVIDENCE: New farming techniques (crop rotation, selective breeding, the enclosure of land) increased food production. Fewer farmers were needed → rural workers were 'freed' to move to cities.\n- EXPLANATION: This created two essential preconditions: a food surplus to feed a growing urban population AND a pool of available workers who could be employed in factories.\n- LINK: This workforce then combined with Britain's natural resources to make factory production possible on a large scale.\n\nBODY PARAGRAPH 3: Colonial Empire and Geography\n- POINT: Britain's extensive colonial empire and favourable geography provided both the raw materials and the markets needed for industrialisation.\n- EVIDENCE: Colonies supplied cotton (India, America), metals, and other raw materials; colonised peoples provided vast markets for manufactured British goods; rivers and ports enabled cheap transport.\n- EXPLANATION: Without raw materials from colonies, British factories would have struggled to obtain inputs cheaply. Without colonial markets, mass-produced goods could not have been sold profitably.\n- LINK: These external advantages combined with internal factors (resources, workforce) to make Britain uniquely positioned for industrialisation.\n\nCONCLUSION:\n- Restate thesis: 'In conclusion, the First Industrial Revolution in Britain was the result of multiple interconnected causes rather than any single factor.'\n- Summarise: Natural resources provided the fuel and materials; the Agricultural Revolution provided the workforce and food supply; the colonial empire provided raw materials and markets; geography enabled efficient trade.\n- Final thought: Britain's unique combination of these factors gave it a head start in industrialisation that other European nations could not immediately replicate."
+  },
+  {
+    title: "Formulating and Justifying a Perfect MYP Research Question",
+    text: "Formulate a perfect MYP research question on the consequences of the Industrial Revolution. Then justify it fully by explaining how it meets each criterion for a perfect MYP research question.",
+    solution: "RESEARCH QUESTION:\n'How did industrialisation negatively impact the social and working conditions of factory workers during the First Industrial Revolution (1750-1850) in Britain?'\n\nJUSTIFICATION:\n\n1. CLEAR AND UNDERSTANDABLE:\nThe research question immediately communicates what will be investigated: the NEGATIVE SOCIAL IMPACT on FACTORY WORKERS during a SPECIFIC PERIOD in BRITAIN. The reader knows exactly what the paper is about.\n\n2. FOCUSED AND NARROW:\n- Geographic focus: BRITAIN (not all of Europe or the world)\n- Time focus: 1750-1850 (the specific period of the First Industrial Revolution)\n- Topic focus: SOCIAL/WORKING CONDITIONS (not all consequences — specifically the negative social impact)\n- Group focus: FACTORY WORKERS specifically (not 'all people')\n\n3. OPEN-ENDED:\nThe question starts with 'How' — this requires analytical, developed answers. It cannot be answered with a simple yes or no. It invites analysis of evidence, explanation of causes and effects.\n\n4. RESEARCHABLE:\nExcellent sources exist: factory workers' diaries (primary), Parliamentary reports on working conditions (primary), newspaper articles from 1750-1850 (primary), and scholarly history books by social historians (secondary). Relevant and credible sources are available.\n\n5. FEASIBLE:\nThe question is focused enough to be thoroughly explored within the word limit and time frame of an MYP research paper. It does not try to cover all consequences or all workers worldwide.\n\n6. MYP GLOBAL CONTEXT:\nThis question is connected to 'Globalisation and Sustainability' (how economic change affects societies) or 'Identities and Relationships' (how industrial change affected people's identity, class, and daily life).\n\n7. MYP KEY CONCEPT:\nThe question is connected to the key concept of 'CHANGE' (how industrialisation changed the conditions of workers) and 'SYSTEMS' (how the industrial economic system impacted social life)."
+  }
+];
+let demoExamTimer = null;
+let demoExamSeconds = 2400;
+let demoExamSubmitted = false;
+
+function showDemoExam() {
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('summary-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('notes-screen').style.display = 'none';
+  document.getElementById('demo-exam-screen').style.display = 'block';
+
+  demoExamSubmitted = false;
+  document.getElementById('demo-exam-submit-btn').style.display = 'inline-block';
+  document.getElementById('demo-exam-result').style.display = 'none';
+
+  renderDemoExamQuestions();
+  startDemoExamTimer();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function hideDemoExam() {
+  clearInterval(demoExamTimer);
+  document.getElementById('demo-exam-screen').style.display = 'none';
+  document.getElementById('start-screen').style.display = 'block';
+}
+
+function resetDemoExam() {
+  demoExamSeconds = 2400;
+  showDemoExam();
+}
+
+function renderDemoExamQuestions() {
+  const container = document.getElementById('demo-exam-questions');
+  container.innerHTML = '';
+
+  DEMO_EXAM.forEach((q, qi) => {
+    container.innerHTML += `
+      <div class="exam-question" id="demo-q-${qi}">
+        <div class="eq-text">
+          <span class="eq-number">${qi + 1}.</span>
+          <strong style="color:#7c3aed;">[${q.title}]</strong><br>
+          ${q.text}
+        </div>
+        <div class="exam-open-area">
+          <textarea id="demo-textarea-${qi}" placeholder="Scrivi qui la dimostrazione passo per passo..."></textarea>
+        </div>
+        <div class="exam-correction" id="demo-corr-${qi}"></div>
+      </div>`;
+  });
+}
+
+function startDemoExamTimer() {
+  demoExamSeconds = 2400;
+  clearInterval(demoExamTimer);
+  updateDemoTimerDisplay();
+  demoExamTimer = setInterval(() => {
+    demoExamSeconds--;
+    updateDemoTimerDisplay();
+    if (demoExamSeconds <= 0) {
+      clearInterval(demoExamTimer);
+      if (!demoExamSubmitted) submitDemoExam();
+    }
+  }, 1000);
+}
+
+function updateDemoTimerDisplay() {
+  const m = Math.floor(demoExamSeconds / 60);
+  const s = demoExamSeconds % 60;
+  const el = document.getElementById('demo-exam-timer');
+  el.textContent = `Tempo: ${m}:${s.toString().padStart(2, '0')}`;
+  el.style.color = demoExamSeconds < 300 ? 'var(--danger)' : 'var(--dark)';
+}
+
+function submitDemoExam() {
+  if (demoExamSubmitted) return;
+  if (!confirm('Sei sicuro di voler consegnare la verifica sulle dimostrazioni?')) return;
+
+  demoExamSubmitted = true;
+  clearInterval(demoExamTimer);
+
+  // Mostra le soluzioni per ogni dimostrazione
+  DEMO_EXAM.forEach((q, qi) => {
+    const corrDiv = document.getElementById('demo-corr-' + qi);
+    const textarea = document.getElementById('demo-textarea-' + qi);
+    const userAnswer = textarea.value.trim();
+
+    corrDiv.className = 'exam-correction show correct-box';
+    corrDiv.innerHTML = `
+      <strong>Soluzione completa — ${q.title}:</strong>
+      <pre style="white-space:pre-wrap; font-family:inherit; margin-top:8px; line-height:1.7;">${q.solution}</pre>
+      ${userAnswer.length < 10 ? '<p style="color:var(--danger); margin-top:8px;"><strong>Non hai scritto una risposta per questa domanda.</strong></p>' : '<p style="color:var(--primary); margin-top:8px;"><strong>Confronta la tua risposta con la soluzione qui sopra.</strong></p>'}
+    `;
+    textarea.disabled = true;
+    textarea.style.opacity = '0.7';
+  });
+
+  document.getElementById('demo-exam-submit-btn').style.display = 'none';
+  const resultDiv = document.getElementById('demo-exam-result');
+  resultDiv.style.display = 'block';
+  document.getElementById('demo-exam-grade-detail').innerHTML =
+    'Le dimostrazioni richiedono valutazione manuale. Confronta attentamente ogni tua risposta con la soluzione mostrata sopra.<br>Controlla: hai incluso tutti i passaggi? Le semplificazioni sono corrette? Hai spiegato il significato fisico?';
+
+  resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+
+</body>
+</html>
