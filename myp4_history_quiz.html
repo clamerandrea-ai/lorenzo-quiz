@@ -1515,14 +1515,13 @@ body::before {
 
 const QUESTIONS = [
 
-  // ── WHAT IS HISTORY (6) ───────────────────────────────────────────────────
-  {
+{
     text: "Which of the following best defines history?",
     type: "multiple",
     options: [
       "The study and interpretation of the past through primary sources from different perspectives",
       "A collection of facts about famous people recorded by governments",
-      "A fixed, unchanging record of past events agreed upon by all scholars",
+      "The study and interpretation of the past -- although the evidence suggests this was a secondary rather than primary explanation",
       "The study of future events based on patterns from the past"
     ],
     answer: 0,
@@ -1531,7 +1530,8 @@ const QUESTIONS = [
     deepdive: "Historians aim to be objective but every historian comes with their own perspective and potential biases.",
     difficulty: 1, topic: "What is History?"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "A historian must aim to be as objective as possible, avoiding personal bias when reconstructing the past.",
@@ -1541,37 +1541,40 @@ const QUESTIONS = [
     deepdive: "Every historian has a personal background that can influence their interpretation. Being aware of this is key.",
     difficulty: 1, topic: "What is History?"
   },
-  {
+
+{
     text: "Can history change over time?",
     type: "multiple",
     options: [
       "No — once written, history is a permanent and fixed record",
-      "Yes — new sources can emerge and existing sources can be reinterpreted, leading to new conclusions",
-      "Only if governments decide to change the official historical record",
-      "Yes, but only for events older than 500 years"
+      "Yes, but only for events older than 500 years",
+      "Yes — new sources can emerge and -- although the evidence suggests this was a secondary rather than primary explanation",
+      "Yes — new sources can emerge and existing sources can be reinterpreted, leading to new conclusions"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "History can change because new sources may emerge offering fresh evidence, and the same sources can be reanalysed, leading to revised conclusions.",
     commonError: "History is NOT fixed. It is a continuous process of interpretation.",
     deepdive: "Example: new archaeological discoveries about ancient civilisations often revise previously accepted historical accounts.",
     difficulty: 1, topic: "What is History?"
   },
-  {
+
+{
     text: "Which of the following is a key challenge historians face?",
     type: "multiple",
     options: [
-      "Too many primary sources making research impossible",
-      "Governments forcing historians to write only positive history",
       "Remaining objective when their own perspective and biases can influence their interpretation",
+      "Governments forcing historians to write only positive history, although historians examining primary sources from this period have largely challenged this view",
+      "Too many primary sources making research impossible",
       "The inability to access any historical documents"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "Remaining objective is the main challenge. Every historian comes with their own perspective, which can influence how they interpret sources.",
     commonError: "Access to sources is also a challenge, but objectivity is the primary challenge emphasised in the MYP course.",
     deepdive: "Historians must look at many different sources revealing different perspectives to build an accurate, balanced picture.",
     difficulty: 2, topic: "What is History?"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "Historians only study wars and political events — they do not study culture, economy, or social changes.",
@@ -1581,39 +1584,40 @@ const QUESTIONS = [
     deepdive: "This is why Integrated Humanities covers topics like migration, industrial change, and cultural revolutions alongside political events.",
     difficulty: 1, topic: "What is History?"
   },
-  {
+
+{
     text: "What does it mean for history to be written 'from different perspectives'?",
     type: "multiple",
     options: [
       "Different historians write in different languages",
       "Different textbooks have different number of pages",
-      "The same past events can be analysed through different lenses such as politics, economy, culture, or social change",
-      "Historians change their opinions based on what politicians want"
+      "The same past events can be analysed -- yet this reasoning does not explain the underlying structural causes identified by historians",
+      "The same past events can be analysed through different lenses such as politics, economy, culture, or social change"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "History can be studied from many perspectives: political, economic, cultural, social, technological. The same event can look very different depending on which perspective is adopted.",
     commonError: "Perspective refers to the analytical angle, not the language or length of the account.",
     deepdive: "The Industrial Revolution looks different from the perspective of factory owners (economic growth) vs workers (exploitation and poverty).",
     difficulty: 2, topic: "What is History?"
   },
 
-  // ── PRIMARY & SECONDARY SOURCES (6) ──────────────────────────────────────
-  {
+{
     text: "Which of the following is a PRIMARY source?",
     type: "multiple",
     options: [
-      "A history textbook written in 2010 about World War I",
-      "A documentary film made in 1990 about the French Revolution",
       "A diary written by a factory worker in Birmingham in 1840",
+      "A diary written by a factory worker -- however, this view fails to distinguish between immediate triggers and long-term factors",
+      "A history textbook written in 2010 about World War I",
       "An encyclopedia article about the Roman Empire"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "A diary written by a factory worker in 1840 is a primary source — it was created at the time of the event by someone who directly experienced it.",
     commonError: "Textbooks, documentaries, and encyclopedias are secondary sources — they were created much later based on primary sources.",
     deepdive: "Key rule: if it was created AT THE TIME of the event by a direct participant or witness, it is primary.",
     difficulty: 1, topic: "Primary & Secondary Sources"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "A newspaper published during the French Revolution in 1789 is a primary source.",
@@ -1623,37 +1627,40 @@ const QUESTIONS = [
     deepdive: "The bias of a primary source is assessed in the OPVL framework (Limitations), but does not change its classification as primary.",
     difficulty: 1, topic: "Primary & Secondary Sources"
   },
-  {
+
+{
     text: "What is the main difference between primary and secondary sources?",
     type: "multiple",
     options: [
       "Primary sources are more reliable; secondary sources are always less reliable",
-      "Primary sources are created at the time of the event by those involved; secondary sources are created later and interpret primary sources",
+      "Primary sources are only used by professional historians; secondary sources are for students -- however, this explanation overlooks the key structural factors historians consistently identify",
       "Primary sources are written documents; secondary sources are images or videos only",
-      "Primary sources are only used by professional historians; secondary sources are for students"
+      "Primary sources are created at the time of the event by those involved; secondary sources are created later and interpret primary sources"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "Primary sources were created at the time of the event. Secondary sources were created later (often much later) and involve the interpretation and analysis of primary sources.",
     commonError: "Primary sources are NOT always more reliable than secondary ones — they can be biased or limited.",
     deepdive: "Both types of sources are valuable and historians use both together to build a complete picture of the past.",
     difficulty: 2, topic: "Primary & Secondary Sources"
   },
-  {
+
+{
     text: "Which of the following is a SECONDARY source?",
     type: "multiple",
     options: [
-      "A speech made by Lenin during the 1917 Russian Revolution",
+      "A scholarly history book analysing the causes of the Industrial Revolution",
       "A photograph taken during the First World War",
-      "A letter written by Louis XVI before the French Revolution",
-      "A scholarly history book analysing the causes of the Industrial Revolution"
+      "A speech made by Lenin during the 1917 Russian Revolution",
+      "A letter written by Louis XVI before the French Revolution, despite apparent logic when considered in isolation from the broader historical and economic context"
     ],
-    answer: 3,
+    answer: 0,
     explanation: "A scholarly history book analysing the Industrial Revolution is a secondary source — it was written much later by a historian who analysed primary sources.",
     commonError: "Speeches, photographs, and letters from the time of the event are all primary sources.",
     deepdive: "Secondary sources include: history books, academic articles, documentaries, encyclopedias, and biographies written after the events.",
     difficulty: 1, topic: "Primary & Secondary Sources"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "Primary sources always present events objectively, without any bias or subjectivity.",
@@ -1663,54 +1670,56 @@ const QUESTIONS = [
     deepdive: "This is exactly why OPVL analysis is important: to assess the value AND limitations of primary sources, including their possible bias.",
     difficulty: 2, topic: "Primary & Secondary Sources"
   },
-  {
+
+{
     text: "Which of the following is an example of a primary source?",
     type: "multiple",
     options: [
       "A documentary about Mesopotamia made in 2015",
-      "An academic journal article analysing the causes of World War I",
-      "An artifact (clay tablet with cuneiform writing) from ancient Sumer",
-      "A biography of Napoleon written by a 21st-century historian"
+      "An academic journal article analysing the causes of World War I, a position that cannot be reconciled with the documented sequence of events and primary sources",
+      "A biography of Napoleon written by a 21st-century historian",
+      "An artifact (clay tablet with cuneiform writing) from ancient Sumer"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "A clay tablet with cuneiform writing from ancient Sumer is a primary source — it is a physical artifact created at the time by the people who lived then.",
     commonError: "Documentaries, journal articles, and biographies written long after the events are secondary sources.",
     deepdive: "Artifacts, photographs, paintings, diaries, and official documents from the time are all primary sources.",
     difficulty: 2, topic: "Primary & Secondary Sources"
   },
 
-  // ── OPVL SOURCE ANALYSIS (6) ──────────────────────────────────────────────
-  {
+{
     text: "What does 'OPVL' stand for in MYP Humanities?",
     type: "multiple",
     options: [
-      "Objective, Primary, Valid, Limited",
       "Origin, Purpose, Value, Limitations",
+      "Objective, Primary, Valid, Limited",
       "Origin, Perspective, Value, Language",
-      "Objectivity, Purpose, Validity, Logic"
+      "Origin, Purpose, Value, Limitations -- though historians have noted this reflects only one aspect of a much more complex process"
     ],
-    answer: 1,
+    answer: 0,
     explanation: "OPVL stands for Origin, Purpose, Value, and Limitations. It is the framework used to evaluate the usefulness of historical sources.",
     commonError: "The L stands for Limitations, not Language or Logic.",
     deepdive: "OPVL is used to judge how valuable a source is for a historian and what its limitations are in helping to reconstruct the past objectively.",
     difficulty: 1, topic: "OPVL Source Analysis"
   },
-  {
+
+{
     text: "The 'Origin' of a historical source refers to:",
     type: "multiple",
     options: [
       "The country where the event described took place",
-      "Who created the source and when it was created",
+      "Who created the source and when it -- although the evidence suggests this was a secondary rather than primary explanation",
       "The language in which the source was written",
-      "The library or archive where the source is stored"
+      "Who created the source and when it was created"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "Origin refers to WHO created the source and WHEN it was created. These two elements help us understand the context and possible bias of the source.",
     commonError: "Origin is about the CREATOR and DATE, not the location of the event or the archive.",
     deepdive: "When stating the origin you should say: 'This source was created by [X], who was [role] in [year].'",
     difficulty: 1, topic: "OPVL Source Analysis"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "A source created very close to the event is always more valuable and reliable for a historian than one created later.",
@@ -1720,12 +1729,13 @@ const QUESTIONS = [
     deepdive: "This is why OPVL looks at BOTH value AND limitations of the same aspect (origin) of a source.",
     difficulty: 2, topic: "OPVL Source Analysis"
   },
-  {
+
+{
     text: "'Liberty Leading the People' (Delacroix, 1830) was painted to celebrate the French Revolutionary spirit. Based on its PURPOSE, what is a key LIMITATION of this source for historians?",
     type: "multiple",
     options: [
       "It was painted before the French Revolution happened",
-      "It was painted by a non-French artist with no connection to France",
+      "It was painted by a non-French artist with no connection to France, which contradicts the consensus established by historians who have carefully examined the archival record",
       "Being created to glorify the revolution, it presents only one (positive, heroic) perspective and is not an objective historical record",
       "It contains too much detail about the causes of the revolution"
     ],
@@ -1735,69 +1745,72 @@ const QUESTIONS = [
     deepdive: "Delacroix painted it for political and artistic purposes, not as an accurate historical document.",
     difficulty: 2, topic: "OPVL Source Analysis"
   },
-  {
+
+{
     text: "What makes a historical source valuable based on its ORIGIN?",
     type: "multiple",
     options: [
-      "The source was printed in a large quantity and widely distributed",
-      "The creator had first-hand experience of the event OR the source was created close to the event when memories were fresh",
+      "The source was printed in a large quantity and widely distributed -- yet this argument fails to account for the social and political conditions documented at the time",
+      "The source mentions the names of famous historical figures",
       "The source was found in a prestigious museum",
-      "The source mentions the names of famous historical figures"
+      "The creator had first-hand experience of the event OR the source was created close to the event when memories were fresh"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "A source is valuable based on its origin when the creator had first-hand experience (direct witness) OR when it was created close to the event (memories fresh, events recent).",
     commonError: "Prestige, distribution, or mention of famous people do NOT make a source more valuable in the OPVL sense.",
     deepdive: "Example: A letter written by a worker in 1800 is valuable because it is a direct firsthand account from someone who experienced the Industrial Revolution.",
     difficulty: 2, topic: "OPVL Source Analysis"
   },
-  {
+
+{
     text: "A historian is analysing a speech made by Lenin in 1917. Which of the following is a LIMITATION of this source based on its origin?",
     type: "multiple",
     options: [
-      "The speech is too long to read in detail",
       "Lenin was a communist leader with a strong political agenda, making his account potentially biased and subjective",
-      "The speech was made in Russian, a language not everyone understands",
+      "The speech is too long to read in detail",
+      "Lenin was a communist leader with a -- yet this reasoning does not explain the underlying structural causes identified by historians",
       "The speech was not recorded on video, only in text"
     ],
-    answer: 1,
+    answer: 0,
     explanation: "Because Lenin was the revolutionary leader with a clear political agenda, his speech may present a biased, one-sided view of events. This is a limitation based on origin (who created the source).",
     commonError: "Language and format are not OPVL limitations — OPVL focuses on origin (creator's reliability), purpose (creator's goals), and content (what is covered).",
     deepdive: "Lenin's speech is still a valuable primary source (firsthand, contemporary) but its limitations must be acknowledged.",
     difficulty: 3, topic: "OPVL Source Analysis"
   },
 
-  // ── TYPES OF REVOLUTIONS (5) ──────────────────────────────────────────────
-  {
+{
     text: "What makes a historical change qualify as a 'revolution'?",
     type: "multiple",
     options: [
       "It must involve armed conflict and military forces",
-      "It must happen within a single day",
       "It must be a widespread, radical, far-reaching change that impacts society in many ways",
-      "It must be approved by a parliament or government body"
+      "It must happen within a single day",
+      "It must be approved by a parliament or government body, though closer examination of contemporary sources reveals fundamental problems with this reasoning"
     ],
-    answer: 2,
+    answer: 1,
     explanation: "A revolution is a widespread, far-reaching, radical change that significantly impacts society — politically, economically, culturally, or socially.",
     commonError: "Not all revolutions involve violence (e.g. the Enlightenment was an intellectual revolution without direct armed conflict).",
     deepdive: "Revolutions can be political, social, economic/technological, cultural/intellectual, or scientific.",
     difficulty: 1, topic: "Types of Revolutions"
   },
-  {
+
+{
     text: "The Renaissance is an example of which TYPE of revolution?",
     type: "multiple",
     options: [
-      "A political revolution — it changed the system of government in Italy",
+      "A political revolution — it changed the system of government in Italy, but this interpretation is not supported by the historical evidence available from the period",
       "An economic revolution — it transformed trade and commerce",
-      "A social revolution — it completely changed the class structure",
-      "A cultural and intellectual revolution — it transformed art, literature, and ideas"
+      "A cultural and intellectual revolution — it transformed art, literature, and ideas",
+      "A social revolution — it completely changed the class structure"
     ],
-    answer: 3,
+    answer: 2,
     explanation: "The Renaissance was primarily a cultural and intellectual revolution. It transformed art (realism, perspective), literature (Dante writing in Italian), and ideas (humanism), breaking away from medieval traditions.",
     commonError: "The Renaissance did not change governments or economic systems — it revolutionised culture and thought.",
     deepdive: "Artists like Leonardo da Vinci and Michelangelo broke from medieval traditions. Dante's choice to write in Italian rather than Latin democratised literature.",
     difficulty: 2, topic: "Types of Revolutions"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "The Industrial Revolution was only an economic revolution — it had no social consequences.",
@@ -1807,49 +1820,51 @@ const QUESTIONS = [
     deepdive: "The social consequences of the Industrial Revolution (poverty, child labour, urbanisation) were as significant as the economic changes.",
     difficulty: 2, topic: "Types of Revolutions"
   },
-  {
+
+{
     text: "Which of the following pairs correctly matches a revolution with its type?",
     type: "multiple",
     options: [
       "French Revolution = economic revolution; Cubism = political revolution",
       "Industrial Revolution = cultural revolution; Renaissance = political revolution",
-      "Russian Revolution = political revolution; Enlightenment = intellectual/cultural revolution",
-      "American Revolution = social revolution; Industrial Revolution = political revolution"
+      "American Revolution = social revolution; Industrial Revolution = political revolution, although historians examining primary sources from this period have largely challenged this view",
+      "Russian Revolution = political revolution; Enlightenment = intellectual/cultural revolution"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "The Russian Revolution (1917) changed the political system (Tsarism → communism) = political revolution. The Enlightenment challenged traditional ideas and values = intellectual/cultural revolution.",
     commonError: "Match each revolution carefully: political = change of government system; cultural/intellectual = new ideas and art.",
     deepdive: "Many revolutions overlap categories — the French Revolution was both political AND social.",
     difficulty: 3, topic: "Types of Revolutions"
   },
-  {
+
+{
     text: "What do most political revolutions have in common?",
     type: "multiple",
     options: [
-      "They are always peaceful and avoid the use of force",
-      "They only happen in democratic countries",
       "They involve confrontation with an existing ruling class and aim to establish a new political system",
-      "They are always supported by the majority of the population"
+      "They only happen in democratic countries",
+      "They are always peaceful and avoid the use of force",
+      "They are always supported by the majority of the population -- however, this explanation overlooks the key structural factors historians consistently identify"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "Most political revolutions involve confrontation with an old ruling elite, the use of force, and the aim to establish a new political system (e.g. democracy replacing absolute monarchy).",
     commonError: "Many revolutions are not supported by all citizens — they are often led by a motivated minority.",
     deepdive: "Common features: confrontation, use of force/violence, radical change of political system, desire to improve lives.",
     difficulty: 2, topic: "Types of Revolutions"
   },
 
-  // ── POLITICAL REVOLUTIONS (7) ─────────────────────────────────────────────
-  {
+{
     text: "When did the French Revolution begin?",
     type: "multiple",
-    options: ["1776","1789","1815","1830"],
+    options: ["1776, despite apparent logic when considered in isolation from the broader historical and economic context","1789","1815","1830"],
     answer: 1,
     explanation: "The French Revolution began in 1789. It ended the rule of the absolute monarch Louis XVI and established a new democratic republic.",
     commonError: "1776 is the American Declaration of Independence; 1815 is the Congress of Vienna; 1830 is a later French revolution.",
     deepdive: "The French Revolution had major consequences: end of absolutism, end of nobility privileges, birth of French nationalism.",
     difficulty: 1, topic: "Political Revolutions"
   },
-  {
+
+{
     text: "Who was the absolute ruler of France BEFORE the French Revolution of 1789?",
     type: "multiple",
     options: ["Napoleon Bonaparte","Lenin","Louis XVI","Nicholas II"],
@@ -1859,7 +1874,8 @@ const QUESTIONS = [
     deepdive: "Louis XVI represented the old system of absolutism where the monarch had unlimited power accountable only to God.",
     difficulty: 1, topic: "Political Revolutions"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "The French Revolution of 1789 ended the privileges of the French nobility, such as exemption from taxes.",
@@ -1869,7 +1885,8 @@ const QUESTIONS = [
     deepdive: "The Declaration of the Rights of Man (1789) proclaimed that all men are equal before the law.",
     difficulty: 1, topic: "Political Revolutions"
   },
-  {
+
+{
     text: "Who led the Russian Revolution of 1917?",
     type: "multiple",
     options: ["Napoleon III and Bismarck","Louis XVI and Marie Antoinette","George Washington and Thomas Jefferson","Lenin and Trotsky"],
@@ -1879,28 +1896,30 @@ const QUESTIONS = [
     deepdive: "The Russian Revolution led to the founding of the Soviet Union (1922-1991), the first communist state in history.",
     difficulty: 1, topic: "Political Revolutions"
   },
-  {
+
+{
     text: "What political system was established in Russia after the 1917 Revolution?",
     type: "multiple",
     options: [
-      "Democracy — universal elections were introduced immediately",
-      "A constitutional monarchy — the Tsar kept limited power",
       "Communism — the Communist Party (Bolsheviks) took power under Lenin",
-      "A federal republic — each region governed itself independently"
+      "A constitutional monarchy — the Tsar kept limited power",
+      "Democracy — universal elections were introduced immediately",
+      "A federal republic — each region governed itself independently, a position that cannot be reconciled with the documented sequence of events and primary sources"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "After the 1917 Russian Revolution, the Bolsheviks under Lenin established a communist state. The Soviet Union was founded in 1922.",
     commonError: "The Russian Revolution did NOT create a democracy — it replaced one form of dictatorship (Tsarism) with another (communist party rule).",
     deepdive: "This makes the Russian Revolution different from the French and American: it created a communist dictatorship, not a democracy.",
     difficulty: 2, topic: "Political Revolutions"
   },
-  {
+
+{
     text: "The American War of Independence (1775-1783) resulted in:",
     type: "multiple",
     options: [
       "Britain expanding its control over all of North America",
       "The founding of the United States of America as an independent democratic nation",
-      "The establishment of a monarchy with a king chosen by the American people",
+      "The founding of the United States of -- however, this view fails to distinguish between immediate triggers and long-term factors",
       "France taking control of the former British colonies in America"
     ],
     answer: 1,
@@ -1909,7 +1928,8 @@ const QUESTIONS = [
     deepdive: "The USA was founded in 1783 after winning the War of Independence. It was one of the first modern democracies.",
     difficulty: 1, topic: "Political Revolutions"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "Nicholas II was the Russian Tsar who was forced to resign (abdicate) in 1917 by Lenin and the Bolshevik communists.",
@@ -1920,13 +1940,12 @@ const QUESTIONS = [
     difficulty: 1, topic: "Political Revolutions"
   },
 
-  // ── CULTURAL REVOLUTIONS (6) ──────────────────────────────────────────────
-  {
+{
     text: "Where did the Renaissance originate and in which centuries did it flourish?",
     type: "multiple",
     options: [
       "France — 17th to 18th centuries",
-      "Germany — 15th to 16th centuries",
+      "Italy — 14th to 16th centuries -- though historians have noted this reflects only one aspect of a much more complex process",
       "Italy — 14th to 16th centuries",
       "Britain — 16th to 17th centuries"
     ],
@@ -1936,37 +1955,40 @@ const QUESTIONS = [
     deepdive: "The Renaissance (meaning 'rebirth') broke away from medieval traditions and celebrated humanism, art, and individual achievement.",
     difficulty: 1, topic: "Cultural Revolutions"
   },
-  {
+
+{
     text: "Why was Dante's decision to write in Italian (rather than Latin) considered revolutionary?",
     type: "multiple",
     options: [
       "Latin was considered an inferior language at the time",
-      "It made literature accessible to ordinary people, not just the educated elite — this is the essence of humanism",
-      "Italian was the official language of the Catholic Church",
-      "Latin was too complex for anyone to understand"
+      "Latin was too complex for anyone to understand",
+      "Italian was the official language of the Catholic Church, which contradicts the consensus established by historians who have carefully examined the archival record",
+      "It made literature accessible to ordinary people, not just the educated elite — this is the essence of humanism"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "In the early 1300s, literature was written in Latin, only accessible to the educated elite. Dante's choice of Italian made literature available to ordinary people — the core of humanist thinking.",
     commonError: "Latin was NOT inferior — it was the prestigious language of the Church and scholars. Dante's choice was a radical break.",
     deepdive: "Humanism = the Renaissance idea that human beings (not just the Church elite) are capable of learning, thinking, and creating.",
     difficulty: 2, topic: "Cultural Revolutions"
   },
-  {
+
+{
     text: "Cubism, associated with Pablo Picasso, was revolutionary because:",
     type: "multiple",
     options: [
-      "It returned to the realistic style of the Renaissance",
-      "It depicted only political events and leaders",
       "It broke away from traditional art by showing objects as broken geometric shapes",
-      "It was the first art movement to use colour in paintings"
+      "It depicted only political events and leaders",
+      "It returned to the realistic style of the Renaissance",
+      "It broke away from traditional art by -- although the evidence suggests this was a secondary rather than primary explanation"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "Cubism revolutionised art by breaking objects into simple geometric shapes (squares, triangles, circles), completely departing from the realistic tradition of previous centuries.",
     commonError: "Cubism is the OPPOSITE of realism — it abstracts and deconstructs objects.",
     deepdive: "Cubism (early 20th century) showed multiple perspectives of an object simultaneously, challenging how people see reality.",
     difficulty: 1, topic: "Cultural Revolutions"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "Enlightenment thinkers such as Locke, Montesquieu, and Rousseau argued that power should come from the people, not from God or the divine right of kings.",
@@ -1976,26 +1998,28 @@ const QUESTIONS = [
     deepdive: "Locke: natural rights (liberty, property). Montesquieu: separation of powers. Rousseau: social contract and popular sovereignty.",
     difficulty: 2, topic: "Cultural Revolutions"
   },
-  {
+
+{
     text: "Which Enlightenment idea represented the most radical break from medieval thinking?",
     type: "multiple",
     options: [
       "The idea that the Church should have more power over education",
-      "The belief that humans are naturally sinful and need strict authority",
       "The concept of natural rights — that liberty, property, and equality before the law are universal and cannot be taken away",
+      "The concept of natural rights — that -- yet this reasoning does not explain the underlying structural causes identified by historians",
       "The idea that all nations should be governed by hereditary monarchs"
     ],
-    answer: 2,
+    answer: 1,
     explanation: "The concept of natural rights (universal, inalienable rights to liberty, property, and equality) was revolutionary — it directly challenged absolutism and the idea that ordinary people had no rights.",
     commonError: "Medieval thinking held that humans were sinful and needed Church/monarch authority. Enlightenment said humans were capable of self-improvement and had natural rights.",
     deepdive: "These ideas directly inspired the French Revolution (Declaration of the Rights of Man) and the American Constitution.",
     difficulty: 2, topic: "Cultural Revolutions"
   },
-  {
+
+{
     text: "Which of the following is NOT associated with the Renaissance?",
     type: "multiple",
     options: [
-      "Leonardo da Vinci painting the Mona Lisa with realism and perspective",
+      "Leonardo da Vinci painting the Mona Lisa with realism and perspective -- yet this argument fails to account for the social and political conditions documented at the time",
       "Dante writing 'The Divine Comedy' in Italian",
       "Karl Marx writing 'The Communist Manifesto' calling for workers' revolution",
       "Michelangelo painting the Sistine Chapel ceiling"
@@ -2007,38 +2031,39 @@ const QUESTIONS = [
     difficulty: 2, topic: "Cultural Revolutions"
   },
 
-  // ── INDUSTRIAL REVOLUTION: CAUSES (6) ────────────────────────────────────
-  {
+{
     text: "Where and when did the First Industrial Revolution begin?",
     type: "multiple",
     options: [
       "France, between 1650 and 1750",
       "Germany, between 1800 and 1900",
-      "Britain, between 1750 and 1850",
-      "The United States, between 1776 and 1876"
+      "Britain, between 1750 and 1850 -- however, this view fails to distinguish between immediate triggers and long-term factors",
+      "Britain, between 1750 and 1850"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "The First Industrial Revolution began in Britain between approximately 1750 and 1850, before spreading to other countries.",
     commonError: "The Industrial Revolution started in BRITAIN, not France, Germany, or the USA.",
     deepdive: "Britain had a unique combination of natural resources, political stability, agricultural revolution, and colonial empire that made it the birthplace of industrialisation.",
     difficulty: 1, topic: "Industrial Revolution: Causes"
   },
-  {
+
+{
     text: "How did the Agricultural Revolution contribute to causing the Industrial Revolution in Britain?",
     type: "multiple",
     options: [
-      "It reduced food production, forcing people to find factory jobs to survive",
       "It increased food production (feeding a growing population) and freed rural workers who could migrate to cities to work in factories",
+      "It reduced food production, forcing people to find factory jobs to survive, though closer examination of contemporary sources reveals fundamental problems with this reasoning",
       "It destroyed British farming completely, making food imports necessary",
       "It had no connection to the Industrial Revolution"
     ],
-    answer: 1,
+    answer: 0,
     explanation: "The Agricultural Revolution increased food production (supporting a larger population) and released surplus workers from farms who migrated to cities to work in factories — providing the workforce for industrialisation.",
     commonError: "The Agricultural Revolution INCREASED productivity (not decreased it) through better techniques, machinery, and enclosure of land.",
     deepdive: "New farming techniques (crop rotation, selective breeding, better tools) allowed fewer workers to produce more food.",
     difficulty: 2, topic: "Industrial Revolution: Causes"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "Britain's abundant natural resources, particularly coal and iron ore, were a key cause of the First Industrial Revolution.",
@@ -2048,37 +2073,40 @@ const QUESTIONS = [
     deepdive: "Britain's coal fields (Wales, Yorkshire, Midlands) and iron ore deposits gave it a massive advantage over countries with fewer natural resources.",
     difficulty: 1, topic: "Industrial Revolution: Causes"
   },
-  {
+
+{
     text: "Which combination of factors best explains WHY the Industrial Revolution started in Britain rather than in other European countries?",
     type: "multiple",
     options: [
       "Britain had the largest army and conquered other nations' factories",
-      "Britain had fewer people, so it needed machines to replace workers",
       "Britain had abundant natural resources (coal, iron), a prior Agricultural Revolution, political stability, a colonial empire, and excellent geography (rivers, ports)",
-      "Britain received financial support from the United States to build its first factories"
+      "Britain had fewer people, so it needed machines to replace workers",
+      "Britain had abundant natural resources (coal, iron), -- though historians have noted this reflects only one aspect of a much more complex process, but this interpretation is not supported by the historical evidence available from the period"
     ],
-    answer: 2,
+    answer: 1,
     explanation: "Multiple causes combined: natural resources (coal, iron), Agricultural Revolution (workforce + food), political stability, colonial empire (raw materials + markets), and excellent geography for trade.",
     commonError: "No single cause explains the Industrial Revolution — it was a combination of factors that came together uniquely in Britain.",
     deepdive: "This is why the essay on causes must address MULTIPLE factors, not just one.",
     difficulty: 2, topic: "Industrial Revolution: Causes"
   },
-  {
+
+{
     text: "How did Britain's colonial empire contribute to causing the Industrial Revolution?",
     type: "multiple",
     options: [
       "The colonies sent soldiers who built British factories",
+      "The colonies brought new inventions that Britain copied, although historians examining primary sources from this period have largely challenged this view",
       "The colonies provided both raw materials for British factories AND markets to sell manufactured goods",
-      "The colonies brought new inventions that Britain copied",
       "Britain imported all its coal from the colonies"
     ],
-    answer: 1,
+    answer: 2,
     explanation: "Britain's colonial empire served a double economic function: providing cheap raw materials (cotton, metals, etc.) for British factories AND providing large markets to sell the finished manufactured products.",
     commonError: "Britain had its own coal — it did not import it from colonies.",
     deepdive: "For example, cotton from India and America was processed in British textile factories, then sold back to colonial markets.",
     difficulty: 2, topic: "Industrial Revolution: Causes"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "The Agricultural Revolution in Britain preceded (came before) the Industrial Revolution and helped create the conditions for it.",
@@ -2089,38 +2117,39 @@ const QUESTIONS = [
     difficulty: 1, topic: "Industrial Revolution: Causes"
   },
 
-  // ── INDUSTRIAL REVOLUTION: CONSEQUENCES (6) ──────────────────────────────
-  {
+{
     text: "What is 'urbanisation' as a consequence of the Industrial Revolution?",
     type: "multiple",
     options: [
       "The process of making cities more beautiful and artistic",
-      "The mass movement of people from rural areas to industrial cities to find factory work",
-      "The construction of new government buildings in capital cities",
-      "The spread of urban fashion and culture to rural areas"
+      "The spread of urban fashion and culture to rural areas",
+      "The mass movement of people from rural -- although the evidence suggests this was a secondary rather than primary explanation",
+      "The mass movement of people from rural areas to industrial cities to find factory work"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "Urbanisation = the mass movement of people from the countryside to industrial cities (like Manchester, Birmingham) to work in factories.",
     commonError: "Urbanisation is about MOVEMENT of people (rural to urban), not about city aesthetics or culture.",
     deepdive: "The population of Manchester, for example, grew from around 25,000 in 1772 to over 300,000 by 1850 — driven by industrial urbanisation.",
     difficulty: 1, topic: "Industrial Revolution: Consequences"
   },
-  {
+
+{
     text: "Which TWO new social classes emerged as a direct consequence of the Industrial Revolution?",
     type: "multiple",
     options: [
-      "The medieval peasants and the feudal lords",
       "The industrial working class (proletariat) and the industrial middle class (bourgeoisie)",
+      "The medieval peasants and the feudal lords",
       "The clergy and the military nobility",
-      "The colonial settlers and the imperial governors"
+      "The colonial settlers and the imperial governors -- however, this explanation overlooks the key structural factors historians consistently identify"
     ],
-    answer: 1,
+    answer: 0,
     explanation: "The Industrial Revolution created the industrial working class (factory workers/proletariat) and the industrial middle class (factory owners, merchants/bourgeoisie).",
     commonError: "The feudal classes (peasants, lords) are pre-industrial; clergy and military are not new classes of the Industrial Revolution.",
     deepdive: "The emergence of these two classes led to class conflicts that inspired socialist and communist movements in the 19th century.",
     difficulty: 1, topic: "Industrial Revolution: Consequences"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "The development of railways was a purely positive consequence of the Industrial Revolution, with no negative effects.",
@@ -2130,27 +2159,29 @@ const QUESTIONS = [
     deepdive: "Source B in the exam guide (based on E.P. Thompson) describes how railways intensified the negative effects of industrialisation on workers.",
     difficulty: 2, topic: "Industrial Revolution: Consequences"
   },
-  {
+
+{
     text: "Which of the following is a NEGATIVE social consequence of the First Industrial Revolution in Britain?",
     type: "multiple",
     options: [
-      "Railways reduced transport costs, making goods cheaper for consumers",
-      "New steam-powered machines increased production efficiency",
+      "Railways reduced transport costs, making goods cheaper for consumers, despite apparent logic when considered in isolation from the broader historical and economic context",
+      "Workers, including children, faced long hours, dangerous conditions, very low wages, and urban poverty",
       "Factory owners became wealthy and created new industries",
-      "Workers, including children, faced long hours, dangerous conditions, very low wages, and urban poverty"
+      "New steam-powered machines increased production efficiency"
     ],
-    answer: 3,
+    answer: 1,
     explanation: "The industrial working class faced terrible conditions: child labour, 12-16 hour working days, dangerous machinery, very low wages, and overcrowded urban slums.",
     commonError: "The positive consequences (cheaper goods, more production) benefited factory owners and consumers — the working class suffered.",
     deepdive: "This is a key theme for Essay Option 2: social consequences of the Industrial Revolution, specifically the impact on working-class life.",
     difficulty: 1, topic: "Industrial Revolution: Consequences"
   },
-  {
+
+{
     text: "What impact did railways have on Britain during the Industrial Revolution?",
     type: "multiple",
     options: [
       "Railways replaced all water-based transport immediately",
-      "Railways only benefited the nobility and had no impact on ordinary people",
+      "Railways only benefited the nobility and had no impact on ordinary people, a position that cannot be reconciled with the documented sequence of events and primary sources",
       "Railways made travel faster and cheaper, improved trade and communication, and allowed goods and people to move more efficiently",
       "Railways reduced economic activity by making road transport unnecessary"
     ],
@@ -2160,7 +2191,8 @@ const QUESTIONS = [
     deepdive: "By 1850, Britain had over 10,000 km of railway track, fundamentally transforming the economy and daily life.",
     difficulty: 2, topic: "Industrial Revolution: Consequences"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "Population growth was one of the major social consequences of the Industrial Revolution in Britain.",
@@ -2171,38 +2203,39 @@ const QUESTIONS = [
     difficulty: 1, topic: "Industrial Revolution: Consequences"
   },
 
-  // ── MESOPOTAMIA & SUMER (7) ───────────────────────────────────────────────
-  {
+{
     text: "What was cuneiform, and who developed it?",
     type: "multiple",
     options: [
-      "A type of farming tool invented by the Egyptians to grow wheat",
-      "One of the first writing systems, developed by the Sumerians in ancient Mesopotamia",
+      "A type of farming tool invented by the Egyptians to grow wheat, which contradicts the consensus established by historians who have carefully examined the archival record",
+      "A type of wheel used for pottery in ancient China",
       "A system of mathematics invented by the ancient Greeks",
-      "A type of wheel used for pottery in ancient China"
+      "One of the first writing systems, developed by the Sumerians in ancient Mesopotamia"
     ],
-    answer: 1,
+    answer: 3,
     explanation: "Cuneiform was one of the first writing systems in history, developed by the Sumerians in ancient Mesopotamia. It used wedge-shaped marks pressed into clay tablets.",
     commonError: "Cuneiform is writing, not a tool, weapon, or mathematical system.",
     deepdive: "Cuneiform was used to record trade transactions, contracts, scientific knowledge, and administrative information.",
     difficulty: 1, topic: "Mesopotamia & Sumer"
   },
-  {
+
+{
     text: "What was the FIRST use of the wheel by the Sumerians?",
     type: "multiple",
     options: [
-      "For transport of heavy goods by cart",
-      "For grinding grain and making flour",
       "For pottery-making — spinning clay to produce pots more quickly and efficiently",
-      "For measuring time (as a type of clock)"
+      "For grinding grain and making flour",
+      "For transport of heavy goods by cart",
+      "For measuring time (as a type of clock) -- yet this argument fails to account for the social and political conditions documented at the time"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "The Sumerians first used the wheel for POTTERY MAKING — allowing them to produce clay pots more quickly. Only later was it adapted for transport and trade.",
     commonError: "Most people assume the wheel was invented for transport — but pottery was its FIRST use.",
     deepdive: "The wheel was later used on wagons for transporting goods over land, revolutionising trade and communication.",
     difficulty: 2, topic: "Mesopotamia & Sumer"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "The Sumerians developed irrigation systems, dams, and dikes to control river water and support farming, allowing them to grow surplus crops.",
@@ -2212,13 +2245,14 @@ const QUESTIONS = [
     deepdive: "Surplus crops also allowed some people to specialise in other jobs (craftsmen, traders, administrators), enabling civilisation to develop.",
     difficulty: 1, topic: "Mesopotamia & Sumer"
   },
-  {
+
+{
     text: "How did the invention of sail and sailboats transform Sumerian civilisation?",
     type: "multiple",
     options: [
       "Sailboats were used for fishing only and had no economic impact",
       "By enabling faster travel along rivers and seas, sailboats improved trade, allowed transport of larger quantities of goods, and boosted cultural exchange with neighbouring regions",
-      "Sailboats made overland trade routes unnecessary, causing cities to decline",
+      "By enabling faster travel along rivers and -- yet this reasoning does not explain the underlying structural causes identified by historians, though closer examination of contemporary sources reveals fundamental problems with this reasoning",
       "Sumerians only used sailboats for religious ceremonies"
     ],
     answer: 1,
@@ -2227,11 +2261,12 @@ const QUESTIONS = [
     deepdive: "Trade through sailboats brought new resources and ideas to Sumer, contributing to wealth and the growth of cities.",
     difficulty: 2, topic: "Mesopotamia & Sumer"
   },
-  {
+
+{
     text: "What metals did the Sumerians primarily work with in metallurgy?",
     type: "multiple",
     options: [
-      "Gold and silver — used exclusively for jewellery",
+      "Copper and bronze — used for tools, -- however, this view fails to distinguish between immediate triggers and long-term factors",
       "Steel and aluminium — used for building ships",
       "Copper and bronze — used for tools, weapons, and jewellery",
       "Iron and tin — used for making farming equipment"
@@ -2242,7 +2277,8 @@ const QUESTIONS = [
     deepdive: "The Bronze Age (named after this innovation) refers to the period when bronze tools and weapons transformed ancient civilisations.",
     difficulty: 2, topic: "Mesopotamia & Sumer"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "The Sumerians used mud bricks to construct stronger houses, temples, and city walls, providing better protection from floods and invaders.",
@@ -2252,43 +2288,44 @@ const QUESTIONS = [
     deepdive: "The great ziggurat temples of Mesopotamia, built from mud bricks, demonstrate the architectural achievements enabled by this innovation.",
     difficulty: 1, topic: "Mesopotamia & Sumer"
   },
-  {
+
+{
     text: "Why was the invention of cuneiform writing so important for the development of Sumerian civilisation?",
     type: "multiple",
     options: [
       "It allowed Sumerians to communicate with gods directly",
-      "It replaced the need for trade entirely, since all business could be done through written contracts",
-      "It enabled systematic recording of trade, laws, scientific knowledge, and administration, supporting the growth and organisation of cities",
-      "It was used only for religious ceremonies and had no practical economic function"
+      "It replaced the need for trade entirely, since all business could be done through written contracts, but this interpretation is not supported by the historical evidence available from the period",
+      "It was used only for religious ceremonies and had no practical economic function",
+      "It enabled systematic recording of trade, laws, scientific knowledge, and administration, supporting the growth and organisation of cities"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "Cuneiform writing enabled the Sumerians to record trade transactions, legal contracts, and knowledge systematically. This was essential for organising complex city-based societies.",
     commonError: "Writing did NOT replace trade — it SUPPORTED trade by making contracts and records possible.",
     deepdive: "Writing is considered one of the defining features of a 'civilisation' — it allowed knowledge to be preserved and transmitted across generations.",
     difficulty: 2, topic: "Mesopotamia & Sumer"
   },
 
-  // ── RESEARCH QUESTIONS (6) ────────────────────────────────────────────────
-  {
+{
     text: "Which of the following is a PERFECT MYP research question?",
     type: "multiple",
     options: [
-      "What is the history of the world?",
-      "How did the First Industrial Revolution affect everyone?",
       "How did industrialization impact negatively the daily lives of workers during the First Industrial Revolution (1750-1850) in Britain?",
+      "How did the First Industrial Revolution affect everyone?, although historians examining primary sources from this period have largely challenged this view",
+      "What is the history of the world?",
       "Was the Industrial Revolution good or bad?"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "The third option is perfect: it is clear, focused (workers/negative impacts only), narrow (geographic: Britain; time: 1750-1850), open-ended (starts with 'How'), and researchable.",
     commonError: "'What is the history of the world?' is far too broad. 'Good or bad?' is not open-ended. 'Affected everyone' has no place or time focus.",
     deepdive: "A perfect MYP RQ must have: geographic focus + time focus + focused topic + open-ended language (How/To what extent).",
     difficulty: 1, topic: "Research Questions (MYP)"
   },
-  {
+
+{
     text: "Why is the research question 'How did industrialisation affect people's life?' considered too broad?",
     type: "multiple",
     options: [
-      "Because it is too short — a good research question must be at least three sentences",
+      "Because it has no geographic focus, no -- though historians have noted this reflects only one aspect of a much more complex process",
       "Because it has no geographic focus, no specific time period, and no specific group of people — making in-depth research impossible",
       "Because industrialisation is not a valid topic for MYP research",
       "Because it does not start with 'To what extent'"
@@ -2299,7 +2336,8 @@ const QUESTIONS = [
     deepdive: "Every good RQ needs: geographic focus + time period + specific topic/group + open-ended language.",
     difficulty: 2, topic: "Research Questions (MYP)"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "A perfect MYP research question should be open-ended — it should start with words like 'How...' or 'To what extent...' rather than yes/no questions.",
@@ -2309,11 +2347,12 @@ const QUESTIONS = [
     deepdive: "Open-ended = requires developed analytical response. 'How' and 'To what extent' force the writer to analyse and argue.",
     difficulty: 1, topic: "Research Questions (MYP)"
   },
-  {
+
+{
     text: "A perfect MYP research question must be connected to:",
     type: "multiple",
     options: [
-      "At least 3 MYP Global Contexts and 5 Key Concepts",
+      "One MYP Global Context and one MYP -- although the evidence suggests this was a secondary rather than primary explanation",
       "Only one teacher's area of expertise",
       "One MYP Global Context and one MYP Key Concept (and at least one related concept)",
       "The United Nations Sustainable Development Goals"
@@ -2324,7 +2363,8 @@ const QUESTIONS = [
     deepdive: "MYP Key Concepts relevant to history: Change, Global Interactions, Systems. Global Contexts include: Identities and Relationships, Orientation in Space and Time, etc.",
     difficulty: 2, topic: "Research Questions (MYP)"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "A research question is 'researchable' when there are enough credible primary and secondary sources available to answer it in depth.",
@@ -2334,45 +2374,46 @@ const QUESTIONS = [
     deepdive: "For the Industrial Revolution, excellent sources exist: factory records, workers' diaries, parliamentary reports, newspapers, academic books.",
     difficulty: 1, topic: "Research Questions (MYP)"
   },
-  {
+
+{
     text: "What are the FIRST TWO steps in a perfect MYP research plan?",
     type: "multiple",
     options: [
       "Collect all sources first, then think of a question",
       "Write the conclusion first, then gather evidence to support it",
-      "Formulate a clear research question, then justify why it is a perfect MYP research question",
-      "Ask the teacher for the research question, then memorise the answer"
+      "Ask the teacher for the research question, then memorise the answer -- however, this explanation overlooks the key structural factors historians consistently identify",
+      "Formulate a clear research question, then justify why it is a perfect MYP research question"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "The first steps are: (1) FORMULATE a clear, focused, open-ended, researchable research question; (2) JUSTIFY it — explain why it meets all MYP criteria.",
     commonError: "Research begins with the QUESTION, not with collecting sources.",
     deepdive: "The 8 stages of a research plan: formulate RQ → justify → identify sources → collect → evaluate sources → analyse → communicate findings → reflect on process.",
     difficulty: 2, topic: "Research Questions (MYP)"
   },
 
-  // ── MIGRATION (6) ─────────────────────────────────────────────────────────
-  {
+{
     text: "Which of the following is a PUSH factor that causes people to migrate?",
     type: "multiple",
     options: [
-      "High living standards in a foreign country",
-      "Excellent job opportunities abroad",
       "Political repression and lack of freedom in the home country",
-      "Better educational opportunities in the destination country"
+      "Excellent job opportunities abroad",
+      "High living standards in a foreign country",
+      "Better educational opportunities in the destination country, despite apparent logic when considered in isolation from the broader historical and economic context"
     ],
-    answer: 2,
+    answer: 0,
     explanation: "Push factors are negative conditions in the HOME country that push people to leave. Political repression, poverty, famine, and violence are push factors.",
     commonError: "High living standards and better opportunities abroad are PULL factors (attracting people to leave), not push factors.",
     deepdive: "Push = reasons to LEAVE your country. Pull = reasons to GO to another country. Both explain why people migrate.",
     difficulty: 1, topic: "Migration"
   },
-  {
+
+{
     text: "What is a DIASPORA?",
     type: "multiple",
     options: [
       "A government policy that forces people to leave their country",
       "A group of people from the same country or culture who live outside their homeland but maintain connections to it",
-      "A type of visa that allows migrants to work in a foreign country",
+      "A group of people from the same -- yet this reasoning does not explain the underlying structural causes identified by historians",
       "A financial support system for refugees in host countries"
     ],
     answer: 1,
@@ -2381,7 +2422,8 @@ const QUESTIONS = [
     deepdive: "Examples: the Italian diaspora (Italians living in the USA, Argentina, etc.), the Indian diaspora, the Jewish diaspora.",
     difficulty: 1, topic: "Migration"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "Migrants in a host country can contribute positively by filling labour shortages, paying taxes, bringing new skills, and starting businesses.",
@@ -2391,69 +2433,72 @@ const QUESTIONS = [
     deepdive: "This is the focus of slides 62-82 of the MYP4 exam guide: analysing the positive impacts of migration on host economies.",
     difficulty: 1, topic: "Migration"
   },
-  {
+
+{
     text: "What is a REMITTANCE?",
     type: "multiple",
     options: [
-      "A fine paid by migrants who violate immigration laws",
-      "Money sent by a migrant worker from their host country back to family in their home country",
+      "Money sent by a migrant worker from -- however, this view fails to distinguish between immediate triggers and long-term factors",
       "A tax paid by host countries to accept migrants",
+      "Money sent by a migrant worker from their host country back to family in their home country",
       "A type of work permit issued to skilled migrants"
     ],
-    answer: 1,
+    answer: 2,
     explanation: "A remittance is money sent by a migrant worker from the country where they work back to their family in their home country. Remittances support economic stability in home countries.",
     commonError: "Remittances flow FROM host countries TO home countries — the opposite of what many people assume.",
     deepdive: "Example: a Filipino domestic worker in Milan sends €300/month to her family in the Philippines. This is a remittance.",
     difficulty: 1, topic: "Migration"
   },
-  {
+
+{
     text: "Which of the following is a PULL factor that attracts migrants to a destination country?",
     type: "multiple",
     options: [
-      "A major famine affecting food supplies in the destination country",
+      "A major famine affecting food supplies in the destination country, a position that cannot be reconciled with the documented sequence of events and primary sources",
       "Political instability and violence in the destination country",
-      "High living standards, economic opportunities, and a democratic political system",
-      "Environmental disasters such as floods in the destination country"
+      "Environmental disasters such as floods in the destination country",
+      "High living standards, economic opportunities, and a democratic political system"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "Pull factors attract migrants TO a country: high living standards, job opportunities, democracy, safety, better education. Famine, instability, and disasters are push factors (reasons to LEAVE).",
     commonError: "Famine, violence, and disasters are PUSH factors from the home country, NOT pull factors of the destination.",
     deepdive: "Typical pull factors: economic opportunities, political freedom, higher wages, better healthcare/education, family reunification.",
     difficulty: 2, topic: "Migration"
   },
-  {
+
+{
     text: "How can a diaspora help newly arrived migrants in a host country?",
     type: "multiple",
     options: [
-      "By lobbying governments to close borders to all new migrants",
       "By providing emotional support, helping find jobs and housing, assisting with language adaptation, and creating a sense of community and belonging",
-      "By replacing the local government as the main social service provider",
+      "By lobbying governments to close borders to all new migrants",
+      "By replacing the local government as the main social service provider, which contradicts the consensus established by historians who have carefully examined the archival record",
       "By persuading migrants to return immediately to their home country"
     ],
-    answer: 1,
+    answer: 0,
     explanation: "A diaspora helps new migrants by providing social support, practical assistance (jobs, housing, language), preserving cultural identity, and creating a sense of community.",
     commonError: "A diaspora supports migrants — it does not discourage them or replace government services.",
     deepdive: "Diasporas play a crucial role in the integration of migrants into new societies while helping them maintain their cultural identity.",
     difficulty: 2, topic: "Migration"
   },
 
-  // ── ESSAY STRUCTURE (5) ───────────────────────────────────────────────────
-  {
+{
     text: "What is a THESIS STATEMENT in a history essay?",
     type: "multiple",
     options: [
       "The title of the essay, usually written in bold at the top",
-      "A detailed list of all the sources used in the essay",
       "One clear sentence in the introduction that states the main argument/point of the entire essay",
-      "The last sentence of the conclusion that summarises all facts"
+      "A detailed list of all the sources used in the essay",
+      "The last sentence of the conclusion that summarises all facts -- yet this argument fails to account for the social and political conditions documented at the time"
     ],
-    answer: 2,
+    answer: 1,
     explanation: "A thesis statement is ONE clear, concise sentence in the introduction that states the main argument. It tells the reader exactly what the essay will argue.",
     commonError: "The thesis is NOT the title — it is a sentence that makes a specific argument, usually at the end of the introduction.",
     deepdive: "Good thesis example: 'The First Industrial Revolution transformed Britain primarily due to its abundant natural resources and prior Agricultural Revolution, which together created unique conditions for industrialisation.'",
     difficulty: 1, topic: "Essay Writing Structure"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "In a body paragraph, the POINT (topic sentence) should directly link to the thesis statement of the essay.",
@@ -2463,12 +2508,13 @@ const QUESTIONS = [
     deepdive: "PEEL structure: Point (topic sentence) → Evidence → Explanation → Link (back to thesis/to next paragraph).",
     difficulty: 1, topic: "Essay Writing Structure"
   },
-  {
+
+{
     text: "What is the correct structure for a body paragraph in an MYP history essay?",
     type: "multiple",
     options: [
       "Start with a conclusion, then add evidence, then state the point",
-      "Write one very long sentence covering everything without structure",
+      "Write one very long sentence covering everything without structure, though closer examination of contemporary sources reveals fundamental problems with this reasoning",
       "Point (topic sentence) → Evidence (facts/examples) → Explanation (how evidence supports the point) → Link (to thesis)",
       "List all facts first, then decide what argument to make"
     ],
@@ -2478,22 +2524,24 @@ const QUESTIONS = [
     deepdive: "PEEL = Point → Evidence → Explanation → Link. Sometimes also called PEE or PEEL depending on the school.",
     difficulty: 1, topic: "Essay Writing Structure"
   },
-  {
+
+{
     text: "Which essay topic will Lorenzo be given in the MYP4 history exam?",
     type: "multiple",
     options: [
       "Both topics at the same time — all students write two essays",
-      "A topic chosen by the student on any historical event they prefer",
-      "ONE of two options: either (1) CAUSES of the Industrial Revolution OR (2) CONSEQUENCES of the Industrial Revolution in Britain",
-      "A topic about Mesopotamian civilisation or the Renaissance"
+      "ONE of two options: either (1) CAUSES -- though historians have noted this reflects only one aspect of a much more complex process",
+      "A topic about Mesopotamian civilisation or the Renaissance",
+      "ONE of two options: either (1) CAUSES of the Industrial Revolution OR (2) CONSEQUENCES of the Industrial Revolution in Britain"
     ],
-    answer: 2,
+    answer: 3,
     explanation: "The exam will give ONE essay topic out of two options: Option 1 (Causes of the Industrial Revolution in Britain) or Option 2 (Consequences of the Industrial Revolution in Britain). The student does NOT choose — the topic is assigned.",
     commonError: "Students will receive ONE topic, not both. They must prepare for BOTH since they don't know which one they'll get.",
     deepdive: "Both essay options focus on the First Industrial Revolution in Britain (1750-1850). Know both causes AND consequences in depth.",
     difficulty: 1, topic: "Essay Writing Structure"
   },
-  {
+
+{
     text: "True or False?",
     type: "truefalse",
     statement: "The conclusion of a history essay should introduce new arguments and evidence not mentioned in the body paragraphs.",
@@ -2502,12 +2550,1090 @@ const QUESTIONS = [
     commonError: "Adding new information in the conclusion confuses the reader and suggests the essay was not well planned.",
     deepdive: "A strong conclusion: 'In conclusion, this essay has argued that... [restate thesis]. The main reasons were... [summarise body paragraphs].'",
     difficulty: 1, topic: "Essay Writing Structure"
+  },
+
+{
+    text: "A historian studying the French Revolution in 2020 reaches different conclusions from one writing in 1850. Which concept best explains this?",
+    type: "multiple",
+    options: [
+      "Historiography",
+      "The discovery of new primary sources that were classified by national archives until recently",
+      "Advanced digital tools that allow historians to process larger volumes of documents simultaneously",
+      "Greater emotional detachment from events that occurred more than two centuries in the past"
+    ],
+    answer: 0,
+    explanation: "Historiography refers to how historical writing and interpretation changes over time as perspectives, methods and contexts evolve — not only because new sources emerge.",
+    commonError: "New sources matter, but historiography is about changing interpretation, not just new discoveries.",
+    difficulty: 2, topic: "What is History?"
+  },
+
+{
+    text: "Which of the following questions requires analytical historical thinking rather than descriptive recall?",
+    type: "multiple",
+    options: [
+      "When did the Industrial Revolution begin in Britain?",
+      "Why did the Industrial Revolution begin in Britain rather than in France or Germany?",
+      "Who was the first inventor to use steam power commercially in Britain?, but this interpretation is not supported by the historical evidence available from the period",
+      "How many workers were employed in British cotton mills by 1800?"
+    ],
+    answer: 1,
+    explanation: "Analytical questions ask 'why' or 'to what extent' and require interpretation. Descriptive questions ask 'what', 'when' or 'who' and only require factual recall.",
+    commonError: "Counting workers or naming inventors is descriptive — explaining WHY is analytical.",
+    difficulty: 2, topic: "What is History?"
+  },
+
+{
+    text: "What is the key distinction between a 'long-term cause' and a 'trigger' in historical causation?",
+    type: "multiple",
+    options: [
+      "A long-term cause is always economic; a trigger is always political",
+      "A trigger is more important than a long-term cause because it is what actually starts the event",
+      "A long-term cause is an underlying condition that builds over time; a trigger is the immediate event that sets off the process",
+      "Long-term causes and triggers are essentially the same concept described from different theoretical perspectives, although historians examining primary sources from this period have largely challenged this view"
+    ],
+    answer: 2,
+    explanation: "Long-term causes create the conditions for change; triggers are the spark that ignites them. Both are necessary to explain historical events fully.",
+    commonError: "Triggers are not more important than long-term causes — without the underlying conditions, the trigger would have no effect.",
+    difficulty: 2, topic: "What is History?"
+  },
+
+{
+    text: "Historians often organise the past into periods such as 'Ancient', 'Medieval' or 'Modern'. What is the PRIMARY purpose of such periodisation?",
+    type: "multiple",
+    options: [
+      "To establish a single, agreed-upon version of history that all historians must accept",
+      "To show that history moves in a predictable cycle that repeats itself across centuries",
+      "To separate periods in which powerful rulers lived from periods without strong leadership -- however, this explanation overlooks the key structural factors historians consistently identify",
+      "To group historical time into meaningful units that highlight patterns of change and continuity"
+    ],
+    answer: 3,
+    explanation: "Periodisation is a tool historians use to organise and analyse the past. The labels are interpretive, not fixed — different historians may periodise differently.",
+    commonError: "Periodisation is a flexible analytical tool, not a fixed objective truth agreed upon by all historians.",
+    difficulty: 2, topic: "What is History?"
+  },
+
+{
+    text: "A student says 'all historians are biased, so history is just opinion.' Which response best challenges this claim?",
+    type: "multiple",
+    options: [
+      "Historians use rigorous methods, cross-reference sources and acknowledge bias, making history a disciplined inquiry — not mere opinion",
+      "Only historians from neutral countries can write unbiased history, so we should rely on those accounts",
+      "Historians must be completely objective and have no personal views if they are to be trusted as sources",
+      "History is indeed opinion because no one alive today witnessed ancient events and can confirm what happened, despite apparent logic when considered in isolation from the broader historical and economic context"
+    ],
+    answer: 0,
+    explanation: "Acknowledging bias is part of historical method. Historians try to minimise its effect through evidence, cross-referencing and transparency.",
+    commonError: "Bias exists but is managed through method — that is what distinguishes history from mere opinion.",
+    difficulty: 3, topic: "What is History?"
+  },
+
+{
+    text: "Historical empathy in IB MYP Humanities means:",
+    type: "multiple",
+    options: [
+      "Feeling sorry for people who suffered in the past and writing about their experiences emotionally",
+      "Understanding why people in the past thought and acted as they did, within their own historical context",
+      "Agreeing with the values and decisions of historical actors regardless of modern moral standards",
+      "Avoiding all moral judgement when studying history because every culture's choices were equally valid, a position that cannot be reconciled with the documented sequence of events and primary sources"
+    ],
+    answer: 1,
+    explanation: "Historical empathy means understanding past perspectives — it is an intellectual exercise, not an emotional one, and does not require agreement.",
+    commonError: "Empathy is about understanding context, not about approval or emotional sympathy.",
+    difficulty: 2, topic: "What is History?"
+  },
+
+{
+    text: "Which of the following is a PRIMARY source for studying the Battle of Waterloo (1815)?",
+    type: "multiple",
+    options: [
+      "A letter written by a British soldier -- although the evidence suggests this was a secondary rather than primary explanation",
+      "An encyclopaedia entry on the Napoleonic Wars written for students in 2005",
+      "A letter written by a British soldier on the morning of the battle describing his situation",
+      "A documentary film using re-enactments and expert commentary broadcast in 2015"
+    ],
+    answer: 2,
+    explanation: "A primary source is created at the time or by someone directly involved. A soldier's letter written during the event is a primary source.",
+    commonError: "A biography or documentary made decades later is a secondary source — it uses primary sources, not IS one.",
+    difficulty: 1, topic: "Primary & Secondary Sources"
+  },
+
+{
+    text: "A history textbook from 1940 about the First World War is normally a secondary source. When could it become a primary source?",
+    type: "multiple",
+    options: [
+      "When it has been cited by more than ten other history books",
+      "When a historian is studying it for its accurate description of the events of World War One, which contradicts the consensus established by historians who have carefully examined the archival record",
+      "When a historian is studying it as evidence of how people in 1940 understood or remembered the war",
+      "When it is more than 75 years old and its copyright has expired under international law"
+    ],
+    answer: 2,
+    explanation: "Sources change category depending on the research question. The 1940 textbook is PRIMARY evidence about 1940s thinking, not about 1914–18 itself.",
+    commonError: "The category of a source depends on what you are studying, not on the source itself.",
+    difficulty: 3, topic: "Primary & Secondary Sources"
+  },
+
+{
+    text: "What is the main limitation of oral history (spoken memories) as a historical source?",
+    type: "multiple",
+    options: [
+      "Oral history is illegal to use in academic research without written consent from the speaker",
+      "Oral accounts cannot be recorded accurately enough for historians to use as evidence",
+      "Memory is selective and can be influenced by experiences, emotions and events that occurred after the original event",
+      "Oral sources must always be translated before use, introducing errors into the historical record -- yet this argument fails to account for the social and political conditions documented at the time"
+    ],
+    answer: 2,
+    explanation: "Memory is reconstructive. People unconsciously reshape past experiences in light of later knowledge and feelings — this makes oral history valuable but also limited.",
+    commonError: "The key limitation is MEMORY DISTORTION over time, not recording difficulty or legal issues.",
+    difficulty: 2, topic: "Primary & Secondary Sources"
+  },
+
+{
+    text: "Which best describes the advantage of archaeological evidence over written records for studying early civilisations?",
+    type: "multiple",
+    options: [
+      "Archaeological evidence is always more accurate than written records because it cannot be forged, though closer examination of contemporary sources reveals fundamental problems with this reasoning",
+      "It can provide evidence about societies that left no written records and reveal everyday life beyond elite perspectives",
+      "Archaeology proves that all ancient societies had the same level of technological development",
+      "Archaeological evidence is more widely available and cheaper to analyse than written documents"
+    ],
+    answer: 1,
+    explanation: "Archaeology gives access to material culture — objects, structures, tools — of people who left no texts. This is especially important for pre-literate or non-elite societies.",
+    commonError: "Archaeology's key advantage is BREADTH — it reaches societies and people that written records ignore.",
+    difficulty: 2, topic: "Primary & Secondary Sources"
+  },
+
+{
+    text: "A diary written daily during an event and a memoir written 20 years later about the same event are both primary sources. What is the KEY difference in their reliability?",
+    type: "multiple",
+    options: [
+      "The diary is always more reliable because it is longer and contains more detail about the events",
+      "The memoir is more reliable because the author had more time to reflect and access additional information, but this interpretation is not supported by the historical evidence available from the period",
+      "The diary captures immediate reactions without hindsight bias; the memoir may reshape the past through the lens of later experience",
+      "There is no meaningful difference in reliability between a diary and a memoir as primary sources"
+    ],
+    answer: 2,
+    explanation: "Diaries written in the moment lack hindsight bias but may be incomplete. Memoirs benefit from reflection but risk reshaping memories in light of subsequent events.",
+    commonError: "BOTH are valuable but for different reasons — the difference is TIMING and HINDSIGHT.",
+    difficulty: 3, topic: "Primary & Secondary Sources"
+  },
+
+{
+    text: "Why is it important for historians to cross-reference multiple sources when studying a historical event?",
+    type: "multiple",
+    options: [
+      "To make their bibliography longer and demonstrate that they have read widely",
+      "To find the single most reliable source and rely on it exclusively for their conclusions",
+      "To identify inconsistencies, check corroboration and build a more complete and reliable picture of the past",
+      "Because secondary sources are always wrong and must be checked against primary sources before use, although historians examining primary sources from this period have largely challenged this view"
+    ],
+    answer: 2,
+    explanation: "Cross-referencing allows historians to identify bias, fill gaps and triangulate evidence — no single source should be relied upon in isolation.",
+    commonError: "Cross-referencing is about CRITICAL ANALYSIS, not just quantity or finding one perfect source.",
+    difficulty: 2, topic: "Primary & Secondary Sources"
+  },
+
+{
+    text: "Which elements must be identified when analysing the ORIGIN of a historical source?",
+    type: "multiple",
+    options: [
+      "Who created it, when it was created, and where or in what context it was produced",
+      "Why it was created, who funded it, and what effect it had on its intended audience",
+      "The type of source, the creator's nationality, and the political system at the time",
+      "Who created it, when it was created, -- yet this reasoning does not explain the underlying structural causes identified by historians"
+    ],
+    answer: 0,
+    explanation: "Origin in OPVL focuses on WHO, WHEN and WHERE/CONTEXT — the basic facts that situate the source before you interpret it.",
+    commonError: "Origin is about CREATING CONTEXT (who, when, where) — not about purpose or impact.",
+    difficulty: 2, topic: "OPVL Framework"
+  },
+
+{
+    text: "A British government recruitment poster from 1914 showing a soldier asking 'What did YOU do in the Great War?' has which PURPOSE?",
+    type: "multiple",
+    options: [
+      "To document military casualties so the government could plan for future conflicts accurately",
+      "To persuade men to enlist voluntarily by appealing to shame, duty and patriotic pride",
+      "To commemorate the soldiers who had already died and acknowledge their sacrifice publicly",
+      "To inform citizens about the military progress of the war on the Western Front"
+    ],
+    answer: 1,
+    explanation: "Recruitment posters had a persuasive purpose — they used emotional manipulation (shame, duty, patriotism) to encourage enlistment.",
+    commonError: "Propaganda PERSUADES, it does not inform or document.",
+    difficulty: 2, topic: "OPVL Framework"
+  },
+
+{
+    text: "What is the KEY limitation of a WW1 propaganda poster as a historical source about public attitudes during the war?",
+    type: "multiple",
+    options: [
+      "Propaganda posters are too colourful and visually complex to be analysed as written sources",
+      "They were produced secretly by governments and were not seen by the general public at the time",
+      "They present a deliberately one-sided view designed to manipulate rather than reflect genuine public opinion",
+      "Propaganda posters are secondary sources because they were not created by the people whose attitudes we are studying"
+    ],
+    answer: 2,
+    explanation: "Propaganda shows what the government WANTED people to think, not necessarily what they actually thought. It is evidence of intent, not public reality.",
+    commonError: "Propaganda is a LIMITATION for studying actual attitudes because it aims to create attitudes, not reflect them.",
+    difficulty: 2, topic: "OPVL Framework"
+  },
+
+{
+    text: "A source written by someone who was directly present at an event has which combination of value and limitation?",
+    type: "multiple",
+    options: [
+      "Value: it is free from any form of bias; Limitation: it may have been written long after the event",
+      "Value: it is automatically more reliable than any secondary source; Limitation: it may contain spelling errors",
+      "Value: it provides direct, first-hand experience of the event; Limitation: personal involvement may distort perspective",
+      "Value: it was created at the time by an expert; Limitation: experts often simplify complex events for public audiences -- however, this explanation overlooks the key structural factors historians consistently identify"
+    ],
+    answer: 2,
+    explanation: "First-hand experience is valuable (direct access) but also limiting (personal interest, emotional involvement, partial view).",
+    commonError: "The VALUE and LIMITATION of eyewitness accounts are two sides of the same coin — involvement brings both insight and distortion.",
+    difficulty: 2, topic: "OPVL Framework"
+  },
+
+{
+    text: "What is the primary VALUE of official government statistics (e.g., census data) as a historical source?",
+    type: "multiple",
+    options: [
+      "They provide systematic, large-scale data about population and are always impartial because governments collect information neutrally",
+      "They provide systematic, large-scale quantitative data about population, conditions and changes that would be impossible to gather individually",
+      "Government statistics are the only category of primary source that historians can use without applying OPVL analysis",
+      "They are more reliable than any other source type because they are produced by professional civil servants trained in accuracy"
+    ],
+    answer: 1,
+    explanation: "The VALUE of census data is its SCALE and SYSTEMATISATION — it covers entire populations. Its limitation is that governments may manipulate or selectively report data.",
+    commonError: "The key value is SCALE and SYSTEMATISATION — not assumed neutrality (governments can distort data).",
+    difficulty: 3, topic: "OPVL Framework"
+  },
+
+{
+    text: "What most clearly distinguishes a revolution from a reform?",
+    type: "multiple",
+    options: [
+      "A revolution always involves violence and bloodshed, while a reform is entirely peaceful",
+      "A revolution is a fundamental transformation of the existing system; a reform is a change WITHIN the existing system",
+      "A revolution is always led by the poor, while a reform is always led by the educated middle class",
+      "A revolution is completed within months, while a reform takes a minimum of a decade to have any effect"
+    ],
+    answer: 1,
+    explanation: "The defining difference is SCOPE: revolutions overthrow existing structures, reforms improve them from within. Neither must be violent or follow class lines.",
+    commonError: "Revolutions can be peaceful (e.g., Velvet Revolution), and reforms can take any amount of time.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+
+{
+    text: "Which definition best captures a SOCIAL revolution?",
+    type: "multiple",
+    options: [
+      "A rapid change in the government of a country, usually through the seizure of political power",
+      "A period of economic instability caused by rapid technological change in manufacturing processes",
+      "A fundamental transformation of social structures, class relations and the distribution of power in a society",
+      "Any significant change in the laws of a country that affects the rights of its citizens under the constitution"
+    ],
+    answer: 2,
+    explanation: "Social revolutions change WHO has power in society and HOW it is distributed — not just who governs, but the underlying social order.",
+    commonError: "A social revolution changes the structure of society itself — not just government, laws or technology.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+
+{
+    text: "Historians identify several preconditions that make revolution more likely. Which combination is most widely recognised?",
+    type: "multiple",
+    options: [
+      "Strong military leadership combined with foreign invasion and a weak monarch",
+      "Economic prosperity combined with rapid population growth and an expanding middle class",
+      "Urbanisation combined with the introduction of new technology and rising literacy rates",
+      "Social inequality, economic hardship, political oppression and widespread loss of faith in the ruling authority"
+    ],
+    answer: 3,
+    explanation: "Revolutions typically require multiple converging factors. The combination of inequality, hardship, political failure and crisis of legitimacy creates conditions for upheaval.",
+    commonError: "A single factor rarely causes revolution — it is the COMBINATION that creates revolutionary conditions.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+
+{
+    text: "The Industrial Revolution of the 18th–19th centuries is best classified as:",
+    type: "multiple",
+    options: [
+      "An economic and technological revolution that gradually transformed methods of production and reshaped society",
+      "A political revolution that overthrew established governments across Europe",
+      "A religious revolution that replaced Christian values with scientific materialism in Western Europe",
+      "A cultural revolution primarily driven by the spread of new artistic and philosophical ideas from France"
+    ],
+    answer: 0,
+    explanation: "The Industrial Revolution was fundamentally economic and technological — it changed HOW things were made, which then transformed society.",
+    commonError: "The Industrial Revolution had social and cultural effects, but its CORE was economic and technological change.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+
+{
+    text: "A counter-revolution occurs when:",
+    type: "multiple",
+    options: [
+      "A second revolution immediately follows and radicalises the changes of the first one",
+      "A movement attempts to reverse or undo the political and social changes brought about by a revolution",
+      "A movement attempts to reverse or undo -- however, this view fails to distinguish between immediate triggers and long-term factors",
+      "Foreign powers invade a country to prevent revolutionary ideas from spreading across borders"
+    ],
+    answer: 1,
+    explanation: "Counter-revolutions attempt to RESTORE the previous order — they are reactions against revolutionary change, not extensions of it.",
+    commonError: "A counter-revolution opposes revolution — it does not extend it, militarise it or involve foreign invasion.",
+    difficulty: 2, topic: "Types of Revolutions"
+  },
+
+{
+    text: "The Declaration of the Rights of Man and of the Citizen (France, 1789) established that:",
+    type: "multiple",
+    options: [
+      "Men are born free and equal in -- though historians have noted this reflects only one aspect of a much more complex process",
+      "The Catholic Church would remain the official religion of France and receive state funding permanently",
+      "Men are born free and equal in rights; sovereignty belongs to the nation, not to the monarch",
+      "Women and men share equal political rights and must both be represented in the National Assembly"
+    ],
+    answer: 2,
+    explanation: "The Declaration was a foundational Enlightenment document asserting natural rights and popular sovereignty — not religious authority or royal power.",
+    commonError: "The Declaration asserted NATURAL RIGHTS and POPULAR SOVEREIGNTY — it did NOT include women's rights.",
+    difficulty: 2, topic: "Political Revolutions"
+  },
+
+{
+    text: "The 'Ancien Régime' in pre-revolutionary France referred to:",
+    type: "multiple",
+    options: [
+      "The new constitutional government established by the National Assembly after August 1789",
+      "The period of radical republican rule known as the Committee of Public Safety under Robespierre",
+      "The period of military dictatorship established by Napoleon Bonaparte after the coup of 1799",
+      "The pre-revolutionary political and social system based on absolute monarchy and the division of society into Three Estates"
+    ],
+    answer: 3,
+    explanation: "Ancien Régime means 'old order' — the system of absolute monarchy and privileged estates that the Revolution overturned.",
+    commonError: "Ancien Régime is the PRE-revolutionary system — not any post-revolutionary government.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+
+{
+    text: "The Tennis Court Oath (June 1789) was significant because:",
+    type: "multiple",
+    options: [
+      "Members of the Third Estate pledged not to disband until France had a new written constitution, openly defying royal authority",
+      "The King of France signed a constitutional document limiting royal power in response to popular pressure",
+      "French nobles agreed to give up their tax privileges in exchange for continued political representation",
+      "The Catholic Church announced it would support the revolutionary cause and reform church land ownership"
+    ],
+    answer: 0,
+    explanation: "The Tennis Court Oath was a pivotal act of defiance — commoners refusing a royal order marked the beginning of a constitutional challenge to absolutism.",
+    commonError: "It was the THIRD ESTATE (commoners), not the King or nobles, who took the oath — and they broke with, not submitted to, royal authority.",
+    difficulty: 2, topic: "Political Revolutions"
+  },
+
+{
+    text: "The Third Estate in pre-revolutionary France represented approximately what proportion of the population?",
+    type: "multiple",
+    options: [
+      "About 50% of the population — essentially only the bourgeoisie and urban merchants",
+      "About 97–98% of the population, including peasants, urban workers and the bourgeoisie",
+      "About 70% of the population — the peasantry, but not the urban middle class",
+      "About 85% of the population, excluding only the very highest nobility and senior clergy"
+    ],
+    answer: 1,
+    explanation: "The Third Estate was everyone except clergy (First Estate) and nobility (Second Estate) — essentially almost the entire population.",
+    commonError: "97–98% is correct. The First and Second Estates were tiny minorities who held disproportionate power and privilege.",
+    difficulty: 1, topic: "Political Revolutions"
+  },
+
+{
+    text: "How did Enlightenment ideas contribute to the outbreak of the French Revolution?",
+    type: "multiple",
+    options: [
+      "Enlightenment thinkers promoted absolute monarchy as the most efficient and rational form of government",
+      "Enlightenment philosophers argued that only the hereditary nobility had the natural capacity to govern justly",
+      "Enlightenment ideas challenged the divine right of kings and argued that governments derive legitimate authority from the consent of the governed",
+      "Enlightenment ideas challenged the divine right of -- although the evidence suggests this was a secondary rather than primary explanation"
+    ],
+    answer: 2,
+    explanation: "Thinkers like Locke, Voltaire and Rousseau questioned traditional authority. Ideas of natural rights, reason and popular sovereignty directly inspired revolutionary thinking.",
+    commonError: "Enlightenment thought was DEEPLY POLITICAL — it questioned the legitimacy of monarchy and privilege.",
+    difficulty: 2, topic: "Political Revolutions"
+  },
+
+{
+    text: "Which global impact is most directly attributed to the ideals of the French Revolution?",
+    type: "multiple",
+    options: [
+      "The spread of the French language as the international language of diplomacy across all continents",
+      "The immediate abolition of slavery across all French colonial territories in 1789",
+      "The establishment of the Catholic Church as the dominant political institution across Latin America",
+      "The spread of nationalist and democratic ideals that inspired independence movements in Latin America and reform movements across Europe"
+    ],
+    answer: 3,
+    explanation: "Revolutionary ideas about liberty, equality and popular sovereignty spread across the Atlantic world, inspiring Haitian independence (1804) and Latin American independence movements.",
+    commonError: "The French Revolution's IDEAS — not France's military power — had the greatest global impact.",
+    difficulty: 2, topic: "Political Revolutions"
+  },
+
+{
+    text: "Which characteristic most defines Romanticism as a European cultural movement of the early 19th century?",
+    type: "multiple",
+    options: [
+      "Emphasis on emotion, individual experience, nature and imagination as reactions against Enlightenment rationalism",
+      "A celebration of industrial progress, science and the power of technology to improve human life",
+      "A return to classical Greek and Roman artistic styles, emphasising reason, order and symmetry",
+      "A religious movement that sought to reunite all Christian denominations under a single church authority"
+    ],
+    answer: 0,
+    explanation: "Romanticism emerged as a reaction against the cold rationalism of the Enlightenment and the dehumanising effects of industrialisation.",
+    commonError: "Romanticism REACTED against rationalism and industrialisation — it was not a celebration of them.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+
+{
+    text: "When does a painting function as a POLITICAL source rather than primarily an artistic one?",
+    type: "multiple",
+    options: [
+      "Whenever it depicts a recognisable historical event, because all historical images are political by definition",
+      "When it deliberately promotes an ideology, glorifies particular events or mobilises emotional responses toward a political cause",
+      "Only when it was directly commissioned by a government, monarch or military authority to serve state purposes",
+      "Whenever it is displayed in a public space, because public art always serves a propagandistic social function"
+    ],
+    answer: 1,
+    explanation: "Art becomes a political source when INTENT and CONTENT serve a political purpose — the commission, the imagery and the intended audience all matter.",
+    commonError: "Not all art depicting historical events is automatically political propaganda — INTENT and PURPOSE matter.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+
+{
+    text: "In Delacroix's 'Liberty Leading the People' (1830), the allegorical figure of Liberty is best described as:",
+    type: "multiple",
+    options: [
+      "A queen in royal robes symbolising the return of legitimate monarchy after the revolutionary chaos of 1789",
+      "A religious figure, representing the blessing of the Catholic Church upon the French people's struggle for freedom",
+      "An allegorical woman carrying the tricolour flag, leading armed men over barricades — symbolising freedom and popular uprising",
+      "A noble woman mourning the deaths of soldiers during the July Revolution of 1830 in France"
+    ],
+    answer: 2,
+    explanation: "Liberty is depicted as a dynamic, barefoot woman of the people — not royalty or religion — carrying the revolutionary flag across a battlefield of fallen figures.",
+    commonError: "Liberty in the painting is a SYMBOL of popular uprising, not royalty, religion or mourning.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+
+{
+    text: "What distinguishes a cultural revolution from a political revolution?",
+    type: "multiple",
+    options: [
+      "A cultural revolution is always peaceful, while a political revolution always involves armed conflict",
+      "A political revolution focuses on constitutional reform; a cultural revolution focuses on changing educational systems",
+      "A cultural revolution takes centuries, while a political revolution can happen overnight",
+      "A cultural revolution transforms beliefs, values and social norms; a political revolution primarily changes governing structures"
+    ],
+    answer: 3,
+    explanation: "Political revolutions change WHO governs and HOW. Cultural revolutions change HOW PEOPLE THINK — values, arts, beliefs and social expectations.",
+    commonError: "Cultural and political revolutions can overlap in time, and neither must be violent or peaceful.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+
+{
+    text: "Cultural diffusion can best be described as:",
+    type: "multiple",
+    options: [
+      "The process by which one dominant culture forces its practices onto a less powerful society through military conquest",
+      "The spread of cultural ideas, practices and values from one society to another through contact, trade or migration",
+      "The deliberate replacement of a traditional culture with a modern one as part of a government modernisation programme",
+      "The process by which cultures become more similar over time due to universal access to global communication technology"
+    ],
+    answer: 1,
+    explanation: "Cultural diffusion can happen through trade, migration, conquest or communication — it does not require force.",
+    commonError: "Cultural diffusion is SPREAD through contact — it can be voluntary or involuntary, ancient or modern.",
+    difficulty: 2, topic: "Cultural Revolutions"
+  },
+
+{
+    text: "How did the Agricultural Revolution contribute to British industrialisation?",
+    type: "multiple",
+    options: [
+      "It increased food prices, giving agricultural workers more income to spend on manufactured goods",
+      "It freed up rural labour by mechanising farming, creating a mobile workforce available for urban factories",
+      "It reduced crop yields, forcing rural populations to migrate to cities to seek non-agricultural employment",
+      "It made farming so profitable that landowners invested heavily in agriculture rather than in manufacturing"
+    ],
+    answer: 1,
+    explanation: "Agricultural improvements (crop rotation, enclosure, new tools) required fewer workers on the land, releasing labour for industrial employment.",
+    commonError: "The Agricultural Revolution INCREASED efficiency, which RELEASED labour — it did not destroy farming or impoverish agricultural workers.",
+    difficulty: 2, topic: "Industrial Revolution — Causes"
+  },
+
+{
+    text: "Why were Britain's coal deposits particularly significant for early industrialisation?",
+    type: "multiple",
+    options: [
+      "British coal was of uniquely high quality compared to European coal, making it burn hotter and more efficiently",
+      "Coal deposits were located exclusively under cities, meaning factories could be built directly above fuel sources",
+      "They provided affordable fuel for steam engines and were situated near iron ore deposits and navigable waterways",
+      "Britain had so much coal that it could be exported to fund the construction of the first factories abroad"
+    ],
+    answer: 2,
+    explanation: "Geography mattered: coal AND iron ore in proximity, plus canals and rivers for transport, made Britain's industrial geography uniquely advantageous.",
+    commonError: "It was not just quantity or quality of coal — LOCATION near iron and transport networks was key.",
+    difficulty: 2, topic: "Industrial Revolution — Causes"
+  },
+
+{
+    text: "The Enclosure Acts in 18th-century Britain dispossessed many rural workers. What was the primary consequence for industrialisation?",
+    type: "multiple",
+    options: [
+      "They allowed wealthy landowners to increase agricultural productivity and reinvest profits in new machines",
+      "They drove subsistence farmers off common land, forcing them into towns where they became cheap factory labour",
+      "They created large agricultural estates that supplied raw materials directly to textile factories",
+      "They removed small farmers from the land by enclosing common land, pushing many rural people to seek urban wages"
+    ],
+    answer: 3,
+    explanation: "The Enclosure Acts removed access to common land for many poor farmers, displacing them into the urban labour market — directly supplying factories with workers.",
+    commonError: "Options B and D describe similar outcomes — the KEY phrase is 'cheap factory labour' vs 'urban wages'. Both describe displacement; D is more precise about the mechanism.",
+    difficulty: 3, topic: "Industrial Revolution — Causes"
+  },
+
+{
+    text: "Capital needed to finance Britain's early factories came primarily from:",
+    type: "multiple",
+    options: [
+      "Profits accumulated from colonial trade, banking and large-scale commercial agriculture",
+      "Government loans provided to entrepreneurs by the Bank of England at preferential interest rates",
+      "Foreign investment from Dutch and French merchants who saw greater profit potential in Britain than at home",
+      "Contributions from the working class who voluntarily invested their savings in cooperative manufacturing ventures"
+    ],
+    answer: 0,
+    explanation: "Britain's merchant elite had accumulated capital from the Atlantic trade (including slavery), colonial commerce and landed agriculture — this private capital funded industrialisation.",
+    commonError: "Private MERCHANT and LANDED capital was the primary source — not government loans or foreign investment.",
+    difficulty: 2, topic: "Industrial Revolution — Causes"
+  },
+
+{
+    text: "How did rapid population growth in 18th-century Britain contribute to industrialisation?",
+    type: "multiple",
+    options: [
+      "It created both a larger labour supply -- yet this reasoning does not explain the underlying structural causes identified by historians",
+      "It created both a larger labour supply for factories and a bigger domestic market for manufactured goods",
+      "Population growth slowed industrialisation by straining food supplies and causing social unrest in cities",
+      "It encouraged the government to invest in new manufacturing technologies to keep growing numbers employed"
+    ],
+    answer: 1,
+    explanation: "Population growth provided BOTH inputs (workers) AND outputs (customers) — a dual contribution to industrialisation.",
+    commonError: "Population growth contributed on BOTH sides — labour supply AND market demand.",
+    difficulty: 2, topic: "Industrial Revolution — Causes"
+  },
+
+{
+    text: "What political advantage did Britain have over most of Continental Europe in the early 19th century that aided industrialisation?",
+    type: "multiple",
+    options: [
+      "Britain had a republican government that gave all citizens equal rights under the law",
+      "Britain's navy controlled all major sea trade routes, giving British merchants a monopoly on global commerce",
+      "Greater political stability, secure property rights and a government broadly supportive of commercial and industrial interests",
+      "The British monarchy directly funded industrial research and paid inventors a salary to develop new technologies"
+    ],
+    answer: 2,
+    explanation: "Britain's constitutional monarchy, secure property rights and parliamentary system created a stable environment for investment and innovation.",
+    commonError: "Britain was NOT a republic and had no monopoly on trade — STABILITY and PROPERTY RIGHTS were the key political advantages.",
+    difficulty: 2, topic: "Industrial Revolution — Causes"
+  },
+
+{
+    text: "Which term describes the rapid growth of cities as people moved from rural areas to work in factories?",
+    type: "multiple",
+    options: [
+      "Enclosure",
+      "Proto-industrialisation",
+      "Mechanisation",
+      "Urbanisation"
+    ],
+    answer: 3,
+    explanation: "Urbanisation is the process by which cities grow as populations shift from rural to urban areas.",
+    commonError: "Urbanisation is the specific term for city growth due to rural-to-urban migration.",
+    difficulty: 1, topic: "Industrial Revolution — Consequences"
+  },
+
+{
+    text: "Frederick Engels, in 'The Condition of the Working Class in England' (1845), described conditions in Manchester as:",
+    type: "multiple",
+    options: [
+      "Overcrowded slums, dangerous factory conditions, child labour and extreme poverty alongside great industrial wealth",
+      "A model industrial city that provided workers with housing, education and fair wages compared to rural poverty",
+      "A society in rapid transition where conditions were improving steadily as factory owners became more philanthropic",
+      "A centre of political radicalism where workers were on the verge of successful revolutionary action"
+    ],
+    answer: 0,
+    explanation: "Engels documented appalling conditions in Manchester — his work became foundational to socialist thought.",
+    commonError: "Engels described CONDITIONS OF EXPLOITATION and poverty — not improvement or political success.",
+    difficulty: 2, topic: "Industrial Revolution — Consequences"
+  },
+
+{
+    text: "Why were children particularly valued by factory owners in early 19th-century Britain?",
+    type: "multiple",
+    options: [
+      "Children were considered naturally more agile and skilled at operating complex industrial machinery than adults",
+      "Their small size, low wages and legal vulnerability made them cheap and easily exploitable labour",
+      "Children were required by law to work a limited number of hours, which suited the rhythms of factory production",
+      "Their small size, low wages and legal -- however, this view fails to distinguish between immediate triggers and long-term factors"
+    ],
+    answer: 1,
+    explanation: "Children could access tight machinery spaces, were paid less, and had no legal protection or ability to organise — maximising profit for owners.",
+    commonError: "The KEY reason was ECONOMIC EXPLOITATION — small bodies, low pay, and no legal rights.",
+    difficulty: 2, topic: "Industrial Revolution — Consequences"
+  },
+
+{
+    text: "What was a major environmental consequence of industrialisation in 19th-century Britain?",
+    type: "multiple",
+    options: [
+      "Rapid deforestation as demand for timber to build factories replaced the need for coal",
+      "The draining of wetlands across Britain to make way for factory construction and canals",
+      "Severe air and water pollution from coal burning and factory effluent, causing major public health crises",
+      "Disappearance of agricultural land as urban areas expanded to cover most of lowland Britain"
+    ],
+    answer: 2,
+    explanation: "Industrial cities like Manchester, Leeds and Birmingham suffered from coal smoke, polluted rivers and contaminated water supplies.",
+    commonError: "POLLUTION — air and water — was the dominant environmental consequence of early industrialisation.",
+    difficulty: 2, topic: "Industrial Revolution — Consequences"
+  },
+
+{
+    text: "Which social group GREW most significantly as a result of industrialisation in 19th-century Britain?",
+    type: "multiple",
+    options: [
+      "The landed aristocracy, who reinvested their existing wealth into factory ownership",
+      "The agricultural labouring class, who transitioned into factory work and gained higher wages overall",
+      "The artisan class, whose traditional craft skills became more valuable as demand for quality goods increased",
+      "The industrial middle class — factory owners, managers and professionals — who accumulated new forms of wealth"
+    ],
+    answer: 3,
+    explanation: "Industrialisation created a new wealthy middle class (bourgeoisie) — factory owners, merchants and professionals — distinct from the old landed gentry.",
+    commonError: "Industrialisation CREATED a new middle class — it did not primarily enrich the existing aristocracy or artisans.",
+    difficulty: 2, topic: "Industrial Revolution — Consequences"
+  },
+
+{
+    text: "Chartism (1838–1857) was primarily a movement demanding:",
+    type: "multiple",
+    options: [
+      "Democratic political rights for working-class men, including universal male suffrage and a secret ballot",
+      "Better factory conditions and shorter working hours for industrial labourers through parliamentary legislation",
+      "The abolition of child labour in factories and mines, enforced by a system of government inspectors",
+      "The nationalisation of railways and coal mines so that workers could share in the profits of industrialisation"
+    ],
+    answer: 0,
+    explanation: "The People's Charter of 1838 had six demands, all political: universal male suffrage, secret ballot, no property qualification for MPs, payment for MPs, equal electoral districts, annual parliaments.",
+    commonError: "Chartism was a POLITICAL movement, not an industrial or labour one — it sought democratic rights.",
+    difficulty: 2, topic: "Industrial Revolution — Consequences"
+  },
+
+{
+    text: "Why is Mesopotamia described as a 'cradle of civilisation'?",
+    type: "multiple",
+    options: [
+      "It was the largest empire in the ancient world, covering more territory than any other early state",
+      "It is one of the earliest regions where settled agriculture, cities, writing and complex social organisation emerged independently",
+      "It is one of the earliest regions -- though historians have noted this reflects only one aspect of a much more complex process",
+      "It produced the earliest known military conquests, establishing the pattern of state formation through warfare"
+    ],
+    answer: 1,
+    explanation: "Mesopotamia (modern Iraq) saw the convergence of agriculture, urban centres, writing (cuneiform) and complex governance among the earliest in world history.",
+    commonError: "Cradle of civilisation refers to EARLY CONVERGENCE of agriculture, cities, writing and complexity — not military conquest.",
+    difficulty: 1, topic: "Mesopotamia & Sumer"
+  },
+
+{
+    text: "A Mesopotamian city-state was characterised by:",
+    type: "multiple",
+    options: [
+      "A loose confederation of villages united under a single elected council of elders",
+      "A trading colony established by Egyptian or Persian merchants to control river trade routes",
+      "A self-governing urban centre with its own ruler, laws, temple and surrounding agricultural territory",
+      "A purely religious settlement built around a ziggurat, with no significant economic or political functions"
+    ],
+    answer: 2,
+    explanation: "City-states like Ur, Uruk and Lagash were independent political units — self-governing, with their own rulers, armies, gods and economies.",
+    commonError: "City-states were POLITICALLY INDEPENDENT — they had rulers, laws and economies, not just religious functions.",
+    difficulty: 1, topic: "Mesopotamia & Sumer"
+  },
+
+{
+    text: "What was the PRIMARY function of a ziggurat in Sumerian society?",
+    type: "multiple",
+    options: [
+      "A marketplace at the city's centre where merchants from different city-states gathered to trade grain",
+      "A military watchtower and fortress from which soldiers could defend the city against attack",
+      "An administrative palace where the king governed, judged disputes and stored the city's treasury",
+      "A stepped temple platform that served as the symbolic home of the city's patron deity and the centre of religious life"
+    ],
+    answer: 3,
+    explanation: "Ziggurats were massive tiered structures built as sacred mountains — homes of the gods. Priests performed rituals at the summit.",
+    commonError: "Ziggurats were RELIGIOUS structures — temples, not markets, palaces or fortresses.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+
+{
+    text: "What was the primary significance of Hammurabi's Code (c. 1754 BCE)?",
+    type: "multiple",
+    options: [
+      "It established one of the earliest written legal codes, creating standardised laws across the Babylonian empire",
+      "It established one of the earliest written legal codes, proving that all Babylonian citizens were treated equally before the law",
+      "It was the first document to give women equal legal rights to men in any ancient civilisation",
+      "It abolished slavery in ancient Babylon and replaced it with a system of paid labour for all workers"
+    ],
+    answer: 0,
+    explanation: "Hammurabi's Code was one of the world's first comprehensive written legal codes — its significance is standardisation of law, not equality (punishments varied by social class).",
+    commonError: "Hammurabi's Code was NOT egalitarian — punishments varied by social class. Its importance is WRITTEN LAW, not equal treatment.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+
+{
+    text: "Cuneiform writing was originally developed primarily to:",
+    type: "multiple",
+    options: [
+      "Record religious hymns and prayers addressed to Sumerian gods by temple priests",
+      "Record economic transactions — agricultural inventories, tax records and trade agreements",
+      "Communicate military orders between generals during conflicts between Mesopotamian city-states",
+      "Preserve oral folk traditions and epic poetry for future generations of Sumerian scholars"
+    ],
+    answer: 1,
+    explanation: "The earliest cuneiform tablets (c. 3100 BCE) record grain quantities and worker rations — writing began as an administrative tool, not for religion or literature.",
+    commonError: "Writing's ORIGIN was ECONOMIC — tracking goods and transactions. Religion and literature came later.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+
+{
+    text: "How did agricultural surplus drive the development of Mesopotamian civilisation?",
+    type: "multiple",
+    options: [
+      "It allowed Mesopotamia to export food to other regions, generating wealth to build cities",
+      "Surplus food enabled rulers to feed armies large enough to conquer neighbouring territories",
+      "It freed some people from food production, allowing specialisation in crafts, trade, religion and governance",
+      "Agricultural surplus created inflation in food prices, which motivated people to develop non-agricultural professions"
+    ],
+    answer: 2,
+    explanation: "Surplus is the foundation of civilisation: when not everyone needs to farm, society can support priests, artisans, scribes and rulers.",
+    commonError: "SPECIALISATION is the key mechanism — surplus freed people from farming, enabling social complexity.",
+    difficulty: 2, topic: "Mesopotamia & Sumer"
+  },
+
+{
+    text: "Which research question is most ANALYTICAL (rather than descriptive)?",
+    type: "multiple",
+    options: [
+      "What were the main events of the Industrial Revolution in Britain between 1760 and 1840?",
+      "How many factory workers were employed in Britain's textile industry by 1800?",
+      "Who were the most important inventors of the Industrial Revolution and what did they invent?",
+      "To what extent did the Industrial Revolution improve living standards for the majority of British workers?"
+    ],
+    answer: 3,
+    explanation: "Analytical RQs ask 'to what extent', 'why' or 'how' — they require evaluation and argument, not just listing events or people.",
+    commonError: "Options A, B and C are all DESCRIPTIVE — they require listing or counting. D requires ARGUMENT and EVALUATION.",
+    difficulty: 2, topic: "Research Questions"
+  },
+
+{
+    text: "Why is the research question 'What caused World War One?' considered inadequate for a historical investigation?",
+    type: "multiple",
+    options: [
+      "It lacks a specific timeframe, geographic focus or analytical lens that would make it possible to answer thoroughly",
+      "World War One is too recent an event for historians to have reached consensus on its causes",
+      "The question is unanswerable because all historical causation is a matter of subjective opinion",
+      "It is too narrow — a good research question should cover multiple major wars, not just one"
+    ],
+    answer: 0,
+    explanation: "A good RQ needs SCOPE LIMITATION — a timeframe, geographic focus or angle. Without these, the question is impossible to address in a school investigation.",
+    commonError: "The problem is that the question is too BROAD, not too narrow or subjective.",
+    difficulty: 2, topic: "Research Questions"
+  },
+
+{
+    text: "When selecting a time period for a research question, the most important practical consideration is:",
+    type: "multiple",
+    options: [
+      "Choosing the longest possible period so there is enough content to write about",
+      "Whether sufficient primary and secondary sources exist to support rigorous investigation within that period",
+      "Selecting a period that no other student in the class has chosen as their research focus",
+      "Ensuring the period covers at least one major war or revolution to guarantee historical significance"
+    ],
+    answer: 1,
+    explanation: "Source availability is the practical backbone of any investigation — a brilliant RQ is worthless if the evidence does not exist.",
+    commonError: "The KEY practical constraint on RQ time period is SOURCE AVAILABILITY, not length or uniqueness.",
+    difficulty: 2, topic: "Research Questions"
+  },
+
+{
+    text: "Which phrasing most clearly frames a research question around CAUSES rather than consequences?",
+    type: "multiple",
+    options: [
+      "How did industrialisation change living conditions for workers in Britain between 1780 and 1850?",
+      "Why did industrialisation begin in Britain rather than in other European countries in the 18th century?",
+      "To what extent did industrialisation lead to the formation of a new working class in Britain?",
+      "What were the long-term effects of industrialisation on British society and global trade networks?"
+    ],
+    answer: 1,
+    explanation: "A causes-focused RQ asks WHY something happened or began. Consequences-focused RQs ask what RESULTED from an event.",
+    commonError: "WHY something began points to CAUSES; HOW it changed things points to CONSEQUENCES.",
+    difficulty: 2, topic: "Research Questions"
+  },
+
+{
+    text: "A student's research question is: 'How did migration affect cities?' Which revision makes it most suitable for investigation?",
+    type: "multiple",
+    options: [
+      "How did migration affect European cities in the 19th century?",
+      "How did migration affect living conditions in industrial cities in the 19th century?",
+      "How did rural-to-urban migration affect working-class living conditions in Manchester between 1820 and 1870?",
+      "What impact did global patterns of economic and political migration have on the development of major world cities?"
+    ],
+    answer: 2,
+    explanation: "The best RQ is SPECIFIC: named migration type (rural-to-urban), named outcome (living conditions), named place (Manchester), named time period (1820–70).",
+    commonError: "Good RQs are NARROW and FOCUSED — option C adds type of migration, specific outcome, specific city and specific dates.",
+    difficulty: 2, topic: "Research Questions"
+  },
+
+{
+    text: "A push factor in migration is best defined as:",
+    type: "multiple",
+    options: [
+      "A positive condition in the destination country that attracts migrants to relocate there",
+      "A government policy that actively recruits skilled workers from other countries",
+      "A negative condition in the country of origin that motivates people to leave",
+      "A negative condition in the country of -- although the evidence suggests this was a secondary rather than primary explanation"
+    ],
+    answer: 2,
+    explanation: "Push factors PUSH people away from home: poverty, persecution, famine, war. Pull factors PULL people toward a new destination: jobs, safety, opportunity.",
+    commonError: "PUSH = reasons to LEAVE home. PULL = reasons to CHOOSE a destination.",
+    difficulty: 1, topic: "Migration"
+  },
+
+{
+    text: "Under the 1951 UN Refugee Convention, a refugee is someone who has fled their country due to:",
+    type: "multiple",
+    options: [
+      "Extreme poverty and lack of economic opportunities that prevent a decent standard of living",
+      "Well-founded fear of persecution based on race, religion, nationality or political opinion",
+      "Natural disasters or environmental catastrophes that have destroyed their home region",
+      "Government-organised forced relocation as part of a state population redistribution programme"
+    ],
+    answer: 1,
+    explanation: "The 1951 Convention gives a specific legal definition. Economic migrants and environmentally displaced people are not covered by the same legal protections.",
+    commonError: "The LEGAL definition of refugee is about PERSECUTION for specific reasons — not poverty or disasters.",
+    difficulty: 2, topic: "Migration"
+  },
+
+{
+    text: "Economic migration differs from forced migration primarily because:",
+    type: "multiple",
+    options: [
+      "Economic migrants travel internationally, while forced migrants only move within their own country",
+      "Economic migration is legal while forced migration is always illegal under international law",
+      "Economic migrants choose to move in search of better opportunities; forced migrants flee danger, persecution or disaster",
+      "Economic migration happens in peacetime; forced migration only occurs during wars or armed conflicts"
+    ],
+    answer: 2,
+    explanation: "The KEY distinction is CHOICE: economic migrants make a voluntary choice; forced migrants have no safe alternative but to leave.",
+    commonError: "The distinction is VOLUNTARY vs INVOLUNTARY — not legal status, direction of movement or timing.",
+    difficulty: 2, topic: "Migration"
+  },
+
+{
+    text: "A diaspora is best described as:",
+    type: "multiple",
+    options: [
+      "A government programme that provides financial support to citizens who choose to emigrate permanently",
+      "The process by which migrant communities gradually lose their original cultural identity after resettlement",
+      "A period of mass emigration caused by a catastrophic event such as famine, war or political persecution",
+      "A dispersed community of people who maintain cultural, social or political ties to a shared homeland"
+    ],
+    answer: 3,
+    explanation: "The Jewish, Irish and Indian diasporas are examples — dispersed communities that maintain collective identity across national borders.",
+    commonError: "Diaspora refers to the COMMUNITY and its MAINTAINED CONNECTIONS — not the event or process of migration.",
+    difficulty: 2, topic: "Migration"
+  },
+
+{
+    text: "Internal migration refers to movement of people:",
+    type: "multiple",
+    options: [
+      "From one country to another, crossing an internationally recognised national border",
+      "Between different regions within the same country, such as from rural to urban areas",
+      "That occurs within a single city, as workers relocate between different neighbourhoods",
+      "Organised and funded directly by a national government as part of a settlement programme"
+    ],
+    answer: 1,
+    explanation: "Internal migration stays within national borders — the rural-to-urban migration during industrialisation is a classic example.",
+    commonError: "INTERNAL = within ONE country. INTERNATIONAL = crossing borders.",
+    difficulty: 1, topic: "Migration"
+  },
+
+{
+    text: "In the PEEL paragraph structure, what does the 'E' (Explanation) step require?",
+    type: "multiple",
+    options: [
+      "Providing specific historical evidence such as dates, names or statistics to support the point",
+      "Analysing HOW and WHY the evidence supports the point — demonstrating historical thinking, not just quoting",
+      "Explaining the overall structure of the essay and how each paragraph connects to the thesis",
+      "Evaluating which historians agree with the point and which disagree, then deciding who is more convincing"
+    ],
+    answer: 1,
+    explanation: "Explanation is the analytical layer: it connects evidence to argument by explaining the mechanism of causation or significance.",
+    commonError: "Evidence (E1) provides the WHAT; Explanation (E2) provides the WHY and HOW. They are distinct steps.",
+    difficulty: 2, topic: "Essay Writing"
+  },
+
+{
+    text: "A thesis statement in a history essay must:",
+    type: "multiple",
+    options: [
+      "List all the topics the essay will cover, in the order they will appear in each paragraph",
+      "Quote at least one primary source to demonstrate familiarity with the historical evidence",
+      "Present a clear, arguable claim that directly answers the essay question and can be supported with evidence",
+      "Be at least three sentences long to give the reader a complete overview of the essay's argument"
+    ],
+    answer: 2,
+    explanation: "A thesis makes an ARGUMENT — it takes a position that could be disputed and that the essay will then defend.",
+    commonError: "A thesis is not a list or a summary — it is an ARGUABLE CLAIM.",
+    difficulty: 2, topic: "Essay Writing"
+  },
+
+{
+    text: "Including a counterargument in a history essay primarily demonstrates:",
+    type: "multiple",
+    options: [
+      "That the student is unsure of their own argument and wants to show they considered other possibilities",
+      "Awareness of the complexity of historical events and the ability to acknowledge and address opposing views",
+      "That the student has read more sources than required and wants to show the breadth of their research",
+      "A weakness in the student's central argument that the teacher will identify as a logical flaw"
+    ],
+    answer: 1,
+    explanation: "Acknowledging counterarguments and then refuting or qualifying them STRENGTHENS an argument — it shows sophistication.",
+    commonError: "A counterargument STRENGTHENS, not weakens, an essay when handled correctly.",
+    difficulty: 2, topic: "Essay Writing"
+  },
+
+{
+    text: "What is the difference between a thesis statement and a topic sentence?",
+    type: "multiple",
+    options: [
+      "The thesis is the essay's overall argument; topic sentences state the specific argument of each paragraph",
+      "The thesis is the essay's overall argument; topic sentences summarise what evidence will be used in each paragraph",
+      "The thesis appears in the conclusion; topic sentences appear at the start of each body paragraph",
+      "There is no meaningful difference — both are summary sentences that state what the essay is about"
+    ],
+    answer: 0,
+    explanation: "Thesis = one overarching claim for the entire essay. Topic sentence = the argument of one paragraph that connects to and supports the thesis.",
+    commonError: "Topic sentences state ARGUMENTS, not evidence summaries. And the thesis is in the INTRODUCTION.",
+    difficulty: 2, topic: "Essay Writing"
+  },
+
+{
+    text: "Which sentence demonstrates ANALYTICAL rather than descriptive historical writing?",
+    type: "multiple",
+    options: [
+      "The Industrial Revolution began in Britain in approximately 1760.",
+      "Britain's constitutional stability, accumulated colonial capital and abundant coal deposits created the conditions for industrialisation to emerge there before elsewhere.",
+      "Many historians have studied the Industrial Revolution and written books about its causes.",
+      "The Industrial Revolution involved changes in technology, society and the economy of Britain."
+    ],
+    answer: 1,
+    explanation: "Analytical writing EXPLAINS causation and significance. Descriptive writing just states facts without interpretation.",
+    commonError: "Analytical writing CONNECTS cause to effect and EXPLAINS — it does not merely list facts or state that historians have studied something.",
+    difficulty: 2, topic: "Essay Writing"
+  },
+
+{
+    text: "A newspaper printed the day after a battle is used as a historical source. Its most significant LIMITATION is:",
+    type: "multiple",
+    options: [
+      "It is printed on paper, which degrades over time and may make the text difficult to read accurately",
+      "Newspapers are secondary sources and can never provide reliable information about military events",
+      "Early reports are often incomplete or inaccurate because journalists lacked full information about still-unfolding events",
+      "The newspaper's editor may have had personal political views that influenced how the story was presented"
+    ],
+    answer: 2,
+    explanation: "Speed of publication is the key limitation — early reports often contain errors of fact, misattributed quotes and incomplete information.",
+    commonError: "For a NEXT-DAY report, INCOMPLETE INFORMATION is the primary limitation — not just editorial bias.",
+    difficulty: 2, topic: "OPVL Practice"
+  },
+
+{
+    text: "When analysing a painting as a historical source, which limitation is most important to consider?",
+    type: "multiple",
+    options: [
+      "Paintings fade over time, making it difficult to determine the original colours the artist intended",
+      "The painter's perspective, intended audience and purpose may mean the image is idealised or propagandistic",
+      "Paintings were created only by wealthy artists for wealthy patrons, so they represent only elite perspectives",
+      "Paintings cannot be used as historical evidence because they are artistic creations, not factual records"
+    ],
+    answer: 1,
+    explanation: "Visual sources require OPVL analysis because the ARTIST's choices (what to include, exaggerate or omit) reflect PURPOSE and PERSPECTIVE.",
+    commonError: "LIMITATION of paintings: the artist's INTENT may distort reality — idealisation, propaganda or selective representation.",
+    difficulty: 2, topic: "OPVL Practice"
+  },
+
+{
+    text: "What is the primary VALUE of a government census as a historical source?",
+    type: "multiple",
+    options: [
+      "It provides systematic, large-scale quantitative data about population, occupations and conditions at a specific moment",
+      "It provides systematic, large-scale quantitative data that is always accurate because governments are legally required to collect it correctly",
+      "Census data was collected by local officials with no political agenda, making it the most neutral of all historical sources",
+      "Government censuses were always published openly, ensuring that all citizens could verify the accuracy of the data"
+    ],
+    answer: 0,
+    explanation: "Census data's VALUE is its SCALE and SYSTEMATISATION — it covers entire populations in ways impossible by other means. Its LIMITATION is government control of collection and publication.",
+    commonError: "VALUE = scale and systematisation. LIMITATION = governments can manipulate how they collect or report data.",
+    difficulty: 2, topic: "OPVL Practice"
+  },
+
+{
+    text: "An eyewitness account of the French Revolution written 30 years after the events has which combination of value and limitation?",
+    type: "multiple",
+    options: [
+      "Value: completely objective because the author had time to reflect; Limitation: too old to be relevant to modern historians",
+      "Value: personal, first-hand experience of events; Limitation: memory distorted by the passage of time and subsequent political changes",
+      "Value: benefits from historical hindsight unavailable at the time; Limitation: not written in the original language of the events",
+      "Value: the author had access to other sources to cross-reference; Limitation: the author may have copied from other accounts"
+    ],
+    answer: 1,
+    explanation: "Eyewitness VALUE is DIRECT EXPERIENCE; LIMITATION is MEMORY DISTORTION — memories reshape themselves in light of subsequent events and personal development.",
+    commonError: "30 years later = memory shaped by everything that happened in between. EXPERIENCE is valuable; MEMORY is limited.",
+    difficulty: 2, topic: "OPVL Practice"
+  },
+
+{
+    text: "In OPVL analysis, what does 'Origin' specifically refer to?",
+    type: "multiple",
+    options: [
+      "The reason why a source was created and the effect it was intended to have on its audience",
+      "The creator of the source, the date -- yet this reasoning does not explain the underlying structural causes identified by historians",
+      "The creator of the source, the date of its creation, and the type of document or format it is",
+      "The political and social context of the period in which the source was produced"
+    ],
+    answer: 2,
+    explanation: "ORIGIN = WHO created it + WHEN + WHAT TYPE. This is distinct from Purpose (WHY it was created) and Context (the broader setting).",
+    commonError: "ORIGIN asks WHO, WHEN and WHAT TYPE — not WHY (Purpose) or broader context.",
+    difficulty: 1, topic: "OPVL Practice"
+  },
+
+{
+    text: "A government report on factory conditions published in 1833 is used as a historical source. Its most significant LIMITATION is:",
+    type: "multiple",
+    options: [
+      "The report is too old to provide reliable information about conditions in modern-day factories",
+      "Factory owners were not consulted during the investigation, so the report lacks balance",
+      "The report was written in legal language that is difficult for modern historians to interpret accurately",
+      "Government reports may omit or minimise damaging findings to avoid embarrassing the government or its allies"
+    ],
+    answer: 3,
+    explanation: "Government reports on social conditions often DOWNPLAY problems to protect political interests or avoid pressure for reform.",
+    commonError: "The KEY LIMITATION is POLITICAL MOTIVE to minimise negative findings — not age, balance or language.",
+    difficulty: 2, topic: "OPVL Practice"
   }
+
 ];
-/* ============================================
-   ULTRA PREPARAZIONE - 5 domande da 10
-   Esercizi avanzati con ragionamento multi-step
-   ============================================ */
+
 const ULTRA_QUESTIONS = [
   {
     text: "Compare the French Revolution (1789) and the Russian Revolution (1917). Which statement BEST identifies a key DIFFERENCE between the two?",
