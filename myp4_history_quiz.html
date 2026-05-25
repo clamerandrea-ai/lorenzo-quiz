@@ -1181,14 +1181,14 @@ body::before {
       </div>
     </div>
 
-    <!-- Prof. Paludetto — Cartoon -->
+    <!-- Prof. Harrington — Cartoon -->
     <div class="prof-container" id="prof-container">
       <div class="prof-svg-container">
         <div class="prof-svg-correct" id="prof-svg-happy"></div>
         <div class="prof-svg-wrong" id="prof-svg-angry"></div>
       </div>
       <div class="prof-bubble">
-        <div class="prof-name" id="prof-name">Prof. Paludetto</div>
+        <div class="prof-name" id="prof-name">Prof. Harrington</div>
         <div id="prof-phrase"></div>
       </div>
     </div>
@@ -1220,7 +1220,7 @@ body::before {
       <div class="prof-container show" id="prof-summary" style="margin-bottom:16px;">
         <div class="prof-svg-container" id="prof-summary-svg"></div>
         <div class="prof-bubble">
-          <div class="prof-name" id="prof-summary-name">Prof. Paludetto</div>
+          <div class="prof-name" id="prof-summary-name">Prof. Harrington</div>
           <div id="prof-summary-phrase"></div>
         </div>
       </div>
@@ -4120,115 +4120,140 @@ function processAnswer(isCorrect, q) {
 // SVG del prof felice/approvazione
 const PROF_SVG_HAPPY = `
 <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-  <!-- Sfondo glow verde -->
   <defs>
     <radialGradient id="glowG" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#06d6a0;stop-opacity:0.2"/>
+      <stop offset="0%" style="stop-color:#06d6a0;stop-opacity:0.25"/>
       <stop offset="100%" style="stop-color:#06d6a0;stop-opacity:0"/>
     </radialGradient>
   </defs>
   <circle cx="110" cy="110" r="108" fill="url(#glowG)"/>
-  <!-- Corpo/giacca -->
-  <path d="M55 195 Q55 165 80 155 L110 148 L140 155 Q165 165 165 195 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
-  <path d="M80 155 L100 162 L110 148 L120 162 L140 155" fill="#1e40af" stroke="none"/>
-  <!-- Collo -->
-  <rect x="97" y="138" width="26" height="18" rx="6" fill="#d4a574"/>
-  <!-- Testa -->
-  <ellipse cx="110" cy="105" rx="48" ry="52" fill="#deb887"/>
-  <!-- Capelli ricci scuri -->
-  <path d="M62 95 Q58 55 80 42 Q95 33 110 32 Q125 33 140 42 Q162 55 158 95" fill="#2c1810" stroke="#1a0f0a" stroke-width="1"/>
-  <circle cx="68" cy="82" r="8" fill="#2c1810"/><circle cx="72" cy="72" r="7" fill="#2c1810"/>
-  <circle cx="152" cy="82" r="8" fill="#2c1810"/><circle cx="148" cy="72" r="7" fill="#2c1810"/>
-  <circle cx="78" cy="90" r="6" fill="#2c1810"/><circle cx="142" cy="90" r="6" fill="#2c1810"/>
-  <circle cx="85" cy="65" r="6" fill="#2c1810"/><circle cx="135" cy="65" r="6" fill="#2c1810"/>
-  <circle cx="95" cy="50" r="7" fill="#2c1810"/><circle cx="125" cy="50" r="7" fill="#2c1810"/>
-  <circle cx="110" cy="45" r="8" fill="#2c1810"/>
-  <circle cx="100" cy="55" r="5" fill="#2c1810"/><circle cx="120" cy="55" r="5" fill="#2c1810"/>
-  <!-- Barba -->
-  <path d="M78 118 Q80 145 110 152 Q140 145 142 118 Q142 130 130 140 Q110 150 90 140 Q78 130 78 118Z" fill="#3d2914" stroke="#2c1810" stroke-width="1"/>
-  <path d="M75 108 Q72 125 78 118" fill="#3d2914"/><path d="M145 108 Q148 125 142 118" fill="#3d2914"/>
-  <!-- Occhiali -->
-  <rect x="76" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
-  <rect x="116" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
-  <line x1="104" y1="102" x2="116" y2="102" stroke="#1a1a2e" stroke-width="2.5"/>
-  <line x1="76" y1="100" x2="66" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
-  <line x1="144" y1="100" x2="154" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
-  <!-- Occhi felici (archi sorridenti) -->
-  <path d="M84 102 Q90 96 96 102" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M124 102 Q130 96 136 102" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Sopracciglia alzate (contento) -->
-  <path d="M78 86 Q90 80 100 84" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M120 84 Q130 80 142 86" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Bocca sorridente (nella barba) -->
-  <path d="M96 132 Q110 142 124 132" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Pollice su -->
-  <g transform="translate(165,140) rotate(-15)">
-    <rect x="0" y="12" width="18" height="26" rx="5" fill="#deb887" stroke="#c4956a" stroke-width="1.5"/>
-    <rect x="4" y="-8" width="12" height="24" rx="6" fill="#deb887" stroke="#c4956a" stroke-width="1.5"/>
+  <!-- Tweed jacket -->
+  <path d="M50 200 Q50 166 76 154 L110 147 L144 154 Q170 166 170 200 Z" fill="#3a2e1e" stroke="#2a1e0e" stroke-width="2"/>
+  <!-- Lapels -->
+  <path d="M93 154 L103 165 L110 147" fill="#4a3a26" stroke="none"/>
+  <path d="M127 154 L117 165 L110 147" fill="#4a3a26" stroke="none"/>
+  <!-- Shirt collar & tie -->
+  <rect x="102" y="147" width="16" height="5" rx="2" fill="#f0f0f0"/>
+  <path d="M107 152 L110 172 L113 152 Z" fill="#8b0000"/>
+  <!-- Neck -->
+  <rect x="98" y="132" width="24" height="20" rx="6" fill="#f0c888"/>
+  <!-- Head (slightly wider, elderly) -->
+  <ellipse cx="110" cy="100" rx="46" ry="50" fill="#f5d08a"/>
+  <!-- Bald top with white side-hair -->
+  <path d="M64 88 Q62 55 80 40 Q95 30 110 30 Q125 30 140 40 Q158 55 156 88"
+        fill="#d8d8d8" stroke="#c8c8c8" stroke-width="1"/>
+  <!-- Sparse wispy hair on top -->
+  <path d="M80 40 Q90 36 100 35" fill="none" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M100 35 Q110 33 120 35" fill="none" stroke="#e0e0e0" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M120 35 Q130 36 140 40" fill="none" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <!-- Side hair thicker -->
+  <path d="M64 88 Q62 72 66 58 Q70 48 78 42" fill="none" stroke="#d0d0d0" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <path d="M156 88 Q158 72 154 58 Q150 48 142 42" fill="none" stroke="#d0d0d0" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <!-- Forehead wrinkles -->
+  <path d="M86 70 Q100 66 114 70" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M88 78 Q100 75 112 78" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <!-- Bushy white eyebrows -->
+  <path d="M73 86 Q87 78 101 83" fill="none" stroke="#e0e0e0" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M119 83 Q133 78 147 86" fill="none" stroke="#e0e0e0" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Crow's feet wrinkles -->
+  <path d="M73 96 Q69 92 70 88" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <path d="M147 96 Q151 92 150 88" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <!-- Round gold-rimmed glasses -->
+  <circle cx="89" cy="98" r="14" fill="rgba(200,220,255,0.18)" stroke="#c89010" stroke-width="2.5"/>
+  <circle cx="131" cy="98" r="14" fill="rgba(200,220,255,0.18)" stroke="#c89010" stroke-width="2.5"/>
+  <line x1="103" y1="98" x2="117" y2="98" stroke="#c89010" stroke-width="2"/>
+  <line x1="75" y1="94" x2="65" y2="91" stroke="#c89010" stroke-width="2"/>
+  <line x1="145" y1="94" x2="155" y2="91" stroke="#c89010" stroke-width="2"/>
+  <!-- Happy eyes (arched upward) -->
+  <path d="M83 100 Q89 93 95 100" fill="none" stroke="#3a2010" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M125 100 Q131 93 137 100" fill="none" stroke="#3a2010" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Eye shine -->
+  <circle cx="91" cy="96" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="133" cy="96" r="1.5" fill="white" opacity="0.8"/>
+  <!-- Full white beard (covering lower face) -->
+  <path d="M66 114 Q63 138 72 152 Q88 168 110 172 Q132 168 148 152 Q157 138 154 114
+           Q144 128 110 134 Q76 128 66 114Z" fill="#ebebeb" stroke="#d5d5d5" stroke-width="1"/>
+  <!-- Moustache -->
+  <path d="M90 116 Q100 110 110 113 Q120 110 130 116" fill="#e0e0e0" stroke="#cccccc" stroke-width="1.5"/>
+  <!-- Beard texture lines -->
+  <path d="M76 132 Q82 150 88 160" fill="none" stroke="#d5d5d5" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M144 132 Q138 150 132 160" fill="none" stroke="#d5d5d5" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M94 162 Q104 168 116 168" fill="none" stroke="#d5d5d5" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Smile visible in beard -->
+  <path d="M97 128 Q110 140 123 128" fill="none" stroke="#c07840" stroke-width="2" stroke-linecap="round"/>
+  <!-- Thumbs up (scholarly hand) -->
+  <g transform="translate(162,138) rotate(-15)">
+    <rect x="0" y="12" width="18" height="26" rx="5" fill="#f0c888" stroke="#d4a060" stroke-width="1.5"/>
+    <rect x="4" y="-8" width="11" height="24" rx="6" fill="#f0c888" stroke="#d4a060" stroke-width="1.5"/>
   </g>
-  <!-- Badge check -->
+  <!-- Green check badge -->
   <circle cx="180" cy="45" r="18" fill="#06d6a0"/>
-  <path d="M171 45 L177 51 L189 39" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M171 45 L177 51 L189 39" fill="none" stroke="white" stroke-width="3.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
 
 // SVG del prof arrabbiato/disapprovazione
 const PROF_SVG_ANGRY = `
 <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-  <!-- Sfondo glow rosso -->
   <defs>
     <radialGradient id="glowR" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#ef476f;stop-opacity:0.2"/>
+      <stop offset="0%" style="stop-color:#ef476f;stop-opacity:0.25"/>
       <stop offset="100%" style="stop-color:#ef476f;stop-opacity:0"/>
     </radialGradient>
   </defs>
   <circle cx="110" cy="110" r="108" fill="url(#glowR)"/>
-  <!-- Corpo/giacca -->
-  <path d="M55 195 Q55 165 80 155 L110 148 L140 155 Q165 165 165 195 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
-  <path d="M80 155 L100 162 L110 148 L120 162 L140 155" fill="#1e40af" stroke="none"/>
-  <!-- Collo -->
-  <rect x="97" y="138" width="26" height="18" rx="6" fill="#d4a574"/>
-  <!-- Testa -->
-  <ellipse cx="110" cy="105" rx="48" ry="52" fill="#deb887"/>
-  <!-- Capelli ricci scuri -->
-  <path d="M62 95 Q58 55 80 42 Q95 33 110 32 Q125 33 140 42 Q162 55 158 95" fill="#2c1810" stroke="#1a0f0a" stroke-width="1"/>
-  <circle cx="68" cy="82" r="8" fill="#2c1810"/><circle cx="72" cy="72" r="7" fill="#2c1810"/>
-  <circle cx="152" cy="82" r="8" fill="#2c1810"/><circle cx="148" cy="72" r="7" fill="#2c1810"/>
-  <circle cx="78" cy="90" r="6" fill="#2c1810"/><circle cx="142" cy="90" r="6" fill="#2c1810"/>
-  <circle cx="85" cy="65" r="6" fill="#2c1810"/><circle cx="135" cy="65" r="6" fill="#2c1810"/>
-  <circle cx="95" cy="50" r="7" fill="#2c1810"/><circle cx="125" cy="50" r="7" fill="#2c1810"/>
-  <circle cx="110" cy="45" r="8" fill="#2c1810"/>
-  <circle cx="100" cy="55" r="5" fill="#2c1810"/><circle cx="120" cy="55" r="5" fill="#2c1810"/>
-  <!-- Barba -->
-  <path d="M78 118 Q80 145 110 152 Q140 145 142 118 Q142 130 130 140 Q110 150 90 140 Q78 130 78 118Z" fill="#3d2914" stroke="#2c1810" stroke-width="1"/>
-  <path d="M75 108 Q72 125 78 118" fill="#3d2914"/><path d="M145 108 Q148 125 142 118" fill="#3d2914"/>
-  <!-- Occhiali -->
-  <rect x="76" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
-  <rect x="116" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
-  <line x1="104" y1="102" x2="116" y2="102" stroke="#1a1a2e" stroke-width="2.5"/>
-  <line x1="76" y1="100" x2="66" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
-  <line x1="144" y1="100" x2="154" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
-  <!-- Occhi arrabbiati (puntini intensi) -->
-  <circle cx="90" cy="101" r="3.5" fill="#1a1a2e"/>
-  <circle cx="130" cy="101" r="3.5" fill="#1a1a2e"/>
-  <!-- Sopracciglia aggrottate -->
-  <path d="M78 88 Q88 82 100 88" fill="none" stroke="#2c1810" stroke-width="3" stroke-linecap="round" transform="rotate(8, 89, 85)"/>
-  <path d="M120 88 Q132 82 142 88" fill="none" stroke="#2c1810" stroke-width="3" stroke-linecap="round" transform="rotate(-8, 131, 85)"/>
-  <!-- Bocca contrariata -->
-  <path d="M96 135 Q110 128 124 135" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Mano facepalm -->
-  <g transform="translate(152,120) rotate(10)">
-    <rect x="0" y="0" width="22" height="14" rx="5" fill="#deb887" stroke="#c4956a" stroke-width="1.5"/>
-    <rect x="3" y="-6" width="5" height="10" rx="2.5" fill="#deb887" stroke="#c4956a" stroke-width="1"/>
-    <rect x="9" y="-8" width="5" height="12" rx="2.5" fill="#deb887" stroke="#c4956a" stroke-width="1"/>
-    <rect x="15" y="-6" width="5" height="10" rx="2.5" fill="#deb887" stroke="#c4956a" stroke-width="1"/>
+  <!-- Tweed jacket -->
+  <path d="M50 200 Q50 166 76 154 L110 147 L144 154 Q170 166 170 200 Z" fill="#3a2e1e" stroke="#2a1e0e" stroke-width="2"/>
+  <path d="M93 154 L103 165 L110 147" fill="#4a3a26" stroke="none"/>
+  <path d="M127 154 L117 165 L110 147" fill="#4a3a26" stroke="none"/>
+  <rect x="102" y="147" width="16" height="5" rx="2" fill="#f0f0f0"/>
+  <path d="M107 152 L110 172 L113 152 Z" fill="#8b0000"/>
+  <!-- Neck -->
+  <rect x="98" y="132" width="24" height="20" rx="6" fill="#f0c888"/>
+  <!-- Head -->
+  <ellipse cx="110" cy="100" rx="46" ry="50" fill="#f5d08a"/>
+  <!-- White hair (same as happy) -->
+  <path d="M64 88 Q62 55 80 40 Q95 30 110 30 Q125 30 140 40 Q158 55 156 88"
+        fill="#d8d8d8" stroke="#c8c8c8" stroke-width="1"/>
+  <path d="M80 40 Q90 36 100 35" fill="none" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M100 35 Q110 33 120 35" fill="none" stroke="#e0e0e0" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M120 35 Q130 36 140 40" fill="none" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M64 88 Q62 72 66 58 Q70 48 78 42" fill="none" stroke="#d0d0d0" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <path d="M156 88 Q158 72 154 58 Q150 48 142 42" fill="none" stroke="#d0d0d0" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <!-- Forehead wrinkles (more pronounced — stern) -->
+  <path d="M86 70 Q100 64 114 70" fill="none" stroke="#dab870" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <path d="M88 78 Q100 75 112 78" fill="none" stroke="#dab870" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Furrowed bushy white eyebrows -->
+  <path d="M73 88 Q87 80 101 85" fill="none" stroke="#e0e0e0" stroke-width="5" stroke-linecap="round" transform="rotate(12,87,84)"/>
+  <path d="M119 85 Q133 80 147 88" fill="none" stroke="#e0e0e0" stroke-width="5" stroke-linecap="round" transform="rotate(-12,133,84)"/>
+  <!-- Crow's feet -->
+  <path d="M73 96 Q69 92 70 88" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M147 96 Q151 92 150 88" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <!-- Round gold-rimmed glasses -->
+  <circle cx="89" cy="99" r="14" fill="rgba(200,220,255,0.18)" stroke="#c89010" stroke-width="2.5"/>
+  <circle cx="131" cy="99" r="14" fill="rgba(200,220,255,0.18)" stroke="#c89010" stroke-width="2.5"/>
+  <line x1="103" y1="99" x2="117" y2="99" stroke="#c89010" stroke-width="2"/>
+  <line x1="75" y1="95" x2="65" y2="92" stroke="#c89010" stroke-width="2"/>
+  <line x1="145" y1="95" x2="155" y2="92" stroke="#c89010" stroke-width="2"/>
+  <!-- Stern narrowed eyes -->
+  <ellipse cx="89" cy="100" rx="4.5" ry="2.5" fill="#3a2010"/>
+  <ellipse cx="131" cy="100" rx="4.5" ry="2.5" fill="#3a2010"/>
+  <!-- Full white beard -->
+  <path d="M66 114 Q63 138 72 152 Q88 168 110 172 Q132 168 148 152 Q157 138 154 114
+           Q144 128 110 134 Q76 128 66 114Z" fill="#ebebeb" stroke="#d5d5d5" stroke-width="1"/>
+  <path d="M90 116 Q100 110 110 113 Q120 110 130 116" fill="#e0e0e0" stroke="#cccccc" stroke-width="1.5"/>
+  <path d="M76 132 Q82 150 88 160" fill="none" stroke="#d5d5d5" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M144 132 Q138 150 132 160" fill="none" stroke="#d5d5d5" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Stern mouth (frown visible in beard) -->
+  <path d="M97 128 Q110 120 123 128" fill="none" stroke="#c07840" stroke-width="2" stroke-linecap="round"/>
+  <!-- Pointing finger (stern lecture gesture) -->
+  <g transform="translate(150,124) rotate(-25)">
+    <rect x="1" y="8" width="14" height="22" rx="4" fill="#f0c888" stroke="#d4a060" stroke-width="1.5"/>
+    <rect x="4" y="-14" width="9" height="26" rx="5" fill="#f0c888" stroke="#d4a060" stroke-width="1.5"/>
   </g>
-  <!-- Badge X -->
+  <!-- Red X badge -->
   <circle cx="180" cy="45" r="18" fill="#ef476f"/>
-  <path d="M173 38 L187 52 M187 38 L173 52" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-  <!-- Vena frustrazione -->
-  <g transform="translate(55,55)">
-    <path d="M0 5 L5 0 L10 5 L5 10 Z" fill="none" stroke="#ef476f" stroke-width="2"/>
-  </g>
+  <path d="M172 37 L188 53 M188 37 L172 53" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
 </svg>`;
 
 // SVG versione neutra per header
@@ -4236,35 +4261,62 @@ const PROF_SVG_NEUTRAL = `
 <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <radialGradient id="glowN" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#4361ee;stop-opacity:0.15"/>
+      <stop offset="0%" style="stop-color:#4361ee;stop-opacity:0.18"/>
       <stop offset="100%" style="stop-color:#4361ee;stop-opacity:0"/>
     </radialGradient>
   </defs>
   <circle cx="110" cy="110" r="108" fill="url(#glowN)"/>
-  <path d="M55 195 Q55 165 80 155 L110 148 L140 155 Q165 165 165 195 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
-  <path d="M80 155 L100 162 L110 148 L120 162 L140 155" fill="#1e40af" stroke="none"/>
-  <rect x="97" y="138" width="26" height="18" rx="6" fill="#d4a574"/>
-  <ellipse cx="110" cy="105" rx="48" ry="52" fill="#deb887"/>
-  <path d="M62 95 Q58 55 80 42 Q95 33 110 32 Q125 33 140 42 Q162 55 158 95" fill="#2c1810" stroke="#1a0f0a" stroke-width="1"/>
-  <circle cx="68" cy="82" r="8" fill="#2c1810"/><circle cx="72" cy="72" r="7" fill="#2c1810"/>
-  <circle cx="152" cy="82" r="8" fill="#2c1810"/><circle cx="148" cy="72" r="7" fill="#2c1810"/>
-  <circle cx="78" cy="90" r="6" fill="#2c1810"/><circle cx="142" cy="90" r="6" fill="#2c1810"/>
-  <circle cx="85" cy="65" r="6" fill="#2c1810"/><circle cx="135" cy="65" r="6" fill="#2c1810"/>
-  <circle cx="95" cy="50" r="7" fill="#2c1810"/><circle cx="125" cy="50" r="7" fill="#2c1810"/>
-  <circle cx="110" cy="45" r="8" fill="#2c1810"/>
-  <circle cx="100" cy="55" r="5" fill="#2c1810"/><circle cx="120" cy="55" r="5" fill="#2c1810"/>
-  <path d="M78 118 Q80 145 110 152 Q140 145 142 118 Q142 130 130 140 Q110 150 90 140 Q78 130 78 118Z" fill="#3d2914" stroke="#2c1810" stroke-width="1"/>
-  <path d="M75 108 Q72 125 78 118" fill="#3d2914"/><path d="M145 108 Q148 125 142 118" fill="#3d2914"/>
-  <rect x="76" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
-  <rect x="116" y="92" width="28" height="22" rx="5" fill="none" stroke="#1a1a2e" stroke-width="3"/>
-  <line x1="104" y1="102" x2="116" y2="102" stroke="#1a1a2e" stroke-width="2.5"/>
-  <line x1="76" y1="100" x2="66" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
-  <line x1="144" y1="100" x2="154" y2="96" stroke="#1a1a2e" stroke-width="2.5"/>
-  <circle cx="90" cy="101" r="3" fill="#1a1a2e"/>
-  <circle cx="130" cy="101" r="3" fill="#1a1a2e"/>
-  <path d="M80 86 Q90 82 100 85" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M120 85 Q130 82 140 86" fill="none" stroke="#2c1810" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M100 134 L120 134" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <!-- Tweed jacket -->
+  <path d="M50 200 Q50 166 76 154 L110 147 L144 154 Q170 166 170 200 Z" fill="#3a2e1e" stroke="#2a1e0e" stroke-width="2"/>
+  <path d="M93 154 L103 165 L110 147" fill="#4a3a26" stroke="none"/>
+  <path d="M127 154 L117 165 L110 147" fill="#4a3a26" stroke="none"/>
+  <rect x="102" y="147" width="16" height="5" rx="2" fill="#f0f0f0"/>
+  <path d="M107 152 L110 172 L113 152 Z" fill="#8b0000"/>
+  <!-- Neck -->
+  <rect x="98" y="132" width="24" height="20" rx="6" fill="#f0c888"/>
+  <!-- Head -->
+  <ellipse cx="110" cy="100" rx="46" ry="50" fill="#f5d08a"/>
+  <!-- White hair -->
+  <path d="M64 88 Q62 55 80 40 Q95 30 110 30 Q125 30 140 40 Q158 55 156 88"
+        fill="#d8d8d8" stroke="#c8c8c8" stroke-width="1"/>
+  <path d="M80 40 Q90 36 100 35" fill="none" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M100 35 Q110 33 120 35" fill="none" stroke="#e0e0e0" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M120 35 Q130 36 140 40" fill="none" stroke="#e0e0e0" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M64 88 Q62 72 66 58 Q70 48 78 42" fill="none" stroke="#d0d0d0" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <path d="M156 88 Q158 72 154 58 Q150 48 142 42" fill="none" stroke="#d0d0d0" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+  <!-- Forehead wrinkles -->
+  <path d="M86 70 Q100 66 114 70" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <path d="M88 78 Q100 75 112 78" fill="none" stroke="#dab870" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  <!-- Bushy white eyebrows (neutral arch) -->
+  <path d="M73 86 Q87 80 101 84" fill="none" stroke="#e0e0e0" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M119 84 Q133 80 147 86" fill="none" stroke="#e0e0e0" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Round gold-rimmed glasses -->
+  <circle cx="89" cy="98" r="14" fill="rgba(200,220,255,0.18)" stroke="#c89010" stroke-width="2.5"/>
+  <circle cx="131" cy="98" r="14" fill="rgba(200,220,255,0.18)" stroke="#c89010" stroke-width="2.5"/>
+  <line x1="103" y1="98" x2="117" y2="98" stroke="#c89010" stroke-width="2"/>
+  <line x1="75" y1="94" x2="65" y2="91" stroke="#c89010" stroke-width="2"/>
+  <line x1="145" y1="94" x2="155" y2="91" stroke="#c89010" stroke-width="2"/>
+  <!-- Neutral eyes -->
+  <circle cx="89" cy="98" r="3.5" fill="#3a2010"/>
+  <circle cx="131" cy="98" r="3.5" fill="#3a2010"/>
+  <circle cx="91" cy="96" r="1.2" fill="white" opacity="0.7"/>
+  <circle cx="133" cy="96" r="1.2" fill="white" opacity="0.7"/>
+  <!-- Full white beard -->
+  <path d="M66 114 Q63 138 72 152 Q88 168 110 172 Q132 168 148 152 Q157 138 154 114
+           Q144 128 110 134 Q76 128 66 114Z" fill="#ebebeb" stroke="#d5d5d5" stroke-width="1"/>
+  <path d="M90 116 Q100 110 110 113 Q120 110 130 116" fill="#e0e0e0" stroke="#cccccc" stroke-width="1.5"/>
+  <path d="M76 132 Q82 150 88 160" fill="none" stroke="#d5d5d5" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M144 132 Q138 150 132 160" fill="none" stroke="#d5d5d5" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Neutral mouth -->
+  <path d="M100 130 L120 130" fill="none" stroke="#c07840" stroke-width="2" stroke-linecap="round"/>
+  <!-- Book prop (scholarly) -->
+  <g transform="translate(155,145)">
+    <rect x="0" y="0" width="22" height="28" rx="2" fill="#8b1a1a" stroke="#6b1010" stroke-width="1.5"/>
+    <rect x="3" y="3" width="16" height="22" rx="1" fill="#c8a080" opacity="0.3"/>
+    <line x1="4" y1="7" x2="18" y2="7" stroke="#6b1010" stroke-width="1" opacity="0.4"/>
+    <line x1="4" y1="11" x2="18" y2="11" stroke="#6b1010" stroke-width="1" opacity="0.4"/>
+    <line x1="4" y1="15" x2="14" y2="15" stroke="#6b1010" stroke-width="1" opacity="0.4"/>
+  </g>
 </svg>`;
 
 // Inietta SVG nei container
@@ -4274,35 +4326,35 @@ const PROF_SVG_NEUTRAL = `
   document.getElementById('prof-header-svg').innerHTML = PROF_SVG_NEUTRAL;
 })();
 
-/* Frasi del Prof. Paludetto */
+/* Frasi del Prof. Harrington */
 const PROF_CORRECT_PHRASES = [
-  "Bene. Questa e' fisica fatta con criterio.",
-  "Corretto. Finalmente una risposta degna.",
-  "Ottimo. Qui il campo elettrico non ti spaventa.",
-  "Bravo. Coulomb sarebbe soddisfatto.",
-  "Si', ci siamo. Ragionamento pulito.",
-  "Esatto. Vedo che qualcuno ha studiato.",
-  "Risposta corretta. Continua cosi' e il 10 e' tuo.",
-  "Perfetto. Gauss approva dal paradiso dei fisici.",
-  "Bene bene. Questo lo metto sul registro con il segno piu'.",
-  "Corretto. Non ti servira' neanche il ripasso.",
-  "Giusto. Hai la stoffa del fisico.",
-  "Ok, non male. Forse c'e' speranza per questa classe."
+  "Excellent. A historian always reasons from evidence.",
+  "Correct. That is precisely what the sources suggest.",
+  "Well done. You understood the cause-and-effect relationship.",
+  "Perfect. That kind of analytical thinking earns full marks.",
+  "Yes! Context and perspective — you are mastering them.",
+  "Quite right. Keep this reasoning for your OPVL.",
+  "Spot on. Herodotus himself would be pleased.",
+  "Correct. The examiner will appreciate that answer.",
+  "Indeed. Now apply this thinking to your essay.",
+  "Right. That is evidence-based history at its best.",
+  "Excellent analysis. You have the instincts of a historian.",
+  "Good. That is exactly the nuance this exam requires."
 ];
 
 const PROF_WRONG_PHRASES = [
-  "No. Cosi' non va.",
-  "Attenzione: qui hai confuso i concetti.",
-  "Errore. Rivedi bene il ragionamento.",
-  "Questa risposta non regge. Riprova.",
-  "Fermati un attimo: qui c'e' da ripassare.",
-  "No, no, no. Torna sugli appunti.",
-  "Sbagliato. Ma almeno ci hai provato.",
-  "Questo errore lo vedo ogni anno. Leggi la spiegazione.",
-  "Coulomb si sta rivoltando. Concentrati.",
-  "Errore grave. Apri il quaderno e rileggi.",
-  "Non ci siamo. Ma il bello della fisica e' che si puo' rimediare.",
-  "Risposta sbagliata. Ti do un'altra possibilita' dopo."
+  "No. Go back to your sources and reconsider.",
+  "Incorrect. A historian never confuses cause with consequence.",
+  "Wrong. Read the explanation carefully and try again.",
+  "Not quite. Think about the context of the period.",
+  "That is not right. Consider who created the source and why.",
+  "Incorrect. Do not confuse primary and secondary evidence.",
+  "No. You need to distinguish correlation from causation.",
+  "That is an error. Think carefully about the time period.",
+  "Wrong. A good OPVL analysis would have caught that.",
+  "Incorrect. Reread the notes on this topic before continuing.",
+  "Not quite right. Perspective matters enormously in history.",
+  "That is not the answer. Consider the historical evidence again."
 ];
 
 function showFeedback(isCorrect, q) {
@@ -4310,11 +4362,11 @@ function showFeedback(isCorrect, q) {
   const dd = document.getElementById('deepdive-box');
   const prof = document.getElementById('prof-container');
 
-  // --- Prof. Paludetto ---
+  // --- Prof. Harrington ---
   prof.className = 'prof-container show ' + (isCorrect ? 'correct' : 'wrong');
   const phrases = isCorrect ? PROF_CORRECT_PHRASES : PROF_WRONG_PHRASES;
   document.getElementById('prof-phrase').textContent = phrases[Math.floor(Math.random() * phrases.length)];
-  document.getElementById('prof-name').textContent = 'Prof. Paludetto';
+  document.getElementById('prof-name').textContent = 'Prof. Harrington';
 
   // --- Feedback ---
   fb.style.display = 'block';
@@ -4389,7 +4441,7 @@ function endQuiz() {
   profSummary.className = 'prof-container show ' + summaryClass;
   document.getElementById('prof-summary-svg').innerHTML = pct >= 70 ? PROF_SVG_HAPPY : PROF_SVG_ANGRY;
   document.getElementById('prof-summary-phrase').textContent = summaryPhrase;
-  document.getElementById('prof-summary-name').textContent = 'Prof. Paludetto';
+  document.getElementById('prof-summary-name').textContent = 'Prof. Harrington';
 
   // Griglia statistiche
   document.getElementById('stats-grid').innerHTML = `
